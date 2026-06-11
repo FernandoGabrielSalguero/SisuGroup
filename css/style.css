@@ -1333,8 +1333,22 @@ body[data-page="pausa-viva"] .section-accent {
 }
 
 .process-panel {
-  margin-top: 0.65rem;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  margin-top: 0;
   padding: 0.1rem 0.15rem 0;
+  transition: height 280ms ease, opacity 220ms ease, margin-top 280ms ease;
+  will-change: height, opacity;
+}
+
+.process-panel[hidden] {
+  display: block;
+}
+
+.process-item.is-open .process-panel {
+  opacity: 1;
+  margin-top: 0.65rem;
 }
 
 .process-panel p {
