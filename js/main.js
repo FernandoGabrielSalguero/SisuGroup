@@ -369,7 +369,7 @@ if (processAccordion) {
     });
   };
 
-  const closeAllProcessItems = () => {
+  const closeAllProcessItems = (immediate = false) => {
     processItems.forEach((item) => {
       const trigger = item.querySelector("[data-process-trigger]");
       const panel = item.querySelector("[data-process-panel]");
@@ -381,7 +381,7 @@ if (processAccordion) {
       }
 
       if (panel instanceof HTMLElement) {
-        collapseProcessPanel(panel, true);
+        collapseProcessPanel(panel, immediate);
       }
     });
   };
@@ -394,7 +394,7 @@ if (processAccordion) {
 
     trigger.addEventListener("click", () => {
       if (item.classList.contains("is-open")) {
-        closeAllProcessItems();
+        closeAllProcessItems(false);
         return;
       }
 
@@ -402,7 +402,7 @@ if (processAccordion) {
     });
   });
 
-  closeAllProcessItems();
+  closeAllProcessItems(true);
 }
 
 function bindDemoTriggers() {

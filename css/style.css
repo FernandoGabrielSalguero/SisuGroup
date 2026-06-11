@@ -791,6 +791,230 @@ body[data-page="pausa-viva"] .section-accent {
   font-size: 0.95rem;
 }
 
+body[data-page="consultoria"] .hero-consulting {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #0d2746;
+  background-image:
+    linear-gradient(115deg, rgba(8, 24, 46, 0.9) 0%, rgba(8, 24, 46, 0.74) 42%, rgba(8, 24, 46, 0.28) 72%, rgba(8, 24, 46, 0.18) 100%),
+    radial-gradient(circle at top right, rgba(214, 182, 116, 0.18), rgba(214, 182, 116, 0) 34%),
+    url("../assets/img/Background%20Negocio.png");
+  background-position: left center, top right, center;
+  background-repeat: no-repeat;
+  background-size: cover, auto, cover;
+}
+
+body[data-page="consultoria"] .hero-consulting::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(247, 242, 232, 0.12) 0%, rgba(247, 242, 232, 0) 28%),
+    linear-gradient(90deg, rgba(247, 242, 232, 0.12) 0%, rgba(247, 242, 232, 0.04) 38%, rgba(247, 242, 232, 0) 65%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+body[data-page="consultoria"] .hero-consulting::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -18% 52%;
+  width: min(34rem, 40vw);
+  height: min(34rem, 40vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(214, 182, 116, 0.24) 0%, rgba(214, 182, 116, 0.08) 36%, rgba(214, 182, 116, 0) 72%);
+  filter: blur(14px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+body[data-page="consultoria"] .hero-consulting .hero-grid {
+  position: relative;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  min-height: clamp(30rem, 72vh, 42rem);
+}
+
+body[data-page="consultoria"] .hero-consulting .hero-copy {
+  max-width: 35rem;
+  padding: clamp(1.5rem, 3vw, 2rem) 0;
+}
+
+body[data-page="consultoria"] .hero-consulting .eyebrow,
+body[data-page="consultoria"] .hero-consulting .hero-copy h1,
+body[data-page="consultoria"] .hero-consulting .hero-copy p {
+  color: var(--white);
+}
+
+body[data-page="consultoria"] .hero-consulting .eyebrow {
+  letter-spacing: 0.18em;
+}
+
+body[data-page="consultoria"] .hero-consulting .hero-copy h1 {
+  max-width: 12ch;
+  margin-bottom: 1rem;
+  font-size: clamp(3rem, 5.8vw, 5.1rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+body[data-page="consultoria"] .hero-consulting .hero-copy > p:first-of-type {
+  max-width: 34rem;
+  margin-bottom: 1rem;
+  font-size: clamp(1.1rem, 1.7vw, 1.38rem);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body[data-page="consultoria"] .hero-consulting-summary {
+  max-width: 31rem;
+  margin: 0 0 1.65rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+body[data-page="consultoria"] .hero-consulting .hero-visual {
+  justify-content: center;
+  min-height: 100%;
+}
+
+body[data-page="consultoria"] .hero-consulting .hero-card {
+  width: min(28rem, 100%);
+  padding: clamp(1.5rem, 3vw, 2.35rem);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body[data-page="consultoria"] .hero-consulting .consulting-identity {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  isolation: isolate;
+  overflow: visible;
+}
+
+body[data-page="consultoria"] .hero-consulting .consulting-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -58%) scale(0.96);
+  transform-origin: center;
+  pointer-events: none;
+  opacity: 0.42;
+  z-index: -1;
+  animation: consultingRingPulse 11s ease-in-out infinite;
+}
+
+body[data-page="consultoria"] .hero-consulting .consulting-ring-one {
+  width: min(17.5rem, 62%);
+  aspect-ratio: 1;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+body[data-page="consultoria"] .hero-consulting .consulting-ring-two {
+  width: min(23rem, 82%);
+  aspect-ratio: 1;
+  border: 1px solid rgba(209, 217, 242, 0.24);
+  opacity: 0.3;
+  animation-delay: -3.5s;
+}
+
+body[data-page="consultoria"] .hero-consulting .consulting-ring-three {
+  width: min(29rem, 104%);
+  aspect-ratio: 1;
+  border: 1px solid rgba(103, 130, 173, 0.18);
+  opacity: 0.2;
+  animation-delay: -7s;
+}
+
+@keyframes consultingRingPulse {
+  0%,
+  100% {
+    transform: translate(-50%, -58%) scale(0.96);
+    opacity: 0.16;
+  }
+
+  45% {
+    transform: translate(-50%, -58%) scale(1.02);
+    opacity: 0.38;
+  }
+
+  70% {
+    transform: translate(-50%, -58%) scale(1.06);
+    opacity: 0.22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="consultoria"] .hero-consulting .consulting-ring {
+    animation: none;
+    opacity: 0.18;
+  }
+}
+
+body[data-page="consultoria"] .hero-consulting .hero-main-logo {
+  position: relative;
+  z-index: 1;
+  width: min(78%, 24rem);
+  max-width: 24rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 16px 28px rgba(4, 16, 34, 0.18));
+}
+
+body[data-page="consultoria"] .hero-consulting .hero-note {
+  position: relative;
+  z-index: 1;
+  max-width: 16rem;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(244, 239, 231, 0.88);
+  text-shadow: 0 4px 14px rgba(4, 16, 34, 0.22);
+}
+
+body[data-page="consultoria"] .consulting-audience {
+  background: linear-gradient(180deg, rgba(248, 246, 241, 0.82), rgba(255, 252, 247, 0.92));
+}
+
+body[data-page="consultoria"] .consulting-audience-grid {
+  align-items: center;
+  gap: clamp(1.75rem, 4vw, 4rem);
+}
+
+body[data-page="consultoria"] .consulting-audience-media {
+  position: relative;
+}
+
+body[data-page="consultoria"] .consulting-audience-media img {
+  width: 100%;
+  min-height: clamp(20rem, 34vw, 30rem);
+  object-fit: cover;
+  border-radius: clamp(1.5rem, 3vw, 2rem);
+  box-shadow: 0 24px 54px rgba(0, 31, 84, 0.14);
+}
+
+body[data-page="consultoria"] .consulting-audience-copy {
+  max-width: 34rem;
+}
+
+body[data-page="consultoria"] .consulting-audience-copy h2 {
+  margin-bottom: 1rem;
+}
+
+body[data-page="consultoria"] .consulting-audience-copy p:last-child {
+  margin-bottom: 0;
+  color: rgba(28, 39, 59, 0.88);
+}
+
 .abstract-orbit {
   position: absolute;
   border-radius: 50%;
@@ -2460,5 +2684,124 @@ textarea:focus-visible,
     bottom: -10.2rem;
     width: 31rem;
     height: 13rem;
+  }
+}
+@media (max-width: 1024px) {
+  body[data-page="consultoria"] .hero-consulting {
+    background-position: left center, top right, 62% center;
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-grid {
+    min-height: auto;
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-copy {
+    max-width: 100%;
+    padding-bottom: 0;
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-copy h1 {
+    max-width: 14ch;
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-visual {
+    justify-content: flex-start;
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-card {
+    width: min(100%, 30rem);
+  }
+
+  body[data-page="consultoria"] .hero-consulting .consulting-ring-one {
+    width: min(15.5rem, 58vw);
+  }
+
+  body[data-page="consultoria"] .hero-consulting .consulting-ring-two {
+    width: min(20rem, 72vw);
+  }
+
+  body[data-page="consultoria"] .hero-consulting .consulting-ring-three {
+    width: min(24rem, 86vw);
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-main-logo {
+    width: min(72%, 20rem);
+    max-width: 20rem;
+  }
+
+  body[data-page="consultoria"] .consulting-audience-copy {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-page="consultoria"] .hero-consulting {
+    background-image:
+      linear-gradient(180deg, rgba(8, 24, 46, 0.9) 0%, rgba(8, 24, 46, 0.76) 38%, rgba(8, 24, 46, 0.82) 100%),
+      radial-gradient(circle at top center, rgba(214, 182, 116, 0.14), rgba(214, 182, 116, 0) 38%),
+      url("../assets/img/Background%20Negocio.png");
+    background-position: center, top center, 68% center;
+  }
+
+  body[data-page="consultoria"] .hero-consulting::before {
+    background:
+      linear-gradient(180deg, rgba(247, 242, 232, 0.12) 0%, rgba(247, 242, 232, 0) 18%),
+      linear-gradient(180deg, rgba(247, 242, 232, 0.08) 0%, rgba(247, 242, 232, 0) 42%);
+  }
+
+  body[data-page="consultoria"] .hero-consulting::after {
+    inset: auto -10% -12% auto;
+    width: 14rem;
+    height: 14rem;
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-copy h1 {
+    max-width: 11ch;
+    font-size: clamp(2.5rem, 12vw, 3.6rem);
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-copy > p:first-of-type {
+    font-size: 1.02rem;
+  }
+
+  body[data-page="consultoria"] .hero-consulting-summary {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-card {
+    margin-top: 0.35rem;
+    width: min(100%, 22rem);
+    text-align: center;
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-main-logo {
+    width: min(72vw, 16rem);
+    max-width: 16rem;
+  }
+
+  body[data-page="consultoria"] .hero-consulting .consulting-ring {
+    transform: translate(-50%, -56%) scale(0.94);
+  }
+
+  body[data-page="consultoria"] .hero-consulting .consulting-ring-one {
+    width: min(12rem, 54vw);
+  }
+
+  body[data-page="consultoria"] .hero-consulting .consulting-ring-two {
+    width: min(15.5rem, 70vw);
+  }
+
+  body[data-page="consultoria"] .hero-consulting .consulting-ring-three {
+    width: min(19rem, 84vw);
+  }
+
+  body[data-page="consultoria"] .hero-consulting .hero-note {
+    max-width: 14rem;
+    margin-inline: auto;
+  }
+
+  body[data-page="consultoria"] .consulting-audience-media img {
+    min-height: 16rem;
   }
 }
