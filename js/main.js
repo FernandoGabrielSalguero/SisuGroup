@@ -6,11 +6,14 @@ const revealItems = document.querySelectorAll(".reveal");
 const modal = document.querySelector("[data-scanner-modal]");
 const modalPanel = document.querySelector("[data-modal-panel]");
 const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
-const forms = document.querySelectorAll("[data-mail-form]");
+let forms = [];
 
 const MODAL_STORAGE_KEY = "sisu-scanner-dismissed-at";
 const MODAL_DELAY_MS = 20000;
 const MODAL_HIDE_MS = 1000 * 60 * 60 * 24 * 7;
+const CONTACT_API_ENDPOINT = "https://impulsagroup.com/api/contact_form_landing_page/index.php";
+const CONTACT_PUBLIC_KEY = "pk_56addd3b121a7c30977555dfb61e9a40";
+const DEMO_CTA_LABEL = "Solicitar Demo Pausa Viva";
 
 const scannerQuestions = [
   {
@@ -95,6 +98,104 @@ const scannerZones = {
 
 let lastFocusedElement = null;
 let modalTimer = null;
+let demoModal = null;
+let demoModalPanel = null;
+
+function ensureDemoModal() {
+  if (demoModal) {
+    return demoModal;
+  }
+
+  body.insertAdjacentHTML(
+    "beforeend",
+    `
+      <div class="modal-backdrop" data-demo-modal hidden>
+        <div class="scanner-modal demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title" aria-describedby="demo-modal-description" tabindex="-1" data-demo-modal-panel>
+          <button class="modal-close" type="button" aria-label="Cerrar" data-demo-modal-close>&times;</button>
+          <div class="demo-modal-copy">
+            <p class="scanner-brand">Sistema Pausa Viva · Sisu Group</p>
+            <h2 id="demo-modal-title">Conversemos sobre tu Demo Pausa Viva</h2>
+            <p id="demo-modal-description">Con mucho gusto y sin compromiso, podemos coordinar un encuentro para conocernos mejor y contarles cómo podemos acompañarlos.</p>
+            </div>
+            <form class="contact-form demo-form" data-mail-form data-form-context="demo" novalidate>
+            <div class="field-grid">
+            <label>
+            Nombre y Apellido
+            <input type="text" name="nombre" autocomplete="name" required>
+              </label>
+              <label>
+                Correo electronico
+                <input type="email" name="email" autocomplete="email" required>
+              </label>
+              <label>
+                WhatsApp
+                <input type="tel" name="telefono" autocomplete="tel" required>
+              </label>
+              <label>
+                Rubro de la empresa
+                <input type="text" name="empresa" autocomplete="organization" required>
+              </label>
+            </div>
+            <label>
+              Mensaje
+              <textarea name="mensaje" rows="5" required></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Enviar solicitud</button>
+            </div>
+            <p class="form-feedback" data-form-feedback role="status" aria-live="polite"></p>
+            </form>
+            <br>
+            <p id="demo-modal-description">La cita tendrá una duración de 15 minutos.</p>
+            </div>
+      </div>
+    `
+  );
+
+  demoModal = document.querySelector("[data-demo-modal]");
+  demoModalPanel = document.querySelector("[data-demo-modal-panel]");
+
+  if (demoModal) {
+    demoModal.addEventListener("click", (event) => {
+      if (event.target === demoModal) {
+        closeDemoModal();
+      }
+    });
+  }
+
+  if (demoModalPanel) {
+    demoModalPanel.addEventListener("click", (event) => {
+      const target = event.target;
+      if (target instanceof Element && target.closest("[data-demo-modal-close]")) {
+        event.preventDefault();
+        event.stopPropagation();
+        closeDemoModal();
+      }
+    });
+  }
+
+  forms = document.querySelectorAll("[data-mail-form]");
+  return demoModal;
+}
+
+function getOpenModalElements() {
+  if (demoModal && !demoModal.hidden) {
+    return { backdrop: demoModal, panel: demoModalPanel };
+  }
+
+  if (modal && !modal.hidden) {
+    return { backdrop: modal, panel: modalPanel };
+  }
+
+  return null;
+}
+
+function releaseModalTrap() {
+  if (!getOpenModalElements()) {
+    document.removeEventListener("keydown", trapFocus);
+    body.style.overflow = "";
+  }
+}
 
 if (header) {
   const syncHeader = () => {
@@ -140,6 +241,85 @@ if (revealItems.length > 0) {
   }
 }
 
+const processAccordion = document.querySelector("[data-process-accordion]");
+
+if (processAccordion) {
+  const processItems = Array.from(processAccordion.querySelectorAll(".process-item"));
+
+  const setOpenProcessItem = (nextItem) => {
+    processItems.forEach((item) => {
+      const trigger = item.querySelector("[data-process-trigger]");
+      const panel = item.querySelector("[data-process-panel]");
+      const isOpen = item === nextItem;
+
+      item.classList.toggle("is-open", isOpen);
+
+      if (trigger instanceof HTMLButtonElement) {
+        trigger.setAttribute("aria-expanded", String(isOpen));
+      }
+
+      if (panel instanceof HTMLElement) {
+        panel.hidden = !isOpen;
+      }
+    });
+  };
+
+  const closeAllProcessItems = () => {
+    processItems.forEach((item) => {
+      const trigger = item.querySelector("[data-process-trigger]");
+      const panel = item.querySelector("[data-process-panel]");
+
+      item.classList.remove("is-open");
+
+      if (trigger instanceof HTMLButtonElement) {
+        trigger.setAttribute("aria-expanded", "false");
+      }
+
+      if (panel instanceof HTMLElement) {
+        panel.hidden = true;
+      }
+    });
+  };
+
+  processItems.forEach((item) => {
+    const trigger = item.querySelector("[data-process-trigger]");
+    if (!(trigger instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    trigger.addEventListener("click", () => {
+      if (item.classList.contains("is-open")) {
+        closeAllProcessItems();
+        return;
+      }
+
+      setOpenProcessItem(item);
+    });
+  });
+
+  closeAllProcessItems();
+}
+
+function bindDemoTriggers() {
+  const triggerLinks = Array.from(document.querySelectorAll("a, button")).filter((node) => {
+    if (!(node instanceof HTMLElement)) {
+      return false;
+    }
+
+    return node.hasAttribute("data-demo-trigger") || node.textContent?.trim() === DEMO_CTA_LABEL;
+  });
+
+  triggerLinks.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      openDemoModal();
+    });
+  });
+}
+
+ensureDemoModal();
+bindDemoTriggers();
+
 function shouldShowModal() {
   if (!modal) {
     return false;
@@ -150,12 +330,17 @@ function shouldShowModal() {
 }
 
 function trapFocus(event) {
-  if (!modal || modal.hasAttribute("hidden")) {
+  const activeModal = getOpenModalElements();
+  if (!activeModal?.backdrop) {
     return;
   }
 
   if (event.key === "Escape") {
-    closeModal();
+    if (activeModal.backdrop === demoModal) {
+      closeDemoModal();
+    } else {
+      closeModal();
+    }
     return;
   }
 
@@ -163,7 +348,7 @@ function trapFocus(event) {
     return;
   }
 
-  const focusable = modal.querySelectorAll(
+  const focusable = activeModal.backdrop.querySelectorAll(
     'a[href], button:not([disabled]), textarea, input:not([type="hidden"]), select, [tabindex]:not([tabindex="-1"])'
   );
 
@@ -202,9 +387,43 @@ function closeModal() {
   }
 
   modal.hidden = true;
-  body.style.overflow = "";
   localStorage.setItem(MODAL_STORAGE_KEY, String(Date.now()));
-  document.removeEventListener("keydown", trapFocus);
+  releaseModalTrap();
+
+  if (lastFocusedElement instanceof HTMLElement) {
+    lastFocusedElement.focus();
+  }
+}
+
+function openDemoModal() {
+  const dialog = ensureDemoModal();
+  if (!dialog || !demoModalPanel) {
+    return;
+  }
+
+  lastFocusedElement = document.activeElement;
+  dialog.hidden = false;
+  body.style.overflow = "hidden";
+
+  const form = dialog.querySelector('form[data-form-context="demo"]');
+  const feedback = dialog.querySelector("[data-form-feedback]");
+
+  if (form instanceof HTMLFormElement) {
+    form.reset();
+  }
+
+  setFeedback(feedback, "", "");
+  demoModalPanel.focus();
+  document.addEventListener("keydown", trapFocus);
+}
+
+function closeDemoModal() {
+  if (!demoModal) {
+    return;
+  }
+
+  demoModal.hidden = true;
+  releaseModalTrap();
 
   if (lastFocusedElement instanceof HTMLElement) {
     lastFocusedElement.focus();
@@ -429,33 +648,115 @@ function setFeedback(feedbackNode, message, type) {
   }
 }
 
+function setFormSubmitting(form, isSubmitting) {
+  if (!(form instanceof HTMLFormElement)) {
+    return;
+  }
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  if (!(submitButton instanceof HTMLButtonElement)) {
+    return;
+  }
+
+  if (!submitButton.dataset.defaultLabel) {
+    submitButton.dataset.defaultLabel = submitButton.textContent || "";
+  }
+
+  submitButton.disabled = isSubmitting;
+  submitButton.textContent = isSubmitting ? "Enviando..." : submitButton.dataset.defaultLabel;
+}
+
+function getCurrentPageLabel() {
+  const page = body?.dataset.page?.trim();
+  if (page) {
+    return page;
+  }
+
+  const path = window.location.pathname.split("/").pop() || "index.html";
+  return path;
+}
+
+function buildDescription(lines) {
+  return lines.filter(Boolean).join("\n");
+}
+
 function buildApiPayload(formData) {
   const formContext = String(formData.get("form_context") || "").trim();
-  const pageLabel = formContext === "scanner" ? "Escaner" : "Formulario de contacto";
+  const pageLabel = getCurrentPageLabel();
+  const nombre = String(formData.get("nombre") || "").trim();
+  const whatsapp = String(formData.get("telefono") || "").trim();
+  const email = String(formData.get("email") || "").trim();
+  const empresa = String(formData.get("empresa") || "").trim();
+  const zona = String(formData.get("zona") || "").trim();
+  const mensaje = String(formData.get("mensaje") || "").trim();
+
+  if (formContext === "demo") {
+    return {
+      public_key: CONTACT_PUBLIC_KEY,
+      page: pageLabel,
+      contact_nombre: nombre,
+      contact_whatsapp: whatsapp,
+      contact_email: email,
+      contact_description: buildDescription([
+        empresa ? `Empresa: ${empresa}` : "",
+        mensaje ? `Mensaje: ${mensaje}` : "",
+      ]),
+      contact_consultation: "Formulario Solicitar Demo Pausa Viva",
+      state: "recibido",
+    };
+  }
+
+  if (formContext === "scanner") {
+    return {
+      public_key: CONTACT_PUBLIC_KEY,
+      page: `${pageLabel} - escaner`,
+      contact_nombre: nombre,
+      contact_whatsapp: whatsapp,
+      contact_email: email,
+      contact_description: buildDescription([
+        zona ? `Zona detectada: ${zona}` : "",
+        mensaje,
+      ]),
+      contact_consultation: "Formulario Escaner de Carga Mental Organizacional",
+      state: "recibido",
+    };
+  }
 
   return {
-    public_key: "pk_56addd3b121a7c30977555dfb61e9a40",
+    public_key: CONTACT_PUBLIC_KEY,
     page: pageLabel,
-    contact_nombre: String(formData.get("nombre") || "").trim(),
-    contact_whatsapp: String(formData.get("telefono") || "").trim(),
-    contact_email: String(formData.get("email") || "").trim(),
-    contact_description: String(formData.get("zona") || "").trim(),
-    contact_consultation: String(formData.get("mensaje") || "").trim(),
+    contact_nombre: nombre,
+    contact_whatsapp: whatsapp,
+    contact_email: email,
+    contact_description: buildDescription([
+      zona ? `Zona: ${zona}` : "",
+      mensaje ? `Mensaje: ${mensaje}` : "",
+    ]),
+    contact_consultation: "Formulario de contacto sitio web",
     state: "recibido",
   };
 }
 
-function simulateApiSubmission(payload, context) {
-  console.group(`Simulacion API formulario (${context})`);
-  console.log("Endpoint:", "https://impulsagroup.com/api/contact_form_landing_page/index.php");
-  console.log("Metodo:", "POST");
-  console.log("Headers:", { "Content-Type": "application/json" });
-  console.log("Body:", payload);
-  console.groupEnd();
+async function submitApiForm(payload) {
+  const response = await fetch(CONTACT_API_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseText = await response.text();
+
+  if (!response.ok) {
+    throw new Error(responseText || `HTTP ${response.status}`);
+  }
+
+  return responseText;
 }
 
 forms.forEach((form) => {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const feedbackNode = form.querySelector("[data-form-feedback]");
@@ -487,15 +788,34 @@ forms.forEach((form) => {
     const context = form.dataset.formContext || "contacto";
     formData.set("form_context", context);
     const payload = buildApiPayload(formData);
+    setFormSubmitting(form, true);
 
-    simulateApiSubmission(payload, context);
-    setFeedback(feedbackNode, "Formulario simulado en consola con el formato de la API.", "is-success");
+    try {
+      await submitApiForm(payload);
+      setFeedback(feedbackNode, "Formulario enviado correctamente.", "is-success");
+      form.reset();
 
-    if (context === "scanner") {
-      window.setTimeout(() => {
-        closeModal();
-        window.location.assign("pausa-viva.html");
-      }, 250);
+      if (context === "scanner") {
+        window.setTimeout(() => {
+          closeModal();
+          window.location.assign("pausa-viva.html");
+        }, 250);
+      }
+
+      if (context === "demo") {
+        window.setTimeout(() => {
+          closeDemoModal();
+        }, 450);
+      }
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+      setFeedback(
+        feedbackNode,
+        "No pudimos enviar el formulario en este momento. Intenta nuevamente en unos minutos.",
+        "is-error"
+      );
+    } finally {
+      setFormSubmitting(form, false);
     }
   });
 });

@@ -52,23 +52,34 @@ Debe evitar:
 •	diseños genéricos de consultora fría. 
 Debe transmitir:
 claridad, foco, calma, método, seniority y cercanía profesional.
-Paleta integrada
+
+## Paleta integrada
 Usar una paleta que combine Sisu Group y Pausa Viva:
 Azul marino profundo
 Uso: títulos, botones principales, footer, encabezados.
 HEX sugerido: #001F54
+
+
 Dorado
 Uso: acentos, líneas, íconos, separadores, detalles premium.
 HEX sugerido: #D4AF37
+
+
 Marfil cálido
 Uso: fondo principal.
 HEX sugerido: #F8F6F1
+
+
 Lavanda suave Pausa Viva
 Uso: fondos secundarios, placas de Pausa Viva, cards y recursos gráficos.
 HEX sugerido: #DDE2F6
+
+
 Grafito / azul noche
 Uso: textos largos.
 HEX sugerido: #1C273B
+
+
 Tipografías
 Mantener una identidad elegante y legible:
 Playfair Display
