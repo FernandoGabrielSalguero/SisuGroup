@@ -2805,3 +2805,318 @@ textarea:focus-visible,
     min-height: 16rem;
   }
 }
+
+body[data-page="contacto"] .hero-contact {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: clamp(34rem, 78vh, 46rem);
+  display: flex;
+  align-items: center;
+  background-color: #0b1f3c;
+  background-image: url("../assets/img/ChatGPT%20Image%208%20jun%202026,%2013_16_37%20(4).png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body[data-page="contacto"] .hero-contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(104deg, rgba(5, 20, 46, 0.92) 0%, rgba(5, 20, 46, 0.8) 38%, rgba(5, 20, 46, 0.5) 62%, rgba(5, 20, 46, 0.34) 100%),
+    linear-gradient(180deg, rgba(248, 246, 241, 0.14) 0%, rgba(248, 246, 241, 0) 34%, rgba(212, 175, 55, 0.16) 100%);
+  z-index: -2;
+}
+
+body[data-page="contacto"] .hero-contact::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -18% auto;
+  width: min(34rem, 42vw);
+  height: min(34rem, 42vw);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(212, 175, 55, 0.28) 0%, rgba(212, 175, 55, 0.08) 34%, rgba(212, 175, 55, 0) 72%);
+  filter: blur(10px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+body[data-page="contacto"] .hero-contact .hero-grid {
+  position: relative;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  min-height: clamp(34rem, 78vh, 46rem);
+}
+
+body[data-page="contacto"] .hero-contact .hero-copy {
+  max-width: 41rem;
+  padding: clamp(1.5rem, 2.8vw, 2rem) 0;
+}
+
+body[data-page="contacto"] .hero-contact .hero-copy .eyebrow,
+body[data-page="contacto"] .hero-contact .hero-copy h1,
+body[data-page="contacto"] .hero-contact .hero-copy p {
+  color: var(--white);
+}
+
+body[data-page="contacto"] .hero-contact .hero-copy .eyebrow {
+  letter-spacing: 0.18em;
+}
+
+body[data-page="contacto"] .hero-contact .hero-copy h1 {
+  max-width: 12ch;
+  margin-bottom: 1rem;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+body[data-page="contacto"] .hero-contact .hero-copy > p:first-of-type {
+  max-width: 39rem;
+  margin-bottom: 0.9rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+  line-height: 1.7;
+  color: rgba(248, 246, 241, 0.92);
+}
+
+body[data-page="contacto"] .contact-kicker {
+  margin-bottom: 1.4rem;
+  color: rgba(248, 246, 241, 0.78);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+body[data-page="contacto"] .contact-hero-actions {
+  gap: 0.9rem;
+}
+
+body[data-page="contacto"] .button-contact-secondary {
+  background: #d4af37;
+  color: var(--navy);
+  border-color: #caa22d;
+  box-shadow: 0 16px 30px rgba(154, 116, 17, 0.24);
+}
+
+body[data-page="contacto"] .button-contact-secondary:hover,
+body[data-page="contacto"] .button-contact-secondary:focus-visible {
+  background: #e0bb49;
+  color: var(--navy);
+  border-color: #d4af37;
+  box-shadow: 0 18px 34px rgba(154, 116, 17, 0.3);
+}
+
+body[data-page="contacto"] .hero-contact .hero-visual {
+  justify-content: flex-end;
+  min-height: clamp(22rem, 40vw, 31rem);
+}
+
+body[data-page="contacto"] .hero-contact .hero-card {
+  width: min(26rem, 100%);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: linear-gradient(180deg, rgba(248, 246, 241, 0.82), rgba(255, 255, 255, 0.72));
+  border: 1px solid rgba(212, 175, 55, 0.26);
+  box-shadow: 0 24px 60px rgba(3, 14, 36, 0.24);
+  backdrop-filter: blur(18px);
+}
+
+body[data-page="contacto"] .hero-contact .contact-quick-title,
+body[data-page="contacto"] .hero-contact .contact-quick-copy,
+body[data-page="contacto"] .hero-contact .text-link,
+body[data-page="contacto"] .hero-contact .mini-label {
+  color: var(--navy);
+}
+
+body[data-page="contacto"] .contact-quick-copy {
+  margin-bottom: 1rem;
+  color: rgba(28, 39, 59, 0.8);
+}
+
+body[data-page="contacto"] .contact-direct-links {
+  display: grid;
+  gap: 0.8rem;
+}
+
+body[data-page="contacto"] .contact-direct-links .text-link {
+  display: inline-flex;
+  width: fit-content;
+  font-weight: 600;
+}
+
+body[data-page="contacto"] .contact-grid {
+  gap: 1.5rem;
+}
+
+body[data-page="contacto"] .contact-card {
+  overflow: hidden;
+  border-radius: 1.9rem;
+  border: 1px solid rgba(0, 31, 84, 0.08);
+  box-shadow: 0 24px 46px rgba(0, 31, 84, 0.1);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+body[data-page="contacto"] .contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+}
+
+body[data-page="contacto"] .contact-card:hover,
+body[data-page="contacto"] .contact-card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 54px rgba(0, 31, 84, 0.14);
+}
+
+body[data-page="contacto"] #pausa-viva-contacto {
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.96), rgba(248, 246, 241, 0.92));
+  border-color: rgba(212, 175, 55, 0.18);
+}
+
+body[data-page="contacto"] #pausa-viva-contacto::before {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.96), rgba(212, 175, 55, 0.2), transparent);
+}
+
+body[data-page="contacto"] #consultoria-contacto {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 255, 0.88));
+}
+
+body[data-page="contacto"] #consultoria-contacto::before {
+  background: linear-gradient(90deg, rgba(0, 31, 84, 0.96), rgba(212, 175, 55, 0.48), transparent);
+}
+
+body[data-page="contacto"] .contact-card h2 {
+  margin-bottom: 1.3rem;
+  font-size: clamp(1.75rem, 2.8vw, 2.45rem);
+  line-height: 1.14;
+}
+
+body[data-page="contacto"] .contact-card .button {
+  width: 100%;
+}
+
+body[data-page="contacto"] .contact-card .button-secondary {
+  background: rgba(0, 31, 84, 0.06);
+  border-color: rgba(0, 31, 84, 0.16);
+}
+
+body[data-page="contacto"] .section-soft#formulario-contacto {
+  background:
+    radial-gradient(circle at top left, rgba(221, 226, 246, 0.7), transparent 30%),
+    linear-gradient(180deg, rgba(248, 246, 241, 0.92), rgba(241, 237, 229, 0.92));
+}
+
+body[data-page="contacto"] .form-layout {
+  align-items: start;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+body[data-page="contacto"] .form-layout > .reveal:first-child {
+  max-width: 33rem;
+}
+
+body[data-page="contacto"] .contact-form {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 246, 241, 0.9));
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 26px 54px rgba(0, 31, 84, 0.11);
+}
+
+body[data-page="contacto"] .contact-form label {
+  color: var(--navy);
+}
+
+body[data-page="contacto"] .contact-form input,
+body[data-page="contacto"] .contact-form textarea {
+  border-color: rgba(0, 31, 84, 0.12);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+body[data-page="contacto"] .contact-form input:focus-visible,
+body[data-page="contacto"] .contact-form textarea:focus-visible {
+  border-color: rgba(212, 175, 55, 0.65);
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.12);
+}
+
+body[data-page="contacto"] .form-actions {
+  justify-content: flex-start;
+}
+
+@media (max-width: 1024px) {
+  body[data-page="contacto"] .hero-contact {
+    min-height: auto;
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-grid {
+    min-height: auto;
+    padding: 2.5rem 0 1rem;
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-copy {
+    max-width: 100%;
+    padding-bottom: 0;
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-copy h1 {
+    max-width: 13ch;
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-visual {
+    justify-content: flex-start;
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-card {
+    width: min(100%, 30rem);
+  }
+}
+
+@media (max-width: 760px) {
+  body[data-page="contacto"] .hero-contact {
+    background-position: 62% center;
+  }
+
+  body[data-page="contacto"] .hero-contact::before {
+    background:
+      linear-gradient(180deg, rgba(5, 20, 46, 0.88) 0%, rgba(5, 20, 46, 0.76) 34%, rgba(5, 20, 46, 0.84) 100%),
+      linear-gradient(180deg, rgba(248, 246, 241, 0.08) 0%, rgba(212, 175, 55, 0.14) 100%);
+  }
+
+  body[data-page="contacto"] .hero-contact::after {
+    right: -18%;
+    bottom: -10%;
+    width: 16rem;
+    height: 16rem;
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-copy h1 {
+    max-width: 10ch;
+    font-size: clamp(2.5rem, 11vw, 3.6rem);
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-copy > p:first-of-type {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  body[data-page="contacto"] .contact-hero-actions {
+    width: 100%;
+  }
+
+  body[data-page="contacto"] .contact-hero-actions .button {
+    flex: 1 1 100%;
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-card {
+    width: 100%;
+    text-align: left;
+  }
+
+  body[data-page="contacto"] .contact-card,
+  body[data-page="contacto"] .contact-form {
+    border-radius: 1.5rem;
+  }
+}
