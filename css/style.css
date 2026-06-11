@@ -2061,8 +2061,7 @@ textarea:focus-visible,
   }
 
   body[data-page="pausa-viva"] .pausa-viva-grid,
-  body[data-page="pausa-viva"] .pausa-viva-hero .hero-quote-grid,
-  body[data-page="pausa-viva"] .hero-proof-row {
+  body[data-page="pausa-viva"] .pausa-viva-hero .hero-quote-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2326,11 +2325,6 @@ textarea:focus-visible,
     font-size: 1rem;
   }
 
-  body[data-page="pausa-viva"] .hero-proof-row {
-    gap: 0.75rem;
-    margin-bottom: 1.35rem;
-  }
-
   body[data-page="pausa-viva"] .pausa-viva-hero .button-row {
     width: 100%;
   }
@@ -2339,7 +2333,6 @@ textarea:focus-visible,
     flex: 1 1 100%;
   }
 
-  body[data-page="pausa-viva"] .hero-proof-card,
   body[data-page="pausa-viva"] .pausa-viva-hero .quote-pair {
     padding: 0.95rem 1rem;
   }
