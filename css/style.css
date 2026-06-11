@@ -567,6 +567,56 @@ body[data-page="pausa-viva"] .system-card::after {
   pointer-events: none;
 }
 
+body[data-page="pausa-viva"] .system-mini-card {
+  position: absolute;
+  right: clamp(1rem, 3vw, 1.5rem);
+  bottom: clamp(1rem, 3vw, 1.5rem);
+  z-index: 4;
+  width: min(15.5rem, 48%);
+  padding: 1rem 1rem 0.95rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(0, 31, 84, 0.08);
+  box-shadow: 0 18px 38px rgba(0, 31, 84, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+body[data-page="pausa-viva"] .system-mini-card::before {
+  content: "";
+  position: absolute;
+  inset: 0.8rem auto 0.8rem 0;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.95), rgba(212, 175, 55, 0.18));
+}
+
+body[data-page="pausa-viva"] .system-mini-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  padding-left: 0.7rem;
+  color: rgba(0, 31, 84, 0.72);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body[data-page="pausa-viva"] .system-mini-card strong {
+  display: block;
+  padding-left: 0.7rem;
+  color: var(--navy);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+body[data-page="pausa-viva"] .system-mini-card p {
+  margin: 0.45rem 0 0;
+  padding-left: 0.7rem;
+  color: rgba(28, 39, 59, 0.78);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
 body[data-page="pausa-viva"] .pausa-viva-system .hero-main-logo-large {
   position: relative;
   z-index: 2;
@@ -661,6 +711,14 @@ body[data-page="pausa-viva"] .pausa-viva-hero .hero-copy h1 {
   line-height: 0.95;
 }
 
+body[data-page="pausa-viva"] .hero-kicker {
+  margin: 0 0 0.8rem;
+  color: var(--navy);
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
 body[data-page="pausa-viva"] .hero-lead {
   max-width: 40rem;
   font-size: clamp(1.05rem, 1.4vw, 1.22rem);
@@ -686,16 +744,17 @@ body[data-page="pausa-viva"] .hero-proof-card {
 
 body[data-page="pausa-viva"] .hero-proof-card strong {
   display: block;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
   color: var(--navy);
-  font-size: 1rem;
+  font-size: 0.98rem;
+  line-height: 1.35;
 }
 
 body[data-page="pausa-viva"] .hero-proof-card span {
   display: block;
   color: rgba(28, 39, 59, 0.76);
-  font-size: 0.82rem;
-  line-height: 1.4;
+  font-size: 0.84rem;
+  line-height: 1.45;
 }
 
 body[data-page="pausa-viva"] .pausa-viva-hero .hero-support {
@@ -2057,6 +2116,13 @@ textarea:focus-visible,
     width: min(26rem, 92vw);
   }
 
+  body[data-page="pausa-viva"] .system-mini-card {
+    width: min(14rem, 52%);
+    right: 0.85rem;
+    bottom: 0.85rem;
+    padding: 0.9rem 0.9rem 0.85rem;
+  }
+
   body[data-page="pausa-viva"] .pausa-viva-hero .hero-copy-right {
     max-width: 40rem;
   }
@@ -2287,6 +2353,20 @@ textarea:focus-visible,
     font-size: 0.74rem;
   }
 
+  body[data-page="pausa-viva"] .system-mini-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: calc(100% - 2rem);
+    margin: 0.85rem auto 0;
+  }
+
+  body[data-page="pausa-viva"] .system-mini-label,
+  body[data-page="pausa-viva"] .system-mini-card strong,
+  body[data-page="pausa-viva"] .system-mini-card p {
+    padding-left: 0.6rem;
+  }
+
   body[data-page="pausa-viva"] .pill-focus {
     top: 11%;
     right: 5%;
@@ -2309,6 +2389,11 @@ textarea:focus-visible,
 
   body[data-page="pausa-viva"] .pausa-viva-hero .hero-copy h1 {
     line-height: 1;
+  }
+
+  body[data-page="pausa-viva"] .hero-kicker {
+    margin-bottom: 0.7rem;
+    font-size: 0.98rem;
   }
 
   body[data-page="pausa-viva"] .hero-lead {
