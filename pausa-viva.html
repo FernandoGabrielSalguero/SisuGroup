@@ -48,11 +48,6 @@
             <div class="floating-pill pill-clarity">Claridad</div>
             <div class="floating-pill pill-energy">Energía</div>
             <div class="floating-pill pill-regulation">Regulación</div>
-            <div class="system-mini-card">
-              <span class="system-mini-label">Escáner inicial</span>
-              <strong>Carga mental organizacional</strong>
-              <p>6 preguntas · 2 minutos · Resultado inmediato</p>
-            </div>
           </div>
         </div>
         <div class="hero-copy hero-copy-right reveal">
@@ -76,7 +71,7 @@
           </div>
           <div class="button-row">
             <a class="button button-primary" href="contacto.html#pausa-viva-contacto">Solicitar Demo Pausa Viva</a>
-            <a class="button button-secondary" href="#mental-scan">Comenzar diagnóstico</a>
+            <a class="button button-secondary button-diagnostic" href="#mental-scan" data-scanner-trigger aria-haspopup="dialog">Comenzar diagnóstico</a>
           </div>
         </div>
         <div class="hero-support quote-section reveal">
@@ -306,7 +301,7 @@
     </div>
   </footer>
 
-  <div class="modal-backdrop" data-scanner-modal hidden>
+  <div class="modal-backdrop" data-scanner-modal id="mental-scan" hidden>
     <div class="scanner-modal" role="dialog" aria-modal="true" aria-labelledby="scanner-title" aria-describedby="scanner-description" tabindex="-1" data-modal-panel>
       <button class="modal-close" type="button" aria-label="Cerrar" data-modal-close>&times;</button>
       <div class="scanner-arc scanner-arc-top" aria-hidden="true"></div>

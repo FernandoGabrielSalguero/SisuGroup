@@ -317,8 +317,20 @@ function bindDemoTriggers() {
   });
 }
 
+function bindScannerTriggers() {
+  const triggerLinks = document.querySelectorAll("[data-scanner-trigger]");
+
+  triggerLinks.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      openModal();
+    });
+  });
+}
+
 ensureDemoModal();
 bindDemoTriggers();
+bindScannerTriggers();
 
 function shouldShowModal() {
   if (!modal) {
