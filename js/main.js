@@ -12,7 +12,7 @@ let forms = [];
 
 const MODAL_STORAGE_KEY = "sisu-scanner-dismissed-at";
 const MODAL_DELAY_MS = 20000;
-const MODAL_HIDE_MS = 1000 * 60 * 60 * 24 * 7;
+const MODAL_HIDE_MS = 1000 * 60 * 60;
 const CONTACT_API_ENDPOINT = "https://impulsagroup.com/api/contact_form_landing_page/index.php";
 const CONTACT_PUBLIC_KEY = "pk_56addd3b121a7c30977555dfb61e9a40";
 const DEMO_CTA_LABEL = "Solicitar Demo Pausa Viva";
@@ -572,7 +572,7 @@ function shouldShowModal() {
     return false;
   }
 
-  const dismissedAt = Number(localStorage.getItem(MODAL_STORAGE_KEY) || 0);
+  const dismissedAt = Number(sessionStorage.getItem(MODAL_STORAGE_KEY) || 0);
   return !dismissedAt || Date.now() - dismissedAt > MODAL_HIDE_MS;
 }
 
@@ -634,7 +634,7 @@ function closeModal() {
   }
 
   modal.hidden = true;
-  localStorage.setItem(MODAL_STORAGE_KEY, String(Date.now()));
+  sessionStorage.setItem(MODAL_STORAGE_KEY, String(Date.now()));
   releaseModalTrap();
 
   if (lastFocusedElement instanceof HTMLElement) {
