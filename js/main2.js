@@ -3,6 +3,7 @@ const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const revealItems = document.querySelectorAll(".reveal");
+const typewriterItems = document.querySelectorAll("[data-typewriter-text]");
 const modal = document.querySelector("[data-scanner-modal]");
 const modalPanel = document.querySelector("[data-modal-panel]");
 const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
@@ -82,7 +83,7 @@ const scannerZones = {
     title: "Senales de saturacion activa",
     copy: "El equipo muestra senales de desgaste que pueden afectar foco, energia, clima y capacidad de respuesta. Hay margen para intervenir de forma preventiva.",
     recommendation: "Revisar que condiciones estan drenando claridad.",
-    ctaLabel: "Coordinar Demo Express",
+    ctaLabel: "Coordinar Demo",
     ctaHref: "contacto.html#formulario-contacto",
   },
   red: {
@@ -91,7 +92,7 @@ const scannerZones = {
     title: "Carga mental elevada",
     copy: "La organizacion muestra senales consistentes de saturacion mental. Esto puede impactar en errores, ausentismo, rotacion y desgaste de lideres.",
     recommendation: "Implementar una intervencion breve, medible y adaptada.",
-    ctaLabel: "Coordinar Demo Express",
+    ctaLabel: "Coordinar Demo",
     ctaHref: "contacto.html#formulario-contacto",
   },
 };
@@ -100,6 +101,54 @@ let lastFocusedElement = null;
 let modalTimer = null;
 let demoModal = null;
 let demoModalPanel = null;
+
+function startTypewriter(element) {
+  if (!(element instanceof HTMLElement) || element.dataset.typed === "true") {
+    return;
+  }
+
+  const container = element.closest("[data-typewriter-container]");
+  const fullText = element.dataset.typewriterFullText || element.textContent || "";
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  element.dataset.typewriterFullText = fullText;
+
+  if (prefersReducedMotion) {
+    element.textContent = fullText;
+    element.dataset.typed = "true";
+    if (container) {
+      container.classList.remove("is-typing");
+      container.classList.add("is-typed");
+    }
+    return;
+  }
+
+  element.textContent = "";
+  element.dataset.typed = "true";
+
+  if (container) {
+    container.classList.add("is-typing");
+    container.classList.remove("is-typed");
+  }
+
+  let index = 0;
+  const step = () => {
+    index += 1;
+    element.textContent = fullText.slice(0, index);
+
+    if (index < fullText.length) {
+      window.setTimeout(step, 22);
+      return;
+    }
+
+    if (container) {
+      container.classList.remove("is-typing");
+      container.classList.add("is-typed");
+    }
+  };
+
+  window.setTimeout(step, 180);
+}
 
 function ensureDemoModal() {
   if (demoModal) {
@@ -224,12 +273,21 @@ if (menuToggle && nav) {
 if (revealItems.length > 0) {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
+    typewriterItems.forEach((item) => startTypewriter(item));
   } else {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
+            const typewriterTarget = entry.target.matches("[data-typewriter-container]")
+              ? entry.target.querySelector("[data-typewriter-text]")
+              : null;
+
+            if (typewriterTarget) {
+              startTypewriter(typewriterTarget);
+            }
+
             observer.unobserve(entry.target);
           }
         });
@@ -239,6 +297,8 @@ if (revealItems.length > 0) {
 
     revealItems.forEach((item) => observer.observe(item));
   }
+} else {
+  typewriterItems.forEach((item) => startTypewriter(item));
 }
 
 const processAccordion = document.querySelector("[data-process-accordion]");
