@@ -3353,6 +3353,24 @@ textarea:focus-visible,
   body[data-page="consultoria"] .section-cta-band .cta-band .button {
     margin-inline: auto;
   }
+
+  body[data-page="contacto"] .hero-contact .hero-copy,
+  body[data-page="contacto"] .hero-contact .hero-copy h1,
+  body[data-page="contacto"] .hero-contact h1,
+  body[data-page="contacto"] .hero-contact .hero-copy p {
+    text-align: center;
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-copy {
+    margin-inline: auto;
+    justify-self: center;
+  }
+
+  body[data-page="contacto"] .hero-contact .hero-copy h1,
+  body[data-page="contacto"] .hero-contact .hero-copy > p:first-of-type,
+  body[data-page="contacto"] .contact-kicker {
+    margin-inline: auto;
+  }
 }
 
 @media (max-width: 720px) {
@@ -4127,6 +4145,11 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
 }
 
 @media (max-width: 680px) {
+  /* Cambia este valor si queres ajustar cuanto se agranda cada logo al tocarlo en mobile */
+  body[data-page="confiaron"] {
+    --trusted-logo-mobile-zoom: 5.75;
+  }
+
   body[data-page="confiaron"] .hero-trusted {
     min-height: auto;
     padding-block: 4rem;
@@ -4141,6 +4164,22 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
     width: clamp(2.65rem, 12vw, 3.35rem);
     padding: 0.45rem;
     border-radius: 0.8rem;
+    transform-origin: center;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo:active,
+  body[data-page="confiaron"] .trusted-orbit-logo:focus-visible,
+  body[data-page="confiaron"] .trusted-orbit-logo.is-expanded {
+    z-index: 8;
+    box-shadow: 0 24px 46px rgba(0, 31, 84, 0.22);
+    background: rgba(255, 255, 255, 0.96);
+    outline: none;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo:active img,
+  body[data-page="confiaron"] .trusted-orbit-logo:focus-visible img,
+  body[data-page="confiaron"] .trusted-orbit-logo.is-expanded img {
+    transform: scale(var(--trusted-logo-mobile-zoom));
   }
 
   body[data-page="confiaron"] .trusted-logo-grid {
@@ -4196,6 +4235,12 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
     width: clamp(2.35rem, 11vw, 3rem);
     padding: 0.38rem;
     border-radius: 0.7rem;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo:active img,
+  body[data-page="confiaron"] .trusted-orbit-logo:focus-visible img,
+  body[data-page="confiaron"] .trusted-orbit-logo.is-expanded img {
+    transform: scale(calc(var(--trusted-logo-mobile-zoom) * 0.86));
   }
 }
 

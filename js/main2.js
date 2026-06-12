@@ -4,6 +4,7 @@ const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const revealItems = document.querySelectorAll(".reveal");
 const typewriterItems = document.querySelectorAll("[data-typewriter-text]");
+const trustedOrbitLogos = document.querySelectorAll(".trusted-orbit-logo");
 const modal = document.querySelector("[data-scanner-modal]");
 const modalPanel = document.querySelector("[data-modal-panel]");
 const modalCloseButtons = document.querySelectorAll("[data-modal-close]");
@@ -101,6 +102,73 @@ let lastFocusedElement = null;
 let modalTimer = null;
 let demoModal = null;
 let demoModalPanel = null;
+
+function initTrustedOrbitTouchZoom() {
+  if (trustedOrbitLogos.length === 0) {
+    return;
+  }
+
+  const mobileQuery = window.matchMedia("(max-width: 680px)");
+  let activeLogo = null;
+
+  const clearActiveLogo = () => {
+    if (activeLogo instanceof HTMLElement) {
+      activeLogo.classList.remove("is-expanded");
+      activeLogo.blur();
+    }
+
+    activeLogo = null;
+  };
+
+  const setActiveLogo = (logo) => {
+    if (!(logo instanceof HTMLElement)) {
+      return;
+    }
+
+    if (!mobileQuery.matches) {
+      clearActiveLogo();
+      return;
+    }
+
+    if (activeLogo === logo) {
+      return;
+    }
+
+    clearActiveLogo();
+    activeLogo = logo;
+    activeLogo.classList.add("is-expanded");
+    activeLogo.focus({ preventScroll: true });
+  };
+
+  trustedOrbitLogos.forEach((logo) => {
+    logo.addEventListener("pointerdown", () => {
+      setActiveLogo(logo);
+    });
+
+    logo.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActiveLogo(logo);
+      }
+    });
+  });
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (activeLogo) {
+        clearActiveLogo();
+      }
+    },
+    { passive: true }
+  );
+
+  mobileQuery.addEventListener("change", (event) => {
+    if (!event.matches) {
+      clearActiveLogo();
+    }
+  });
+}
 
 function startTypewriter(element) {
   if (!(element instanceof HTMLElement) || element.dataset.typed === "true") {
@@ -269,6 +337,8 @@ if (menuToggle && nav) {
     });
   });
 }
+
+initTrustedOrbitTouchZoom();
 
 if (revealItems.length > 0) {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
