@@ -1651,6 +1651,38 @@ body[data-page="consultoria"] .consulting-audience-copy p:last-child {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
+.pillar-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "icon title"
+    "subtitle subtitle"
+    "copy copy";
+  align-items: center;
+  column-gap: 0.9rem;
+  row-gap: 0.4rem;
+}
+
+.pillar-card .pillar-icon {
+  grid-area: icon;
+  margin-bottom: 0;
+}
+
+.pillar-card h3 {
+  grid-area: title;
+  margin: 0;
+}
+
+.pillar-card .pillar-subtitle {
+  grid-area: subtitle;
+  margin: 0;
+}
+
+.pillar-card p:last-child {
+  grid-area: copy;
+  margin-top: 0.35rem;
+}
+
 .feature-list,
 .footer-nav {
   display: grid;
@@ -1871,7 +1903,7 @@ body[data-page="consultoria"] .consulting-audience-copy p:last-child {
 body[data-page="blog"] .hero-blog {
   position: relative;
   overflow: hidden;
-  min-height: clamp(29rem, 64vh, 38rem);
+  min-height: clamp(21rem, 46vh, 27rem);
   background:
     linear-gradient(115deg, rgba(0, 22, 60, 0.82) 0%, rgba(0, 31, 84, 0.68) 42%, rgba(0, 31, 84, 0.44) 100%),
     linear-gradient(180deg, rgba(247, 244, 238, 0.08), rgba(247, 244, 238, 0.22)),
@@ -1915,7 +1947,7 @@ body[data-page="blog"] .hero-blog .hero-copy {
   width: 100%;
   margin-inline: auto;
   justify-self: center;
-  padding-block: clamp(1rem, 2.2vw, 1.9rem) clamp(4rem, 7vw, 5.5rem);
+  padding-block: clamp(0.45rem, 1.2vw, 1rem) clamp(2.15rem, 4vw, 3.1rem);
   text-align: center;
 }
 
@@ -2845,10 +2877,12 @@ textarea:focus-visible,
   .site-nav {
     position: absolute;
     top: calc(100% + 0.5rem);
-    left: 1rem;
-    right: 1rem;
+    right: 0;
+    left: auto;
     display: grid;
     gap: 0.5rem;
+    width: max-content;
+    max-width: calc(100vw - 1.5rem);
     padding: 1rem;
     border-radius: 1.25rem;
     background: rgba(255, 255, 255, 0.96);
@@ -2858,7 +2892,7 @@ textarea:focus-visible,
     pointer-events: none;
     transform: translateY(-0.5rem);
     transition: opacity 180ms ease, transform 180ms ease;
-    justify-self: stretch;
+    justify-self: end;
   }
 
   .site-header .site-nav a {
@@ -2913,6 +2947,54 @@ textarea:focus-visible,
     line-height: 1.55;
   }
 
+  body[data-page="inicio"] .hero-home .hero-copy,
+  body[data-page="inicio"] .split-callout > .reveal {
+    max-width: none;
+    text-align: center;
+  }
+
+  body[data-page="inicio"] .hero-home .hero-copy {
+    justify-items: center;
+  }
+
+  body[data-page="inicio"] .hero-home .button-row,
+  body[data-page="inicio"] .split-callout .demo-cta-stack {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body[data-page="inicio"] .hero-home .button-row {
+    flex-direction: column;
+  }
+
+  body[data-page="inicio"] .hero-home .button-row .button,
+  body[data-page="inicio"] .split-callout .demo-cta-stack .button {
+    margin-inline: auto;
+  }
+
+  .site-footer,
+  .site-footer h2,
+  .site-footer p,
+  .site-footer a,
+  .footer-nav {
+    text-align: center;
+  }
+
+  .footer-grid > div,
+  .footer-grid > div:last-child {
+    justify-items: center;
+  }
+
+  .site-footer .button,
+  .site-footer .button:visited {
+    margin-inline: auto;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
   body[data-page="pausa-viva"] .section-benefits {
     padding-block: 3.5rem;
   }
@@ -2925,11 +3007,44 @@ textarea:focus-visible,
   body[data-page="pausa-viva"] .benefit-card {
     min-height: auto;
     padding: 1.15rem 1.1rem 1.2rem;
+    justify-content: flex-start;
   }
 
   body[data-page="pausa-viva"] .benefit-card h3 {
     max-width: none;
     font-size: 1.25rem;
+  }
+
+  body[data-page="pausa-viva"] .pillar-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "icon title"
+      "subtitle subtitle"
+      "copy copy";
+    align-items: center;
+    column-gap: 0.85rem;
+    row-gap: 0.35rem;
+  }
+
+  body[data-page="pausa-viva"] .pillar-card .pillar-icon {
+    grid-area: icon;
+    margin-bottom: 0;
+  }
+
+  body[data-page="pausa-viva"] .pillar-card h3 {
+    grid-area: title;
+    margin: 0;
+  }
+
+  body[data-page="pausa-viva"] .pillar-card .pillar-subtitle {
+    grid-area: subtitle;
+    margin: 0;
+  }
+
+  body[data-page="pausa-viva"] .pillar-card p:last-child {
+    grid-area: copy;
+    margin-top: 0.35rem;
   }
 
   .problem-item {
@@ -3206,6 +3321,37 @@ textarea:focus-visible,
 
   body[data-page="consultoria"] .consulting-audience-copy {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  body[data-page="consultoria"] .consulting-audience-copy,
+  body[data-page="consultoria"] .consulting-audience-copy p,
+  body[data-page="consultoria"] .section > .container > .section-heading,
+  body[data-page="consultoria"] .results-grid .mini-card p {
+    text-align: center;
+  }
+
+  body[data-page="consultoria"] .consulting-audience-copy .button {
+    margin-inline: auto;
+  }
+
+  body[data-page="consultoria"] .results-grid .mini-card p {
+    margin-inline: auto;
+  }
+
+  body[data-page="consultoria"] .section-cta-band .cta-band,
+  body[data-page="consultoria"] .section-cta-band .cta-band > div {
+    align-items: center;
+    text-align: center;
+  }
+
+  body[data-page="consultoria"] .section-cta-band .cta-band > div {
+    justify-items: center;
+  }
+
+  body[data-page="consultoria"] .section-cta-band .cta-band .button {
+    margin-inline: auto;
   }
 }
 
@@ -3631,8 +3777,8 @@ body[data-page="contacto"] .form-actions {
 
 @media (max-width: 680px) {
   body[data-page="blog"] .hero-blog {
-    min-height: 70vh;
-    padding-block: 4rem;
+    min-height: 52vh;
+    padding-block: 2.5rem;
     background-position: 64% center;
   }
 
@@ -3774,12 +3920,14 @@ body[data-page="confiaron"] .trusted-orbit-logo {
   box-shadow: 0 16px 36px rgba(0, 31, 84, 0.09);
   backdrop-filter: blur(12px);
   animation: trusted-float 9s ease-in-out infinite;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
 body[data-page="confiaron"] .trusted-orbit-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: transform 180ms ease;
 }
 
 body[data-page="confiaron"] .trusted-orbit-logo-1 {
@@ -3914,6 +4062,15 @@ body[data-page="confiaron"] .trusted-cta-section .cta-band {
   align-items: center;
 }
 
+body[data-page="confiaron"] .trusted-orbit-logo:active {
+  box-shadow: 0 22px 42px rgba(0, 31, 84, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+body[data-page="confiaron"] .trusted-orbit-logo:active img {
+  transform: scale(1.18);
+}
+
 @keyframes trusted-breathe {
   0%,
   100% {
@@ -3976,11 +4133,14 @@ body[data-page="confiaron"] .trusted-cta-section .cta-band {
   }
 
   body[data-page="confiaron"] .trusted-orbit {
-    width: min(26rem, 100%);
+    width: min(24rem, 100%);
   }
 
   body[data-page="confiaron"] .trusted-orbit-logo {
-    display: none;
+    display: grid;
+    width: clamp(2.65rem, 12vw, 3.35rem);
+    padding: 0.45rem;
+    border-radius: 0.8rem;
   }
 
   body[data-page="confiaron"] .trusted-logo-grid {
@@ -3996,6 +4156,21 @@ body[data-page="confiaron"] .trusted-cta-section .cta-band {
     max-width: 88%;
     max-height: 4rem;
   }
+
+  body[data-page="confiaron"] .trusted-center {
+    width: min(9rem, 42vw);
+    padding: 0.95rem;
+  }
+
+  body[data-page="confiaron"] .trusted-cta-section .cta-band,
+  body[data-page="confiaron"] .trusted-cta-section .cta-band > div {
+    align-items: center;
+    text-align: center;
+  }
+
+  body[data-page="confiaron"] .trusted-cta-section .cta-band .button {
+    margin-inline: auto;
+  }
 }
 
 @media (max-width: 520px) {
@@ -4004,7 +4179,7 @@ body[data-page="confiaron"] .trusted-cta-section .cta-band {
   }
 
   body[data-page="confiaron"] .trusted-center {
-    width: min(12rem, 56vw);
+    width: min(7.6rem, 38vw);
   }
 
   body[data-page="confiaron"] .trusted-orbit-ring-one {
@@ -4015,6 +4190,12 @@ body[data-page="confiaron"] .trusted-cta-section .cta-band {
   body[data-page="confiaron"] .trusted-orbit-ring-two {
     width: 96%;
     height: 96%;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo {
+    width: clamp(2.35rem, 11vw, 3rem);
+    padding: 0.38rem;
+    border-radius: 0.7rem;
   }
 }
 
