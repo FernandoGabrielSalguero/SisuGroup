@@ -476,11 +476,6 @@ function getBlogFallbackImage(post) {
     : "idea/blog/img/Porque necesitamos pausar 5-12.png";
 }
 
-function updateBlogUrl(slug = "") {
-  const nextUrl = slug ? `blog.html?slug=${encodeURIComponent(slug)}` : "blog.html";
-  window.history.replaceState({}, "", nextUrl);
-}
-
 function setBlogStatus(message, type = "") {
   const statusNode = document.querySelector("[data-blog-status]");
   if (!(statusNode instanceof HTMLElement)) {
@@ -508,19 +503,19 @@ function renderBlogList(posts) {
       const image = getBlogFallbackImage(post);
       return `
         <article class="blog-card reveal is-visible">
-          <div class="blog-card-media">
-            ${
-              image
-                ? `<img class="blog-card-image" src="${escapeHtml(image)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async">`
-                : `<div class="blog-card-image blog-card-image-fallback" aria-hidden="true"><span>${escapeHtml(post.category || "Blog")}</span></div>`
-            }
-          </div>
-          <div class="blog-card-body">
-            <span class="${getBlogTagClass(post.category)}">${escapeHtml(post.category)}</span>
-            <h2>${escapeHtml(post.title)}</h2>
-            <p>${escapeHtml(post.excerpt || "Proximamente disponible.")}</p>
-            <button class="button button-secondary blog-card-button" type="button" data-blog-open="${escapeHtml(post.slug)}">Saber mas</button>
-          </div>
+          <button class="blog-card-trigger" type="button" data-blog-open="${escapeHtml(post.slug)}" aria-label="Abrir articulo ${escapeHtml(post.title)}">
+            <div class="blog-card-media">
+              ${
+                image
+                  ? `<img class="blog-card-image" src="${escapeHtml(image)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async">`
+                  : `<div class="blog-card-image blog-card-image-fallback" aria-hidden="true"><span>${escapeHtml(post.category || "Blog")}</span></div>`
+              }
+            </div>
+            <div class="blog-card-body">
+              <span class="${getBlogTagClass(post.category)}">${escapeHtml(post.category)}</span>
+              <h2>${escapeHtml(post.title)}</h2>
+            </div>
+          </button>
         </article>
       `;
     })
@@ -580,7 +575,6 @@ function openBlogModalFrame(slug = "") {
   lastFocusedElement = document.activeElement;
   blogModal.hidden = false;
   body.style.overflow = "hidden";
-  updateBlogUrl(slug);
   blogModalPanel.focus();
   document.addEventListener("keydown", trapFocus);
 }
@@ -591,7 +585,6 @@ function closeBlogModal() {
   }
 
   blogModal.hidden = true;
-  updateBlogUrl();
   document.title = "Blog | Sisu Group";
   releaseModalTrap();
 
