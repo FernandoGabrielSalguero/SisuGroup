@@ -356,6 +356,91 @@ function buildExcerpt(value) {
   return `${normalized.slice(0, 177).trimEnd()}...`;
 }
 
+function normalizeLineBreaks(value) {
+  return String(value || "").replace(/\r\n?/g, "\n");
+}
+
+function looksLikeImagePath(value) {
+  const normalized = String(value || "").trim();
+  if (!normalized) {
+    return false;
+  }
+
+  return /^data:image\//i.test(normalized) || /\.(avif|gif|jpe?g|png|svg|webp)(\?.*)?$/i.test(normalized);
+}
+
+function extractFirstImageFromHtml(value) {
+  const matched = String(value || "").match(/<img[^>]+src=["']([^"']+)["']/i);
+  return matched?.[1]?.trim() || "";
+}
+
+function resolveBlogImage(rawPost) {
+  const directImage =
+    pickFirstString(rawPost, [
+      "image",
+      "image_url",
+      "cover",
+      "cover_image",
+      "thumbnail",
+      "imagen",
+      "featured_image",
+      "cover_image_path_url",
+      "cover_image_url",
+      "attachment_path_url",
+      "attachment_url",
+      "path_url",
+      "file_url",
+      "media_url",
+    ]) || "";
+
+  if (looksLikeImagePath(directImage)) {
+    return directImage;
+  }
+
+  const htmlImage = extractFirstImageFromHtml(
+    pickFirstString(rawPost, [
+      "content",
+      "contenido",
+      "body",
+      "post_content",
+      "article",
+      "articulo",
+      "html",
+      "contenido_html",
+    ])
+  );
+  if (looksLikeImagePath(htmlImage)) {
+    return htmlImage;
+  }
+
+  const nestedValues = Object.values(rawPost || {});
+  for (const value of nestedValues) {
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        if (!item || typeof item !== "object") {
+          continue;
+        }
+
+        const nestedImage = resolveBlogImage(item);
+        if (looksLikeImagePath(nestedImage)) {
+          return nestedImage;
+        }
+      }
+    }
+
+    if (!value || typeof value !== "object") {
+      continue;
+    }
+
+    const nestedImage = resolveBlogImage(value);
+    if (looksLikeImagePath(nestedImage)) {
+      return nestedImage;
+    }
+  }
+
+  return "";
+}
+
 function getLongestTextField(source, excludedKeys = []) {
   if (!source || typeof source !== "object") {
     return "";
@@ -459,23 +544,7 @@ function normalizeBlogPost(rawPost, fallbackIndex = 0) {
     pickFirstString(rawPost, ["category", "categoria", "tag", "tipo", "section"]) || "Blog";
   const date =
     pickFirstValue(rawPost, ["published_at", "publish_date", "created_at", "fecha", "date"]) || "";
-  const image =
-    pickFirstString(rawPost, [
-      "image",
-      "image_url",
-      "cover",
-      "cover_image",
-      "thumbnail",
-      "imagen",
-      "featured_image",
-      "cover_image_path_url",
-      "cover_image_url",
-      "attachment_path_url",
-      "attachment_url",
-      "path_url",
-      "file_url",
-      "media_url",
-    ]) || "";
+  const image = resolveBlogImage(rawPost);
 
   console.info("[Sisu][Blog] image mapping", {
     title,
@@ -576,7 +645,7 @@ async function getProductDetail(slug) {
 }
 
 function renderRichText(value) {
-  const trimmed = String(value || "").trim();
+  const trimmed = normalizeLineBreaks(value).trim();
   if (!trimmed) {
     return "<p>Este articulo todavia no tiene contenido disponible.</p>";
   }
@@ -586,9 +655,34 @@ function renderRichText(value) {
   }
 
   return trimmed
-    .split(/\n{2,}/)
-    .map((paragraph) => `<p>${escapeHtml(paragraph).replace(/\n/g, "<br>")}</p>`)
+    .split(/\n\s*\n+/)
+    .map((block) => block.split("\n").map((line) => line.trim()).filter(Boolean))
+    .filter((lines) => lines.length > 0)
+    .map((lines) => {
+      const isBulletList = lines.every((line) => /^[-*•]\s+/.test(line));
+      if (isBulletList) {
+        const items = lines
+          .map((line) => line.replace(/^[-*•]\s+/, "").trim())
+          .map((line) => `<li>${escapeHtml(line)}</li>`)
+          .join("");
+        return `<ul>${items}</ul>`;
+      }
+
+      return `<p>${escapeHtml(lines.join(" "))}</p>`;
+    })
     .join("");
+}
+
+function mergeBlogPost(basePost = {}, incomingPost = {}) {
+  return {
+    slug: incomingPost.slug || basePost.slug || "",
+    title: incomingPost.title || basePost.title || "",
+    excerpt: incomingPost.excerpt || basePost.excerpt || "",
+    content: incomingPost.content || basePost.content || "",
+    category: incomingPost.category || basePost.category || "",
+    date: incomingPost.date || basePost.date || "",
+    image: incomingPost.image || basePost.image || "",
+  };
 }
 
 function getBlogTagClass(category) {
@@ -741,7 +835,7 @@ async function openBlogModalBySlug(slug) {
       throw new Error("Articulo no encontrado");
     }
 
-    const mergedPost = { ...(cachedPost || {}), ...detailPost };
+    const mergedPost = mergeBlogPost(cachedPost, detailPost);
     blogPostsCache.set(slug, mergedPost);
     renderBlogModal(mergedPost);
     document.title = `${mergedPost.title} | Blog | Sisu Group`;
