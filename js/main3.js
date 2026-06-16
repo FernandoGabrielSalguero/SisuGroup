@@ -1,5 +1,4 @@
 const body = document.body;
-const body = document.body;
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
@@ -213,6 +212,7 @@ function initImpulsaIntegrations() {
 }
 
 async function postJson(url, payload) {
+  console.info("[Sisu] POST", url, payload);
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -222,14 +222,19 @@ async function postJson(url, payload) {
   });
 
   const responseText = await response.text();
+  console.info("[Sisu] Response status", url, response.status, response.statusText);
+  console.info("[Sisu] Response body", url, responseText);
 
   if (!response.ok) {
     throw new Error(responseText || `HTTP ${response.status}`);
   }
 
   try {
-    return JSON.parse(responseText);
+    const parsedResponse = JSON.parse(responseText);
+    console.info("[Sisu] Parsed JSON", url, parsedResponse);
+    return parsedResponse;
   } catch {
+    console.info("[Sisu] Raw text response", url, responseText);
     return responseText;
   }
 }
@@ -673,13 +678,16 @@ async function initBlogPage() {
     return;
   }
 
+  console.info("[Sisu][Blog] initBlogPage start");
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
+  console.info("[Sisu][Blog] slug", slug);
   setBlogStatus("Cargando articulos...");
   bindBlogModal();
 
   try {
     const posts = await listBlogPosts();
+    console.info("[Sisu][Blog] posts normalizados", posts);
     posts.forEach((post) => {
       blogPostsCache.set(post.slug, post);
     });
@@ -690,7 +698,7 @@ async function initBlogPage() {
       openBlogModalBySlug(slug);
     }
   } catch (error) {
-    console.error("Error al cargar el blog:", error);
+    console.error("[Sisu][Blog] Error al cargar el blog:", error);
     BLOG_FALLBACK_POSTS.forEach((post) => {
       blogPostsCache.set(post.slug, post);
     });
