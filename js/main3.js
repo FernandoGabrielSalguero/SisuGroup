@@ -140,7 +140,7 @@ let modalTimer = null;
 let demoModal = null;
 let demoModalPanel = null;
 
-function loadExternalScript(src) {
+function loadExternalScript(src, options = {}) {
   if (!src) {
     return Promise.resolve();
   }
@@ -153,10 +153,15 @@ function loadExternalScript(src) {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
     script.src = src;
-    script.async = true;
+    if (options.async !== undefined) {
+      script.async = options.async;
+    }
+    if (options.defer !== undefined) {
+      script.defer = options.defer;
+    }
     script.onload = () => resolve(script);
     script.onerror = () => reject(new Error(`No pudimos cargar el script externo: ${src}`));
-    document.head.appendChild(script);
+    (options.parent || document.head).appendChild(script);
   });
 }
 
@@ -166,8 +171,16 @@ function initImpulsaIntegrations() {
     apiBaseUrl: IMPULSA_API_BASE_URL,
   };
 
+  const currentProtocol = window.location.protocol;
+  const currentHostname = window.location.hostname;
+  if (currentProtocol === "file:" || currentHostname === "localhost" || currentHostname === "127.0.0.1") {
+    console.warn(
+      "El contador de visitas de Impulsa puede no registrar visitas desde file:// o localhost. Pruebalo desde el dominio publicado."
+    );
+  }
+
   Promise.all([
-    loadExternalScript(VISIT_TRACKER_SCRIPT_URL),
+    loadExternalScript(VISIT_TRACKER_SCRIPT_URL, { async: false, defer: false, parent: document.body || document.head }),
     loadExternalScript(CHATBOT_SCRIPT_URL),
   ]).catch((error) => {
     console.error("Error al cargar integraciones externas de Impulsa:", error);
