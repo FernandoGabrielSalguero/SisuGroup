@@ -1389,6 +1389,8 @@ body[data-page="consultoria"] .consulting-audience-copy p:last-child {
   position: relative;
   z-index: 1;
   margin: 0;
+  text-align: center;
+  white-space: pre-line;
   color: #17335d;
   font-size: 1.05rem;
   font-weight: 600;
@@ -3728,6 +3730,51 @@ body[data-page="contacto"] .contact-direct-links .text-link {
   display: inline-flex;
   width: fit-content;
   font-weight: 600;
+}
+
+body[data-page="contacto"] .contact-direct-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+body[data-page="contacto"] .contact-direct-icons .text-link {
+  align-items: center;
+  justify-content: center;
+  width: 3.15rem;
+  height: 3.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.42);
+  background: rgba(255, 255, 255, 0.92);
+  color: #17335d;
+  box-shadow: 0 12px 24px rgba(0, 31, 84, 0.1);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+body[data-page="contacto"] .contact-direct-icons .text-link:hover,
+body[data-page="contacto"] .contact-direct-icons .text-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.85);
+  color: #0c2344;
+  box-shadow: 0 16px 28px rgba(0, 31, 84, 0.16);
+}
+
+body[data-page="contacto"] .contact-direct-icons svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body[data-page="contacto"] .contact-direct-icons a[aria-label*="Instagram"] svg,
+body[data-page="contacto"] .contact-direct-icons a[aria-label*="Facebook"] svg,
+body[data-page="contacto"] .contact-direct-icons a[aria-label*="LinkedIn"] svg,
+body[data-page="contacto"] .contact-direct-icons a[aria-label*="WhatsApp"] svg {
+  fill: currentColor;
 }
 
 body[data-page="contacto"] .contact-grid {
