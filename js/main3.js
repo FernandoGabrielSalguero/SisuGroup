@@ -13,9 +13,46 @@ let forms = [];
 const MODAL_STORAGE_KEY = "sisu-scanner-dismissed-at";
 const MODAL_DELAY_MS = 20000;
 const MODAL_HIDE_MS = 1000 * 60 * 60;
+const IMPULSA_API_BASE_URL = "https://impulsagroup.com/api";
 const CONTACT_API_ENDPOINT = "https://impulsagroup.com/api/contact_form_landing_page/index.php";
+const BLOG_API_ENDPOINT = "https://impulsagroup.com/api/blog_api/index.php";
+const PRODUCT_API_ENDPOINT = "https://impulsagroup.com/api/producto_api/index.php";
 const CONTACT_PUBLIC_KEY = "pk_56addd3b121a7c30977555dfb61e9a40";
+const VISIT_TRACKER_SCRIPT_URL = "https://impulsagroup.com/assets/impulsa_material/js/visit-tracker.js";
+const CHATBOT_SCRIPT_URL = `https://impulsagroup.com/api/chatbot_widget/widget.js?public_key=${CONTACT_PUBLIC_KEY}`;
 const DEMO_CTA_LABEL = "Solicitar Demo Pausa Viva";
+const BLOG_FALLBACK_POSTS = [
+  {
+    slug: "como-recuperar-foco-en-contextos-laborales-exigentes",
+    title: "Como recuperar foco en contextos laborales exigentes",
+    excerpt: "Un marco simple para detectar interrupciones, reducir friccion cognitiva y recuperar claridad operativa.",
+    category: "Pausa Viva",
+  },
+  {
+    slug: "por-que-necesitamos-pausar-el-valor-de-reconectar-sin-pantallas",
+    title: "Por que necesitamos pausar: el valor de reconectar sin pantallas",
+    excerpt: "Por que una pausa real puede bajar saturacion, recuperar presencia y mejorar la calidad del trabajo.",
+    category: "Pausa Viva",
+  },
+  {
+    slug: "la-mente-es-el-principal-activo-de-trabajo",
+    title: "La mente es el principal activo de trabajo: por que cuidarla ya no es opcional",
+    excerpt: "Una mirada estrategica sobre claridad mental, foco y energia como condiciones para trabajar mejor.",
+    category: "Pausa Viva",
+  },
+  {
+    slug: "estrategia-para-desembarcar-en-argentina",
+    title: "Estrategia para desembarcar en Argentina",
+    excerpt: "Factores operativos, comerciales y de representacion para construir presencia local con eficiencia.",
+    category: "Consultoria",
+  },
+  {
+    slug: "oficina-de-transicion-una-forma-eficiente-de-entrar-al-mercado-local",
+    title: "Oficina de transicion: una forma eficiente de entrar al mercado local",
+    excerpt: "Como expandirse con una estructura gradual y mas liviana antes de abrir operaciones propias.",
+    category: "Consultoria",
+  },
+];
 
 const scannerQuestions = [
   {
@@ -103,6 +140,421 @@ let modalTimer = null;
 let demoModal = null;
 let demoModalPanel = null;
 
+function loadExternalScript(src) {
+  if (!src) {
+    return Promise.resolve();
+  }
+
+  const existingScript = document.querySelector(`script[src="${src}"]`);
+  if (existingScript) {
+    return Promise.resolve(existingScript);
+  }
+
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    script.onload = () => resolve(script);
+    script.onerror = () => reject(new Error(`No pudimos cargar el script externo: ${src}`));
+    document.head.appendChild(script);
+  });
+}
+
+function initImpulsaIntegrations() {
+  window.IMPULSA_API_CONFIG = {
+    publicKey: CONTACT_PUBLIC_KEY,
+    apiBaseUrl: IMPULSA_API_BASE_URL,
+  };
+
+  Promise.all([
+    loadExternalScript(VISIT_TRACKER_SCRIPT_URL),
+    loadExternalScript(CHATBOT_SCRIPT_URL),
+  ]).catch((error) => {
+    console.error("Error al cargar integraciones externas de Impulsa:", error);
+  });
+}
+
+async function postJson(url, payload) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const responseText = await response.text();
+
+  if (!response.ok) {
+    throw new Error(responseText || `HTTP ${response.status}`);
+  }
+
+  try {
+    return JSON.parse(responseText);
+  } catch {
+    return responseText;
+  }
+}
+
+function pickFirstString(source, candidates) {
+  if (!source || typeof source !== "object") {
+    return "";
+  }
+
+  for (const key of candidates) {
+    const value = source[key];
+    if (typeof value === "string" && value.trim()) {
+      return value.trim();
+    }
+  }
+
+  return "";
+}
+
+function pickFirstValue(source, candidates) {
+  if (!source || typeof source !== "object") {
+    return "";
+  }
+
+  for (const key of candidates) {
+    const value = source[key];
+    if (value !== undefined && value !== null && String(value).trim()) {
+      return String(value).trim();
+    }
+  }
+
+  return "";
+}
+
+function extractApiCollection(response) {
+  if (Array.isArray(response)) {
+    return response;
+  }
+
+  if (!response || typeof response !== "object") {
+    return [];
+  }
+
+  const collectionKeys = ["data", "items", "posts", "results", "blog", "productos", "products"];
+  for (const key of collectionKeys) {
+    if (Array.isArray(response[key])) {
+      return response[key];
+    }
+  }
+
+  return [];
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function slugify(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function formatBlogDate(value) {
+  if (!value) {
+    return "";
+  }
+
+  const directDate = new Date(value);
+  if (!Number.isNaN(directDate.getTime())) {
+    return new Intl.DateTimeFormat("es-AR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(directDate);
+  }
+
+  const normalizedValue = String(value).trim();
+  const matched = normalizedValue.match(/^(\d{1,2})[-/](\d{1,2})(?:[-/](\d{2,4}))?$/);
+  if (!matched) {
+    return normalizedValue;
+  }
+
+  const day = Number(matched[1]);
+  const month = Number(matched[2]) - 1;
+  const yearRaw = matched[3] ? Number(matched[3]) : new Date().getFullYear();
+  const year = yearRaw < 100 ? 2000 + yearRaw : yearRaw;
+  const parsedDate = new Date(year, month, day);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return normalizedValue;
+  }
+
+  return new Intl.DateTimeFormat("es-AR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(parsedDate);
+}
+
+function buildExcerpt(value) {
+  const normalized = String(value || "").replace(/\s+/g, " ").trim();
+  if (!normalized) {
+    return "";
+  }
+
+  if (normalized.length <= 180) {
+    return normalized;
+  }
+
+  return `${normalized.slice(0, 177).trimEnd()}...`;
+}
+
+function normalizeBlogPost(rawPost, fallbackIndex = 0) {
+  const title = pickFirstString(rawPost, ["title", "titulo", "name", "post_title"]) || `Articulo ${fallbackIndex + 1}`;
+  const slug = pickFirstString(rawPost, ["slug", "post_slug", "url_slug"]) || slugify(title);
+  const excerpt =
+    pickFirstString(rawPost, ["excerpt", "resumen", "summary", "description", "meta_description"]) ||
+    buildExcerpt(pickFirstString(rawPost, ["content", "contenido", "body", "post_content"]));
+  const content = pickFirstString(rawPost, ["content", "contenido", "body", "post_content"]);
+  const category =
+    pickFirstString(rawPost, ["category", "categoria", "tag", "tipo", "section"]) || "Blog";
+  const date =
+    pickFirstValue(rawPost, ["published_at", "publish_date", "created_at", "fecha", "date"]) || "";
+  const image =
+    pickFirstString(rawPost, ["image", "image_url", "cover", "cover_image", "thumbnail"]) || "";
+
+  return {
+    slug,
+    title,
+    excerpt,
+    content,
+    category,
+    date,
+    image,
+  };
+}
+
+function normalizeProduct(rawProduct, fallbackIndex = 0) {
+  const title = pickFirstString(rawProduct, ["title", "titulo", "name", "product_name"]) || `Producto ${fallbackIndex + 1}`;
+  const slug = pickFirstString(rawProduct, ["slug", "product_slug", "url_slug"]) || slugify(title);
+
+  return {
+    slug,
+    title,
+    description: pickFirstString(rawProduct, ["description", "descripcion", "summary"]),
+    content: pickFirstString(rawProduct, ["content", "contenido", "body"]),
+  };
+}
+
+async function listBlogPosts() {
+  const response = await postJson(BLOG_API_ENDPOINT, {
+    action: "list",
+    public_key: CONTACT_PUBLIC_KEY,
+  });
+
+  const posts = extractApiCollection(response).map(normalizeBlogPost).filter((post) => post.slug && post.title);
+  return posts.length > 0 ? posts : BLOG_FALLBACK_POSTS;
+}
+
+async function getBlogPostDetail(slug) {
+  const response = await postJson(BLOG_API_ENDPOINT, {
+    action: "detail",
+    public_key: CONTACT_PUBLIC_KEY,
+    slug,
+  });
+
+  const detailSource =
+    Array.isArray(response) ? response[0] : response?.data || response?.post || response?.item || response;
+
+  if (detailSource && typeof detailSource === "object") {
+    return normalizeBlogPost(detailSource);
+  }
+
+  return BLOG_FALLBACK_POSTS.find((post) => post.slug === slug) || null;
+}
+
+async function listProducts() {
+  const response = await postJson(PRODUCT_API_ENDPOINT, {
+    action: "list",
+    public_key: CONTACT_PUBLIC_KEY,
+  });
+
+  return extractApiCollection(response).map(normalizeProduct).filter((product) => product.slug && product.title);
+}
+
+async function getProductDetail(slug) {
+  const response = await postJson(PRODUCT_API_ENDPOINT, {
+    action: "detail",
+    public_key: CONTACT_PUBLIC_KEY,
+    slug,
+  });
+
+  const detailSource =
+    Array.isArray(response) ? response[0] : response?.data || response?.product || response?.item || response;
+
+  if (!detailSource || typeof detailSource !== "object") {
+    return null;
+  }
+
+  return normalizeProduct(detailSource);
+}
+
+function renderRichText(value) {
+  const trimmed = String(value || "").trim();
+  if (!trimmed) {
+    return "<p>Este articulo todavia no tiene contenido disponible.</p>";
+  }
+
+  if (trimmed.includes("<") && trimmed.includes(">")) {
+    return trimmed;
+  }
+
+  return trimmed
+    .split(/\n{2,}/)
+    .map((paragraph) => `<p>${escapeHtml(paragraph).replace(/\n/g, "<br>")}</p>`)
+    .join("");
+}
+
+function getBlogTagClass(category) {
+  return /consult/i.test(category) ? "tag tag-secondary" : "tag";
+}
+
+function setBlogStatus(message, type = "") {
+  const statusNode = document.querySelector("[data-blog-status]");
+  if (!(statusNode instanceof HTMLElement)) {
+    return;
+  }
+
+  statusNode.hidden = !message;
+  statusNode.textContent = message;
+  statusNode.className = "blog-status";
+  if (type) {
+    statusNode.classList.add(type);
+  }
+}
+
+function renderBlogList(posts) {
+  const listNode = document.querySelector("[data-blog-list-view]");
+  const detailNode = document.querySelector("[data-blog-detail-view]");
+  const headingNode = document.querySelector("[data-blog-list-heading]");
+
+  if (!(listNode instanceof HTMLElement)) {
+    return;
+  }
+
+  if (detailNode instanceof HTMLElement) {
+    detailNode.hidden = true;
+    detailNode.innerHTML = "";
+  }
+
+  if (headingNode instanceof HTMLElement) {
+    headingNode.hidden = false;
+  }
+
+  listNode.hidden = false;
+  listNode.innerHTML = posts
+    .map((post) => {
+      const safeSlug = encodeURIComponent(post.slug);
+      const dateLabel = formatBlogDate(post.date);
+      return `
+        <article class="blog-card reveal is-visible">
+          <a class="blog-card-link" href="blog.html?slug=${safeSlug}">
+            <span class="${getBlogTagClass(post.category)}">${escapeHtml(post.category)}</span>
+            <h2>${escapeHtml(post.title)}</h2>
+            <p>${escapeHtml(post.excerpt || "Proximamente disponible.")}</p>
+            <span class="blog-card-action">${dateLabel ? escapeHtml(dateLabel) : "Leer articulo"}</span>
+          </a>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function renderBlogDetail(post) {
+  const listNode = document.querySelector("[data-blog-list-view]");
+  const detailNode = document.querySelector("[data-blog-detail-view]");
+  const headingNode = document.querySelector("[data-blog-list-heading]");
+
+  if (!(detailNode instanceof HTMLElement)) {
+    return;
+  }
+
+  if (listNode instanceof HTMLElement) {
+    listNode.hidden = true;
+  }
+
+  if (headingNode instanceof HTMLElement) {
+    headingNode.hidden = true;
+  }
+
+  detailNode.hidden = false;
+  detailNode.innerHTML = `
+    <article class="blog-detail-card reveal is-visible">
+      <a class="blog-detail-back" href="blog.html">Volver al blog</a>
+      <span class="${getBlogTagClass(post.category)}">${escapeHtml(post.category)}</span>
+      <h2>${escapeHtml(post.title)}</h2>
+      ${post.date ? `<p class="blog-detail-meta">${escapeHtml(formatBlogDate(post.date))}</p>` : ""}
+      <div class="blog-detail-content">
+        ${renderRichText(post.content || post.excerpt)}
+      </div>
+    </article>
+  `;
+}
+
+async function initBlogPage() {
+  if (body?.dataset.page !== "blog") {
+    return;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("slug");
+  setBlogStatus("Cargando articulos...");
+
+  try {
+    if (slug) {
+      const post = await getBlogPostDetail(slug);
+      if (!post) {
+        throw new Error("Articulo no encontrado");
+      }
+
+      renderBlogDetail(post);
+      setBlogStatus("");
+      document.title = `${post.title} | Blog | Sisu Group`;
+      return;
+    }
+
+    const posts = await listBlogPosts();
+    renderBlogList(posts);
+    setBlogStatus("");
+  } catch (error) {
+    console.error("Error al cargar el blog:", error);
+
+    if (slug) {
+      const fallbackPost = BLOG_FALLBACK_POSTS.find((post) => post.slug === slug);
+      if (fallbackPost) {
+        renderBlogDetail(fallbackPost);
+        setBlogStatus("Mostramos una version de respaldo del articulo.", "is-warning");
+        return;
+      }
+    }
+
+    renderBlogList(BLOG_FALLBACK_POSTS);
+    setBlogStatus("No pudimos cargar el blog en este momento. Mostramos una version de respaldo.", "is-warning");
+  }
+}
+
+window.SisuApi = {
+  submitContact: submitApiForm,
+  listBlogPosts,
+  getBlogPostDetail,
+  listProducts,
+  getProductDetail,
+};
+
 function initTrustedOrbitTouchZoom() {
   if (trustedOrbitLogos.length === 0) {
     return;
@@ -169,6 +621,8 @@ function initTrustedOrbitTouchZoom() {
     }
   });
 }
+
+initImpulsaIntegrations();
 
 function startTypewriter(element) {
   if (!(element instanceof HTMLElement) || element.dataset.typed === "true") {
@@ -914,13 +1368,7 @@ function setFormSubmitting(form, isSubmitting) {
 }
 
 function getCurrentPageLabel() {
-  const page = body?.dataset.page?.trim();
-  if (page) {
-    return page;
-  }
-
-  const path = window.location.pathname.split("/").pop() || "index.html";
-  return path;
+  return window.location.pathname || "/index.html";
 }
 
 function buildDescription(lines) {
@@ -933,7 +1381,7 @@ function buildApiPayload(formData) {
   const nombre = String(formData.get("nombre") || "").trim();
   const whatsapp = String(formData.get("telefono") || "").trim();
   const email = String(formData.get("email") || "").trim();
-  const empresa = String(formData.get("empresa") || "").trim();
+  const empresa = String(formData.get("empresa") || formData.get("zona") || "").trim();
   const zona = String(formData.get("zona") || "").trim();
   const mensaje = String(formData.get("mensaje") || "").trim();
 
@@ -944,11 +1392,8 @@ function buildApiPayload(formData) {
       contact_nombre: nombre,
       contact_whatsapp: whatsapp,
       contact_email: email,
-      contact_description: buildDescription([
-        empresa ? `Empresa: ${empresa}` : "",
-        mensaje ? `Mensaje: ${mensaje}` : "",
-      ]),
-      contact_consultation: "Formulario Solicitar Demo Pausa Viva",
+      contact_description: empresa,
+      contact_consultation: mensaje || "Solicitud de Demo Pausa Viva",
       state: "recibido",
     };
   }
@@ -960,11 +1405,8 @@ function buildApiPayload(formData) {
       contact_nombre: nombre,
       contact_whatsapp: whatsapp,
       contact_email: email,
-      contact_description: buildDescription([
-        zona ? `Zona detectada: ${zona}` : "",
-        mensaje,
-      ]),
-      contact_consultation: "Formulario Escaner de Carga Mental Organizacional",
+      contact_description: zona ? `Zona detectada: ${zona}` : "",
+      contact_consultation: mensaje || "Solicitud desde el escaner de carga mental organizacional",
       state: "recibido",
     };
   }
@@ -975,94 +1417,89 @@ function buildApiPayload(formData) {
     contact_nombre: nombre,
     contact_whatsapp: whatsapp,
     contact_email: email,
-    contact_description: buildDescription([
-      zona ? `Zona: ${zona}` : "",
-      mensaje ? `Mensaje: ${mensaje}` : "",
-    ]),
-    contact_consultation: "Formulario de contacto sitio web",
+    contact_description: empresa || zona,
+    contact_consultation: mensaje || "Formulario de contacto sitio web",
     state: "recibido",
   };
 }
 
 async function submitApiForm(payload) {
-  const response = await fetch(CONTACT_API_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-
-  const responseText = await response.text();
-
-  if (!response.ok) {
-    throw new Error(responseText || `HTTP ${response.status}`);
-  }
-
-  return responseText;
+  return postJson(CONTACT_API_ENDPOINT, payload);
 }
 
-forms.forEach((form) => {
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+function bindApiForms() {
+  forms = document.querySelectorAll("[data-mail-form]");
 
-    const feedbackNode = form.querySelector("[data-form-feedback]");
-    setFeedback(feedbackNode, "", "");
-
-    const formData = new FormData(form);
-    const requiredFields = Array.from(form.querySelectorAll("[name][required]"));
-    const missingField = requiredFields.find((field) => !String(formData.get(field.getAttribute("name")) || "").trim());
-
-    if (missingField) {
-      setFeedback(feedbackNode, "Completa todos los campos obligatorios antes de enviar.", "is-error");
-      if (missingField instanceof HTMLElement && missingField.type !== "hidden") {
-        missingField.focus();
-      }
+  forms.forEach((form) => {
+    if (form.dataset.apiBound === "true") {
       return;
     }
 
-    const emailValue = String(formData.get("email") || "").trim();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(emailValue)) {
-      setFeedback(feedbackNode, "Ingresa un email valido para continuar.", "is-error");
-      const emailField = form.querySelector('[name="email"]');
-      if (emailField instanceof HTMLElement) {
-        emailField.focus();
-      }
-      return;
-    }
+    form.dataset.apiBound = "true";
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-    const context = form.dataset.formContext || "contacto";
-    formData.set("form_context", context);
-    const payload = buildApiPayload(formData);
-    setFormSubmitting(form, true);
+      const feedbackNode = form.querySelector("[data-form-feedback]");
+      setFeedback(feedbackNode, "", "");
 
-    try {
-      await submitApiForm(payload);
-      setFeedback(feedbackNode, "Formulario enviado correctamente.", "is-success");
-      form.reset();
+      const formData = new FormData(form);
+      const requiredFields = Array.from(form.querySelectorAll("[name][required]"));
+      const missingField = requiredFields.find((field) => !String(formData.get(field.getAttribute("name")) || "").trim());
 
-      if (context === "scanner") {
-        window.setTimeout(() => {
-          closeModal();
-          window.location.assign("pausa-viva.html");
-        }, 250);
+      if (missingField) {
+        setFeedback(feedbackNode, "Completa todos los campos obligatorios antes de enviar.", "is-error");
+        if (missingField instanceof HTMLElement && missingField.type !== "hidden") {
+          missingField.focus();
+        }
+        return;
       }
 
-      if (context === "demo") {
-        window.setTimeout(() => {
-          closeDemoModal();
-        }, 450);
+      const emailValue = String(formData.get("email") || "").trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailValue)) {
+        setFeedback(feedbackNode, "Ingresa un email valido para continuar.", "is-error");
+        const emailField = form.querySelector('[name="email"]');
+        if (emailField instanceof HTMLElement) {
+          emailField.focus();
+        }
+        return;
       }
-    } catch (error) {
-      console.error("Error al enviar el formulario:", error);
-      setFeedback(
-        feedbackNode,
-        "No pudimos enviar el formulario en este momento. Intenta nuevamente en unos minutos.",
-        "is-error"
-      );
-    } finally {
-      setFormSubmitting(form, false);
-    }
+
+      const context = form.dataset.formContext || "contacto";
+      formData.set("form_context", context);
+      const payload = buildApiPayload(formData);
+      setFormSubmitting(form, true);
+
+      try {
+        await submitApiForm(payload);
+        setFeedback(feedbackNode, "Formulario enviado correctamente.", "is-success");
+        form.reset();
+
+        if (context === "scanner") {
+          window.setTimeout(() => {
+            closeModal();
+            window.location.assign("pausa-viva.html");
+          }, 250);
+        }
+
+        if (context === "demo") {
+          window.setTimeout(() => {
+            closeDemoModal();
+          }, 450);
+        }
+      } catch (error) {
+        console.error("Error al enviar el formulario:", error);
+        setFeedback(
+          feedbackNode,
+          "No pudimos enviar el formulario en este momento. Intenta nuevamente en unos minutos.",
+          "is-error"
+        );
+      } finally {
+        setFormSubmitting(form, false);
+      }
+    });
   });
-});
+}
+
+bindApiForms();
+initBlogPage();
