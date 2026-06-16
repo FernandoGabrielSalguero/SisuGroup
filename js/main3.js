@@ -27,30 +27,50 @@ const BLOG_FALLBACK_POSTS = [
     title: "Como recuperar foco en contextos laborales exigentes",
     excerpt: "Un marco simple para detectar interrupciones, reducir friccion cognitiva y recuperar claridad operativa.",
     category: "Pausa Viva",
+    date: "2026-06-16",
+    image: "idea/blog/img/La mente es el principal 1-6.png",
+    content:
+      "Un marco simple para detectar interrupciones, reducir friccion cognitiva y recuperar claridad operativa en equipos que trabajan bajo demanda constante.",
   },
   {
     slug: "por-que-necesitamos-pausar-el-valor-de-reconectar-sin-pantallas",
     title: "Por que necesitamos pausar: el valor de reconectar sin pantallas",
     excerpt: "Por que una pausa real puede bajar saturacion, recuperar presencia y mejorar la calidad del trabajo.",
     category: "Pausa Viva",
+    date: "2025-12-05",
+    image: "idea/blog/img/Porque necesitamos pausar 5-12.png",
+    content:
+      "Las pantallas aceleraron el ritmo de trabajo y multiplicaron interrupciones, reuniones y demanda de respuesta. Pausar de verdad ayuda a bajar saturacion, recuperar presencia y volver con mayor claridad.",
   },
   {
     slug: "la-mente-es-el-principal-activo-de-trabajo",
     title: "La mente es el principal activo de trabajo: por que cuidarla ya no es opcional",
     excerpt: "Una mirada estrategica sobre claridad mental, foco y energia como condiciones para trabajar mejor.",
     category: "Pausa Viva",
+    date: "2026-06-01",
+    image: "idea/blog/img/La mente es el principal 1-6.png",
+    content:
+      "La claridad mental, el foco y la energia no son recursos infinitos. Cuidarlos es una decision estrategica para sostener productividad, criterio y calidad de trabajo.",
   },
   {
     slug: "estrategia-para-desembarcar-en-argentina",
     title: "Estrategia para desembarcar en Argentina",
     excerpt: "Factores operativos, comerciales y de representacion para construir presencia local con eficiencia.",
     category: "Consultoria",
+    date: "2025-02-04",
+    image: "idea/blog/img/Suc propia vs socio estrategico 4-2-25.png",
+    content:
+      "Expandirse a un nuevo pais requiere definir estructura, socio local, operacion y velocidad de entrada. La estrategia correcta reduce riesgo y acelera resultados.",
   },
   {
     slug: "oficina-de-transicion-una-forma-eficiente-de-entrar-al-mercado-local",
     title: "Oficina de transicion: una forma eficiente de entrar al mercado local",
     excerpt: "Como expandirse con una estructura gradual y mas liviana antes de abrir operaciones propias.",
     category: "Consultoria",
+    date: "2025-03-28",
+    image: "idea/blog/img/Errores comunies 28-3-25.png",
+    content:
+      "Una estructura transicional permite validar mercado, construir red comercial y aprender rapido antes de asumir el costo completo de una operacion propia.",
   },
 ];
 
@@ -139,6 +159,10 @@ let lastFocusedElement = null;
 let modalTimer = null;
 let demoModal = null;
 let demoModalPanel = null;
+let blogModal = null;
+let blogModalPanel = null;
+let blogModalBody = null;
+const blogPostsCache = new Map();
 
 function loadExternalScript(src, options = {}) {
   if (!src) {
@@ -338,7 +362,7 @@ function normalizeBlogPost(rawPost, fallbackIndex = 0) {
   const date =
     pickFirstValue(rawPost, ["published_at", "publish_date", "created_at", "fecha", "date"]) || "";
   const image =
-    pickFirstString(rawPost, ["image", "image_url", "cover", "cover_image", "thumbnail"]) || "";
+    pickFirstString(rawPost, ["image", "image_url", "cover", "cover_image", "thumbnail", "imagen", "featured_image"]) || "";
 
   return {
     slug,
@@ -436,6 +460,21 @@ function getBlogTagClass(category) {
   return /consult/i.test(category) ? "tag tag-secondary" : "tag";
 }
 
+function getBlogFallbackImage(post) {
+  if (post.image) {
+    return post.image;
+  }
+
+  return /consult/i.test(post.category)
+    ? "idea/blog/img/Suc propia vs socio estrategico 4-2-25.png"
+    : "idea/blog/img/Porque necesitamos pausar 5-12.png";
+}
+
+function updateBlogUrl(slug = "") {
+  const nextUrl = slug ? `blog.html?slug=${encodeURIComponent(slug)}` : "blog.html";
+  window.history.replaceState({}, "", nextUrl);
+}
+
 function setBlogStatus(message, type = "") {
   const statusNode = document.querySelector("[data-blog-status]");
   if (!(statusNode instanceof HTMLElement)) {
@@ -452,70 +491,180 @@ function setBlogStatus(message, type = "") {
 
 function renderBlogList(posts) {
   const listNode = document.querySelector("[data-blog-list-view]");
-  const detailNode = document.querySelector("[data-blog-detail-view]");
-  const headingNode = document.querySelector("[data-blog-list-heading]");
 
   if (!(listNode instanceof HTMLElement)) {
     return;
   }
 
-  if (detailNode instanceof HTMLElement) {
-    detailNode.hidden = true;
-    detailNode.innerHTML = "";
-  }
-
-  if (headingNode instanceof HTMLElement) {
-    headingNode.hidden = false;
-  }
-
   listNode.hidden = false;
   listNode.innerHTML = posts
     .map((post) => {
-      const safeSlug = encodeURIComponent(post.slug);
-      const dateLabel = formatBlogDate(post.date);
+      const image = getBlogFallbackImage(post);
       return `
         <article class="blog-card reveal is-visible">
-          <a class="blog-card-link" href="blog.html?slug=${safeSlug}">
+          <div class="blog-card-media">
+            ${
+              image
+                ? `<img class="blog-card-image" src="${escapeHtml(image)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async">`
+                : `<div class="blog-card-image blog-card-image-fallback" aria-hidden="true"><span>${escapeHtml(post.category || "Blog")}</span></div>`
+            }
+          </div>
+          <div class="blog-card-body">
             <span class="${getBlogTagClass(post.category)}">${escapeHtml(post.category)}</span>
             <h2>${escapeHtml(post.title)}</h2>
             <p>${escapeHtml(post.excerpt || "Proximamente disponible.")}</p>
-            <span class="blog-card-action">${dateLabel ? escapeHtml(dateLabel) : "Leer articulo"}</span>
-          </a>
+            <button class="button button-secondary blog-card-button" type="button" data-blog-open="${escapeHtml(post.slug)}">Saber mas</button>
+          </div>
         </article>
       `;
     })
     .join("");
 }
 
-function renderBlogDetail(post) {
-  const listNode = document.querySelector("[data-blog-list-view]");
-  const detailNode = document.querySelector("[data-blog-detail-view]");
-  const headingNode = document.querySelector("[data-blog-list-heading]");
+function ensureBlogModalElements() {
+  if (!blogModal) {
+    blogModal = document.querySelector("[data-blog-modal]");
+    blogModalPanel = document.querySelector("[data-blog-modal-panel]");
+    blogModalBody = document.querySelector("[data-blog-modal-body]");
+  }
 
-  if (!(detailNode instanceof HTMLElement)) {
+  return blogModal && blogModalPanel && blogModalBody;
+}
+
+function setBlogModalLoading() {
+  if (!ensureBlogModalElements()) {
     return;
   }
 
-  if (listNode instanceof HTMLElement) {
-    listNode.hidden = true;
+  blogModalBody.innerHTML = `<p class="blog-status">Cargando articulo...</p>`;
+}
+
+function renderBlogModal(post) {
+  if (!ensureBlogModalElements()) {
+    return;
   }
 
-  if (headingNode instanceof HTMLElement) {
-    headingNode.hidden = true;
-  }
-
-  detailNode.hidden = false;
-  detailNode.innerHTML = `
-    <article class="blog-detail-card reveal is-visible">
-      <a class="blog-detail-back" href="blog.html">Volver al blog</a>
-      <span class="${getBlogTagClass(post.category)}">${escapeHtml(post.category)}</span>
-      <h2>${escapeHtml(post.title)}</h2>
-      ${post.date ? `<p class="blog-detail-meta">${escapeHtml(formatBlogDate(post.date))}</p>` : ""}
-      <div class="blog-detail-content">
-        ${renderRichText(post.content || post.excerpt)}
+  const image = getBlogFallbackImage(post);
+  blogModalBody.innerHTML = `
+    <article class="blog-modal-content">
+      <div class="blog-modal-media">
+        ${
+          image
+            ? `<img class="blog-modal-image" src="${escapeHtml(image)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async">`
+            : `<div class="blog-modal-image blog-card-image-fallback" aria-hidden="true"><span>${escapeHtml(post.category || "Blog")}</span></div>`
+        }
+      </div>
+      <div class="blog-modal-copy">
+        <span class="${getBlogTagClass(post.category)}">${escapeHtml(post.category)}</span>
+        <h2 id="blog-modal-title">${escapeHtml(post.title)}</h2>
+        <p class="blog-detail-meta" id="blog-modal-description">${post.date ? escapeHtml(formatBlogDate(post.date)) : "Articulo del blog"}</p>
+        <div class="blog-detail-content">
+          ${renderRichText(post.content || post.excerpt)}
+        </div>
       </div>
     </article>
   `;
+}
+
+function openBlogModalFrame(slug = "") {
+  if (!ensureBlogModalElements()) {
+    return;
+  }
+
+  lastFocusedElement = document.activeElement;
+  blogModal.hidden = false;
+  body.style.overflow = "hidden";
+  updateBlogUrl(slug);
+  blogModalPanel.focus();
+  document.addEventListener("keydown", trapFocus);
+}
+
+function closeBlogModal() {
+  if (!blogModal) {
+    return;
+  }
+
+  blogModal.hidden = true;
+  updateBlogUrl();
+  document.title = "Blog | Sisu Group";
+  releaseModalTrap();
+
+  if (lastFocusedElement instanceof HTMLElement) {
+    lastFocusedElement.focus();
+  }
+}
+
+async function openBlogModalBySlug(slug) {
+  if (!slug) {
+    return;
+  }
+
+  openBlogModalFrame(slug);
+  setBlogModalLoading();
+
+  const cachedPost = blogPostsCache.get(slug);
+  if (cachedPost) {
+    renderBlogModal(cachedPost);
+  }
+
+  try {
+    const detailPost = await getBlogPostDetail(slug);
+    if (!detailPost) {
+      throw new Error("Articulo no encontrado");
+    }
+
+    const mergedPost = { ...(cachedPost || {}), ...detailPost };
+    blogPostsCache.set(slug, mergedPost);
+    renderBlogModal(mergedPost);
+    document.title = `${mergedPost.title} | Blog | Sisu Group`;
+  } catch (error) {
+    console.error("Error al cargar el detalle del blog:", error);
+    if (cachedPost) {
+      renderBlogModal(cachedPost);
+      document.title = `${cachedPost.title} | Blog | Sisu Group`;
+      return;
+    }
+
+    blogModalBody.innerHTML = `<p class="blog-status is-warning">No pudimos cargar este articulo en este momento.</p>`;
+  }
+}
+
+function bindBlogModal() {
+  if (!ensureBlogModalElements() || blogModal.dataset.bound === "true") {
+    return;
+  }
+
+  blogModal.dataset.bound = "true";
+
+  blogModal.addEventListener("click", (event) => {
+    if (event.target === blogModal) {
+      closeBlogModal();
+    }
+  });
+
+  blogModalPanel.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof Element && target.closest("[data-blog-modal-close]")) {
+      event.preventDefault();
+      event.stopPropagation();
+      closeBlogModal();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const trigger = target.closest("[data-blog-open]");
+    if (!trigger) {
+      return;
+    }
+
+    event.preventDefault();
+    openBlogModalBySlug(trigger.getAttribute("data-blog-open") || "");
+  });
 }
 
 async function initBlogPage() {
@@ -526,37 +675,30 @@ async function initBlogPage() {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
   setBlogStatus("Cargando articulos...");
+  bindBlogModal();
 
   try {
-    if (slug) {
-      const post = await getBlogPostDetail(slug);
-      if (!post) {
-        throw new Error("Articulo no encontrado");
-      }
-
-      renderBlogDetail(post);
-      setBlogStatus("");
-      document.title = `${post.title} | Blog | Sisu Group`;
-      return;
-    }
-
     const posts = await listBlogPosts();
+    posts.forEach((post) => {
+      blogPostsCache.set(post.slug, post);
+    });
     renderBlogList(posts);
     setBlogStatus("");
-  } catch (error) {
-    console.error("Error al cargar el blog:", error);
 
     if (slug) {
-      const fallbackPost = BLOG_FALLBACK_POSTS.find((post) => post.slug === slug);
-      if (fallbackPost) {
-        renderBlogDetail(fallbackPost);
-        setBlogStatus("Mostramos una version de respaldo del articulo.", "is-warning");
-        return;
-      }
+      openBlogModalBySlug(slug);
     }
-
+  } catch (error) {
+    console.error("Error al cargar el blog:", error);
+    BLOG_FALLBACK_POSTS.forEach((post) => {
+      blogPostsCache.set(post.slug, post);
+    });
     renderBlogList(BLOG_FALLBACK_POSTS);
     setBlogStatus("No pudimos cargar el blog en este momento. Mostramos una version de respaldo.", "is-warning");
+
+    if (slug) {
+      openBlogModalBySlug(slug);
+    }
   }
 }
 
@@ -763,6 +905,10 @@ function ensureDemoModal() {
 }
 
 function getOpenModalElements() {
+  if (blogModal && !blogModal.hidden) {
+    return { backdrop: blogModal, panel: blogModalPanel };
+  }
+
   if (demoModal && !demoModal.hidden) {
     return { backdrop: demoModal, panel: demoModalPanel };
   }
@@ -1050,7 +1196,9 @@ function trapFocus(event) {
   }
 
   if (event.key === "Escape") {
-    if (activeModal.backdrop === demoModal) {
+    if (activeModal.backdrop === blogModal) {
+      closeBlogModal();
+    } else if (activeModal.backdrop === demoModal) {
       closeDemoModal();
     } else {
       closeModal();
