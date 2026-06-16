@@ -460,7 +460,44 @@ function normalizeBlogPost(rawPost, fallbackIndex = 0) {
   const date =
     pickFirstValue(rawPost, ["published_at", "publish_date", "created_at", "fecha", "date"]) || "";
   const image =
-    pickFirstString(rawPost, ["image", "image_url", "cover", "cover_image", "thumbnail", "imagen", "featured_image"]) || "";
+    pickFirstString(rawPost, [
+      "image",
+      "image_url",
+      "cover",
+      "cover_image",
+      "thumbnail",
+      "imagen",
+      "featured_image",
+      "cover_image_path_url",
+      "cover_image_url",
+      "attachment_path_url",
+      "attachment_url",
+      "path_url",
+      "file_url",
+      "media_url",
+    ]) || "";
+
+  console.info("[Sisu][Blog] image mapping", {
+    title,
+    slug,
+    pickedImage: image,
+    rawImageFields: {
+      image: rawPost?.image,
+      image_url: rawPost?.image_url,
+      cover: rawPost?.cover,
+      cover_image: rawPost?.cover_image,
+      thumbnail: rawPost?.thumbnail,
+      imagen: rawPost?.imagen,
+      featured_image: rawPost?.featured_image,
+      cover_image_path_url: rawPost?.cover_image_path_url,
+      cover_image_url: rawPost?.cover_image_url,
+      attachment_path_url: rawPost?.attachment_path_url,
+      attachment_url: rawPost?.attachment_url,
+      path_url: rawPost?.path_url,
+      file_url: rawPost?.file_url,
+      media_url: rawPost?.media_url,
+    },
+  });
 
   return {
     slug,
