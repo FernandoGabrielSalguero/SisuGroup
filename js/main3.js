@@ -74,6 +74,53 @@ const BLOG_FALLBACK_POSTS = [
   },
 ];
 
+const BLOG_IMAGE_OVERRIDES = [
+  {
+    matchers: [
+      "por-que-necesitamos-pausar",
+      "reconectar-sin-pantallas",
+      "valor de reconectar sin pantallas",
+      "porque necesitamos pausar",
+    ],
+    image: "idea/blog/img/Porque necesitamos pausar 5-12.png",
+  },
+  {
+    matchers: [
+      "la-mente-es-el-principal-activo-de-trabajo",
+      "principal activo de trabajo",
+      "por-que-cuidarla-ya-no-es-opcional",
+      "mente es el principal",
+    ],
+    image: "idea/blog/img/La mente es el principal 1-6.png",
+  },
+  {
+    matchers: [
+      "arquitectura-de-foco",
+      "disenar-entornos-que-ayuden-a-pensar-mejor",
+      "arquitectura de foco",
+    ],
+    image: "idea/blog/img/Arquitectura de foto 10-6.png",
+  },
+  {
+    matchers: [
+      "sucursal-propia-vs-socio-estrategico",
+      "socio estrategico",
+      "desembarcar-en-argentina",
+      "sucursal propia",
+    ],
+    image: "idea/blog/img/Suc propia vs socio estrategico 4-2-25.png",
+  },
+  {
+    matchers: [
+      "errores-comunes",
+      "errores comunes",
+      "mercado argentino",
+      "oficina-de-transicion",
+    ],
+    image: "idea/blog/img/Errores comunies 28-3-25.png",
+  },
+];
+
 const scannerQuestions = [
   {
     text: "Notas que a tu equipo le cuesta mantener foco profundo en tareas complejas sin dispersarse con chat o notificaciones internas?",
@@ -212,7 +259,6 @@ function initImpulsaIntegrations() {
 }
 
 async function postJson(url, payload) {
-  console.info("[Sisu] POST", url, payload);
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -222,21 +268,72 @@ async function postJson(url, payload) {
   });
 
   const responseText = await response.text();
-  console.info("[Sisu] Response status", url, response.status, response.statusText);
-  console.info("[Sisu] Response body", url, responseText);
 
   if (!response.ok) {
     throw new Error(responseText || `HTTP ${response.status}`);
   }
 
   try {
-    const parsedResponse = JSON.parse(responseText);
-    console.info("[Sisu] Parsed JSON", url, parsedResponse);
-    return parsedResponse;
+    return JSON.parse(responseText);
   } catch {
-    console.info("[Sisu] Raw text response", url, responseText);
     return responseText;
   }
+}
+
+function toDebugValue(value) {
+  if (value === null || value === undefined) {
+    return value;
+  }
+
+  if (typeof value === "object") {
+    try {
+      return JSON.stringify(value);
+    } catch {
+      return String(value);
+    }
+  }
+
+  return value;
+}
+
+function logBlogCollectionDebug(records) {
+  if (!Array.isArray(records)) {
+    console.log("[Sisu][Blog][DB] La respuesta de listado no trajo un array:", records);
+    return;
+  }
+
+  const normalizedRows = records.map((record, index) => {
+    const row = { __index: index };
+
+    if (!record || typeof record !== "object") {
+      row.__value = toDebugValue(record);
+      return row;
+    }
+
+    Object.keys(record).forEach((key) => {
+      row[key] = toDebugValue(record[key]);
+    });
+
+    return row;
+  });
+
+  console.log("[Sisu][Blog][DB] Registros crudos del listado:", records);
+  console.table(normalizedRows);
+}
+
+function logBlogDetailDebug(slug, record) {
+  if (!record || typeof record !== "object") {
+    console.log(`[Sisu][Blog][DB] Detalle crudo para "${slug}":`, record);
+    return;
+  }
+
+  const rows = Object.keys(record).map((key) => ({
+    field: key,
+    value: toDebugValue(record[key]),
+  }));
+
+  console.log(`[Sisu][Blog][DB] Detalle crudo para "${slug}":`, record);
+  console.table(rows);
 }
 
 function pickFirstString(source, candidates) {
@@ -304,6 +401,30 @@ function slugify(value) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+function findMappedBlogImage(post) {
+  const candidates = [
+    post?.slug,
+    post?.title,
+    post?.excerpt,
+    post?.content,
+  ]
+    .map((value) => slugify(String(value || "").slice(0, 180)))
+    .filter(Boolean);
+
+  for (const entry of BLOG_IMAGE_OVERRIDES) {
+    const matched = entry.matchers.some((matcher) => {
+      const normalizedMatcher = slugify(matcher);
+      return candidates.some((candidate) => candidate.includes(normalizedMatcher));
+    });
+
+    if (matched) {
+      return entry.image;
+    }
+  }
+
+  return "";
 }
 
 function formatBlogDate(value) {
@@ -546,28 +667,6 @@ function normalizeBlogPost(rawPost, fallbackIndex = 0) {
     pickFirstValue(rawPost, ["published_at", "publish_date", "created_at", "fecha", "date"]) || "";
   const image = resolveBlogImage(rawPost);
 
-  console.info("[Sisu][Blog] image mapping", {
-    title,
-    slug,
-    pickedImage: image,
-    rawImageFields: {
-      image: rawPost?.image,
-      image_url: rawPost?.image_url,
-      cover: rawPost?.cover,
-      cover_image: rawPost?.cover_image,
-      thumbnail: rawPost?.thumbnail,
-      imagen: rawPost?.imagen,
-      featured_image: rawPost?.featured_image,
-      cover_image_path_url: rawPost?.cover_image_path_url,
-      cover_image_url: rawPost?.cover_image_url,
-      attachment_path_url: rawPost?.attachment_path_url,
-      attachment_url: rawPost?.attachment_url,
-      path_url: rawPost?.path_url,
-      file_url: rawPost?.file_url,
-      media_url: rawPost?.media_url,
-    },
-  });
-
   return {
     slug,
     title,
@@ -597,7 +696,9 @@ async function listBlogPosts() {
     public_key: CONTACT_PUBLIC_KEY,
   });
 
-  const posts = extractApiCollection(response).map(normalizeBlogPost).filter((post) => post.slug && post.title);
+  const rawPosts = extractApiCollection(response);
+  logBlogCollectionDebug(rawPosts);
+  const posts = rawPosts.map(normalizeBlogPost).filter((post) => post.slug && post.title);
   return posts.length > 0 ? posts : BLOG_FALLBACK_POSTS;
 }
 
@@ -610,6 +711,7 @@ async function getBlogPostDetail(slug) {
 
   const detailSource =
     Array.isArray(response) ? response[0] : response?.data || response?.post || response?.item || response;
+  logBlogDetailDebug(slug, detailSource);
 
   if (detailSource && typeof detailSource === "object") {
     return normalizeBlogPost(detailSource);
@@ -692,6 +794,11 @@ function getBlogTagClass(category) {
 function getBlogFallbackImage(post) {
   if (post.image) {
     return post.image;
+  }
+
+  const mappedImage = findMappedBlogImage(post);
+  if (mappedImage) {
+    return mappedImage;
   }
 
   return /consult/i.test(post.category)
@@ -894,16 +1001,13 @@ async function initBlogPage() {
     return;
   }
 
-  console.info("[Sisu][Blog] initBlogPage start");
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
-  console.info("[Sisu][Blog] slug", slug);
   setBlogStatus("Cargando articulos...");
   bindBlogModal();
 
   try {
     const posts = await listBlogPosts();
-    console.info("[Sisu][Blog] posts normalizados", posts);
     posts.forEach((post) => {
       blogPostsCache.set(post.slug, post);
     });
