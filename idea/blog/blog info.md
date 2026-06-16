@@ -303,7 +303,7 @@ Muchas empresas optan por distribuidores tradicionales, pero estos suelen limita
 
 Nos ocupamos de la comercialización, la logística, el marketing y la operativa para que puedas ingresar al mercado sin los costos y riesgos de abrir una sucursal propia. Nuestro enfoque es construir relaciones a largo plazo, donde el crecimiento de tu empresa también signifique nuestro crecimiento.
 
-## Errores comunies
+## Errores Comunes
 28-3-25
 
 Errores Comunes de Empresas al Ingresar en el Mercado Argentino (y cómo evitarlos)
