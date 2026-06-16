@@ -356,13 +356,105 @@ function buildExcerpt(value) {
   return `${normalized.slice(0, 177).trimEnd()}...`;
 }
 
+function getLongestTextField(source, excludedKeys = []) {
+  if (!source || typeof source !== "object") {
+    return "";
+  }
+
+  const excluded = new Set(excludedKeys.map((key) => String(key).toLowerCase()));
+  let longestValue = "";
+
+  Object.entries(source).forEach(([key, value]) => {
+    if (excluded.has(String(key).toLowerCase())) {
+      return;
+    }
+
+    if (typeof value !== "string") {
+      return;
+    }
+
+    const trimmed = value.trim();
+    if (!trimmed) {
+      return;
+    }
+
+    if (trimmed.length > longestValue.length) {
+      longestValue = trimmed;
+    }
+  });
+
+  return longestValue;
+}
+
+function resolveBlogContent(rawPost) {
+  const preferredContent = pickFirstString(rawPost, [
+    "content",
+    "contenido",
+    "body",
+    "post_content",
+    "article",
+    "articulo",
+    "text",
+    "texto",
+    "detail",
+    "detalle",
+    "full_text",
+    "html",
+    "contenido_html",
+    "description_long",
+    "descripcion_larga",
+  ]);
+
+  if (preferredContent) {
+    return preferredContent;
+  }
+
+  return getLongestTextField(rawPost, [
+    "id",
+    "slug",
+    "post_slug",
+    "url_slug",
+    "title",
+    "titulo",
+    "name",
+    "post_title",
+    "category",
+    "categoria",
+    "tag",
+    "tipo",
+    "section",
+    "date",
+    "fecha",
+    "published_at",
+    "publish_date",
+    "created_at",
+    "image",
+    "image_url",
+    "cover",
+    "cover_image",
+    "thumbnail",
+    "imagen",
+    "featured_image",
+    "excerpt",
+    "resumen",
+    "summary",
+    "meta_description",
+  ]);
+}
+
+function hasFullBlogContent(post) {
+  const content = String(post?.content || "").trim();
+  const excerpt = String(post?.excerpt || "").trim();
+  return content.length > 220 || (content && content !== excerpt);
+}
+
 function normalizeBlogPost(rawPost, fallbackIndex = 0) {
   const title = pickFirstString(rawPost, ["title", "titulo", "name", "post_title"]) || `Articulo ${fallbackIndex + 1}`;
   const slug = pickFirstString(rawPost, ["slug", "post_slug", "url_slug"]) || slugify(title);
+  const content = resolveBlogContent(rawPost);
   const excerpt =
     pickFirstString(rawPost, ["excerpt", "resumen", "summary", "description", "meta_description"]) ||
-    buildExcerpt(pickFirstString(rawPost, ["content", "contenido", "body", "post_content"]));
-  const content = pickFirstString(rawPost, ["content", "contenido", "body", "post_content"]);
+    buildExcerpt(content);
   const category =
     pickFirstString(rawPost, ["category", "categoria", "tag", "tipo", "section"]) || "Blog";
   const date =
@@ -602,7 +694,7 @@ async function openBlogModalBySlug(slug) {
   setBlogModalLoading();
 
   const cachedPost = blogPostsCache.get(slug);
-  if (cachedPost) {
+  if (cachedPost && hasFullBlogContent(cachedPost)) {
     renderBlogModal(cachedPost);
   }
 
