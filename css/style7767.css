@@ -4268,14 +4268,21 @@ body[data-page="confiaron"] .trusted-center img {
 
 body[data-page="confiaron"] .trusted-orbit-ring {
   position: absolute;
+  top: 50%;
+  left: 50%;
   border-radius: 50%;
   border: 1px solid rgba(212, 175, 55, 0.28);
+  transform: translate(-50%, -50%);
   animation: trusted-breathe 7s ease-in-out infinite;
 }
 
 body[data-page="confiaron"] .trusted-orbit-ring-one {
-  width: 62%;
-  height: 62%;
+  top: 34%;
+  width: 40%;
+  height: 20%;
+  border-radius: 999px 999px 0 0;
+  border-bottom: 0;
+  transform: translateX(-50%);
 }
 
 body[data-page="confiaron"] .trusted-orbit-ring-two {
@@ -4583,8 +4590,9 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
   }
 
   body[data-page="confiaron"] .trusted-orbit-ring-one {
-    width: 74%;
-    height: 74%;
+    top: 36%;
+    width: 52%;
+    height: 24%;
   }
 
   body[data-page="confiaron"] .trusted-orbit-ring-two {
