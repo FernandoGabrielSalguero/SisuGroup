@@ -3794,10 +3794,41 @@ body[data-page="contacto"] .contact-direct-links {
   gap: 0.8rem;
 }
 
+body[data-page="contacto"] .contact-direct-details {
+  display: grid;
+  gap: 0.7rem;
+}
+
 body[data-page="contacto"] .contact-direct-links .text-link {
   display: inline-flex;
   width: fit-content;
   font-weight: 600;
+}
+
+body[data-page="contacto"] .contact-detail-link {
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+}
+
+body[data-page="contacto"] .contact-detail-link span:last-child {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+body[data-page="contacto"] .contact-detail-link svg {
+  flex: 0 0 auto;
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body[data-page="contacto"] .contact-detail-link[aria-label*="WhatsApp"] svg {
+  fill: currentColor;
 }
 
 body[data-page="contacto"] .contact-direct-icons {
