@@ -533,6 +533,39 @@ function extractFirstImageFromHtml(value) {
   return matched?.[1]?.trim() || "";
 }
 
+function normalizeBlogImageUrl(value) {
+  const normalized = String(value || "").trim();
+  if (!normalized) {
+    return "";
+  }
+
+  if (/^data:image\//i.test(normalized) || /^https?:\/\//i.test(normalized)) {
+    return normalized;
+  }
+
+  if (normalized.startsWith("//")) {
+    return `https:${normalized}`;
+  }
+
+  if (normalized.startsWith("/")) {
+    try {
+      return new URL(normalized, "https://impulsagroup.com").toString();
+    } catch {
+      return normalized;
+    }
+  }
+
+  if (/^(uploads|impulsa_emprende\/uploads)\//i.test(normalized)) {
+    try {
+      return new URL(normalized.replace(/^\/+/, ""), "https://impulsagroup.com/").toString();
+    } catch {
+      return normalized;
+    }
+  }
+
+  return normalized;
+}
+
 function resolveBlogImage(rawPost) {
   const directImage =
     pickFirstString(rawPost, [
@@ -545,15 +578,18 @@ function resolveBlogImage(rawPost) {
       "featured_image",
       "cover_image_path_url",
       "cover_image_url",
+      "cover_image_path",
       "attachment_path_url",
       "attachment_url",
+      "attachment_path",
       "path_url",
+      "path",
       "file_url",
       "media_url",
     ]) || "";
 
   if (looksLikeImagePath(directImage)) {
-    return directImage;
+    return normalizeBlogImageUrl(directImage);
   }
 
   const htmlImage = extractFirstImageFromHtml(
@@ -569,7 +605,7 @@ function resolveBlogImage(rawPost) {
     ])
   );
   if (looksLikeImagePath(htmlImage)) {
-    return htmlImage;
+    return normalizeBlogImageUrl(htmlImage);
   }
 
   const nestedValues = Object.values(rawPost || {});
@@ -844,6 +880,70 @@ function getBlogFallbackImage(post) {
     : "idea/blog/img/Porque necesitamos pausar 5-12.png";
 }
 
+function getBlogImageFallbackChain(post) {
+  const candidates = [findMappedBlogImage(post)];
+
+  if (/consult/i.test(post?.category || "")) {
+    candidates.push("idea/blog/img/Suc propia vs socio estrategico 4-2-25.png");
+  } else {
+    candidates.push("idea/blog/img/Porque necesitamos pausar 5-12.png");
+  }
+
+  return candidates.filter((value, index, array) => value && array.indexOf(value) === index);
+}
+
+function renderBlogImageMarkup(post, image, className) {
+  if (!image) {
+    return `<div class="${escapeHtml(`${className} blog-card-image-fallback`)}" aria-hidden="true"><span>${escapeHtml(post.category || "Blog")}</span></div>`;
+  }
+
+  const fallbackSources = getBlogImageFallbackChain(post).filter((candidate) => candidate !== image);
+  const fallbackAttr = fallbackSources.length > 0 ? ` data-fallback-src="${escapeHtml(fallbackSources.join("|"))}"` : "";
+
+  return `<img class="${escapeHtml(className)}" src="${escapeHtml(image)}" alt="${escapeHtml(post.title)}" data-category="${escapeHtml(post.category || "Blog")}" loading="lazy" decoding="async"${fallbackAttr}>`;
+}
+
+function replaceBrokenBlogImage(imageNode) {
+  const mediaNode = imageNode.closest(".blog-card-media, .blog-modal-media");
+  if (!mediaNode) {
+    return;
+  }
+
+  const category = imageNode.getAttribute("data-category") || "Blog";
+  mediaNode.innerHTML = `<div class="blog-card-image blog-card-image-fallback" aria-hidden="true"><span>${escapeHtml(category)}</span></div>`;
+}
+
+function bindBlogImageFallbacks(root = document) {
+  if (!root || typeof root.querySelectorAll !== "function") {
+    return;
+  }
+
+  root.querySelectorAll("img[data-fallback-src]").forEach((imageNode) => {
+    if (!(imageNode instanceof HTMLImageElement) || imageNode.dataset.fallbackBound === "true") {
+      return;
+    }
+
+    imageNode.dataset.fallbackBound = "true";
+
+    imageNode.addEventListener("error", () => {
+      const fallbackList = String(imageNode.dataset.fallbackSrc || "")
+        .split("|")
+        .map((value) => value.trim())
+        .filter(Boolean);
+
+      const nextFallback = fallbackList.shift();
+      imageNode.dataset.fallbackSrc = fallbackList.join("|");
+
+      if (nextFallback && imageNode.src !== nextFallback) {
+        imageNode.src = nextFallback;
+        return;
+      }
+
+      replaceBrokenBlogImage(imageNode);
+    });
+  });
+}
+
 function setBlogStatus(message, type = "") {
   const statusNode = document.querySelector("[data-blog-status]");
   if (!(statusNode instanceof HTMLElement)) {
@@ -875,7 +975,7 @@ function renderBlogList(posts) {
             <div class="blog-card-media">
               ${
                 image
-                  ? `<img class="blog-card-image" src="${escapeHtml(image)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async">`
+                  ? renderBlogImageMarkup(post, image, "blog-card-image")
                   : `<div class="blog-card-image blog-card-image-fallback" aria-hidden="true"><span>${escapeHtml(post.category || "Blog")}</span></div>`
               }
             </div>
@@ -888,6 +988,8 @@ function renderBlogList(posts) {
       `;
     })
     .join("");
+
+  bindBlogImageFallbacks(listNode);
 }
 
 function ensureBlogModalElements() {
@@ -919,7 +1021,7 @@ function renderBlogModal(post) {
       <div class="blog-modal-media">
         ${
           image
-            ? `<img class="blog-modal-image" src="${escapeHtml(image)}" alt="${escapeHtml(post.title)}" loading="lazy" decoding="async">`
+            ? renderBlogImageMarkup(post, image, "blog-modal-image")
             : `<div class="blog-modal-image blog-card-image-fallback" aria-hidden="true"><span>${escapeHtml(post.category || "Blog")}</span></div>`
         }
       </div>
@@ -933,6 +1035,8 @@ function renderBlogModal(post) {
       </div>
     </article>
   `;
+
+  bindBlogImageFallbacks(blogModalBody);
 }
 
 function openBlogModalFrame(slug = "") {
