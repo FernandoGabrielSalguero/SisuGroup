@@ -2801,6 +2801,40 @@ textarea:focus-visible,
   border-radius: 1.4rem;
 }
 
+.scanner-screen[data-scanner-screen="lead"] .scanner-brand {
+  margin-bottom: 0.8rem;
+}
+
+.scanner-screen[data-scanner-screen="lead"] .eyebrow {
+  margin-bottom: 0.55rem;
+}
+
+.scanner-screen[data-scanner-screen="lead"] h2 {
+  margin-bottom: 0.65rem;
+}
+
+.scanner-screen[data-scanner-screen="lead"] .scanner-form {
+  margin-top: 0.45rem;
+  padding: 0.85rem 0.9rem;
+}
+
+.scanner-screen[data-scanner-screen="lead"] .scanner-form label {
+  gap: 0.3rem;
+}
+
+.scanner-screen[data-scanner-screen="lead"] .scanner-form textarea,
+.scanner-screen[data-scanner-screen="lead"] .scanner-form input {
+  min-height: 2.85rem;
+}
+
+.scanner-screen[data-scanner-screen="lead"] .form-actions {
+  margin-top: 0.35rem;
+}
+
+.scanner-screen[data-scanner-screen="lead"] .scanner-back-button {
+  margin-top: 0.55rem;
+}
+
 .scanner-form .form-actions {
   justify-content: flex-start;
 }
