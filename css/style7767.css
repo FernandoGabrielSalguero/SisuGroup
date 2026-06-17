@@ -49,6 +49,8 @@
   --space-md: clamp(1.5rem, 2vw, 2rem);
   --space-lg: clamp(2rem, 4vw, 4rem);
   --space-xl: clamp(3rem, 6vw, 6rem);
+  --header-offset: 4.15rem;
+  --hero-viewport-height: calc(100dvh - var(--header-offset));
 }
 
 *,
@@ -306,6 +308,32 @@ textarea {
   padding: var(--space-xl) 0 var(--space-lg);
 }
 
+@media (min-width: 761px) {
+  .hero {
+    min-height: var(--hero-viewport-height);
+    padding-block: clamp(1.1rem, 2.8vh, 2.2rem);
+    display: flex;
+    align-items: center;
+  }
+
+  .hero > .container {
+    width: var(--container);
+    margin: 0 auto;
+  }
+
+  .hero-grid,
+  .trusted-hero-grid {
+    min-height: 100%;
+    align-items: center;
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 body[data-page="pausa-viva"] .hero.hero-inner {
   padding-top: 0;
 }
@@ -317,7 +345,7 @@ body[data-page="pausa-viva"] .hero.hero-inner {
   background-repeat: no-repeat;
   background-position: center right;
   background-size: cover;
-  height: 600px;
+  min-height: var(--hero-viewport-height);
 }
 
 .hero-grid,
@@ -502,7 +530,7 @@ body[data-page="pausa-viva"] .pausa-viva-hero {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: calc(100vh - 4.15rem);
+  min-height: var(--hero-viewport-height);
   background:
     radial-gradient(circle at 14% 22%, rgba(212, 175, 55, 0.28), transparent 30%),
     radial-gradient(circle at 82% 30%, rgba(0, 31, 84, 0.1), transparent 34%),
@@ -1928,7 +1956,7 @@ body[data-page="consultoria"] .consulting-audience-copy p:last-child {
 body[data-page="blog"] .hero-blog {
   position: relative;
   overflow: hidden;
-  min-height: clamp(21rem, 46vh, 27rem);
+  min-height: var(--hero-viewport-height);
   background:
     linear-gradient(115deg, rgba(0, 22, 60, 0.82) 0%, rgba(0, 31, 84, 0.68) 42%, rgba(0, 31, 84, 0.44) 100%),
     linear-gradient(180deg, rgba(247, 244, 238, 0.08), rgba(247, 244, 238, 0.22)),
@@ -3636,7 +3664,7 @@ body[data-page="contacto"] .hero-contact {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  min-height: clamp(34rem, 78vh, 46rem);
+  min-height: var(--hero-viewport-height);
   display: flex;
   align-items: center;
   background-color: #0b1f3c;
@@ -3674,7 +3702,7 @@ body[data-page="contacto"] .hero-contact .hero-grid {
   position: relative;
   align-items: center;
   gap: clamp(1.5rem, 4vw, 4rem);
-  min-height: clamp(34rem, 78vh, 46rem);
+  min-height: 100%;
 }
 
 body[data-page="contacto"] .hero-contact .hero-copy {
@@ -4057,7 +4085,7 @@ body[data-page="contacto"] .form-actions {
 body[data-page="confiaron"] .hero-trusted {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - 4.15rem);
+  min-height: var(--hero-viewport-height);
   display: flex;
   align-items: center;
   background:
@@ -4087,6 +4115,94 @@ body[data-page="confiaron"] .hero-trusted p:not(.eyebrow) {
 
 body[data-page="confiaron"] .trusted-hero-visual {
   width: 100%;
+}
+
+@media (min-width: 761px) and (max-height: 860px) {
+  .hero {
+    padding-block: 1rem;
+  }
+
+  body[data-page="inicio"] .hero-home .hero-copy {
+    max-width: 34rem;
+  }
+
+  body[data-page="inicio"] .hero-home h1,
+  body[data-page="blog"] .hero-blog h1,
+  body[data-page="contacto"] .hero-contact .hero-copy h1,
+  body[data-page="confiaron"] .hero-trusted h1 {
+    font-size: clamp(2.6rem, 4.6vw, 4.25rem);
+  }
+
+  body[data-page="blog"] .hero-blog .hero-copy,
+  body[data-page="contacto"] .hero-contact .hero-copy {
+    padding-block: 0.5rem 1rem;
+  }
+
+  body[data-page="blog"] .hero-blog p:not(.eyebrow),
+  body[data-page="contacto"] .hero-contact .hero-copy > p:first-of-type,
+  body[data-page="confiaron"] .hero-trusted p:not(.eyebrow) {
+    font-size: 0.98rem;
+    line-height: 1.58;
+  }
+
+  body[data-page="pausa-viva"] .pausa-viva-grid {
+    row-gap: 1rem;
+    gap: 1rem 2rem;
+  }
+
+  body[data-page="pausa-viva"] .pausa-viva-system {
+    min-height: clamp(18rem, 30vw, 24rem);
+  }
+
+  body[data-page="pausa-viva"] .system-card {
+    min-height: clamp(16rem, 24vw, 20rem);
+  }
+
+  body[data-page="pausa-viva"] .pausa-viva-system .hero-main-logo-large {
+    max-height: min(50vh, 18rem);
+  }
+
+  body[data-page="pausa-viva"] .pausa-viva-hero .hero-copy h1 {
+    font-size: clamp(2.6rem, 4.4vw, 4.2rem);
+    margin-bottom: 0.75rem;
+  }
+
+  body[data-page="pausa-viva"] .hero-kicker {
+    margin-bottom: 0.45rem;
+    font-size: 0.95rem;
+  }
+
+  body[data-page="pausa-viva"] .hero-lead {
+    margin-bottom: 0.9rem;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  body[data-page="pausa-viva"] .pausa-viva-hero .button-row {
+    gap: 0.7rem;
+  }
+
+  body[data-page="pausa-viva"] .pausa-viva-hero .hero-quote-grid {
+    gap: 0.75rem;
+  }
+
+  body[data-page="pausa-viva"] .pausa-viva-hero .quote-pair {
+    padding: 0.8rem 0.95rem;
+  }
+
+  body[data-page="pausa-viva"] .pausa-viva-hero .book-quote {
+    font-size: 1rem;
+    line-height: 1.22;
+  }
+
+  body[data-page="pausa-viva"] .hero-note,
+  body[data-page="pausa-viva"] .support-copy {
+    font-size: 0.88rem;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit {
+    width: min(34rem, 72vw);
+  }
 }
 
 body[data-page="confiaron"] .trusted-orbit {
