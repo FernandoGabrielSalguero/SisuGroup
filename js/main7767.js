@@ -1784,9 +1784,7 @@ function closeDemoModal() {
   }
 }
 
-if (modal && shouldShowModal()) {
-  modalTimer = window.setTimeout(openModal, MODAL_DELAY_MS);
-
+if (modal) {
   modal.addEventListener("click", (event) => {
     if (event.target === modal) {
       closeModal();
@@ -1800,6 +1798,10 @@ if (modal && shouldShowModal()) {
       closeModal();
     });
   });
+}
+
+if (modal && shouldShowModal()) {
+  modalTimer = window.setTimeout(openModal, MODAL_DELAY_MS);
 }
 
 if (modalPanel) {
