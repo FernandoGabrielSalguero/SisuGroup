@@ -163,9 +163,25 @@ textarea {
   white-space: nowrap;
 }
 
+.nav-cache-button {
+  min-height: 2.15rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
 .site-header .site-nav a,
 .site-header .brand,
-.site-header .menu-toggle {
+.site-header .menu-toggle,
+.site-header .nav-cache-button {
   color: var(--white);
 }
 
@@ -189,6 +205,13 @@ textarea {
 .footer-nav a:hover::after,
 .footer-nav a:focus-visible::after {
   transform: scaleX(1);
+}
+
+.nav-cache-button:hover,
+.nav-cache-button:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.54);
 }
 
 .button,
@@ -3030,13 +3053,21 @@ textarea:focus-visible,
     color: var(--navy);
   }
 
+  .site-header .nav-cache-button {
+    justify-self: start;
+    color: var(--navy);
+    background: rgba(221, 226, 246, 0.72);
+    border-color: rgba(0, 31, 84, 0.16);
+  }
+
   .site-nav.is-open {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
   }
 
-  .site-nav a {
+  .site-nav a,
+  .nav-cache-button {
     padding: 0.55rem 0;
   }
 

@@ -2,6 +2,7 @@ const body = document.body;
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
+const clearCacheButtons = document.querySelectorAll("[data-clear-site-cache]");
 const revealItems = document.querySelectorAll(".reveal");
 const typewriterItems = document.querySelectorAll("[data-typewriter-text]");
 const trustedOrbitLogos = document.querySelectorAll(".trusted-orbit-logo");
@@ -256,6 +257,43 @@ function initImpulsaIntegrations() {
   ]).catch((error) => {
     console.error("Error al cargar integraciones externas de Impulsa:", error);
   });
+}
+
+async function refreshSiteAssets() {
+  const currentUrl = new URL(window.location.href);
+  currentUrl.searchParams.set("refresh", String(Date.now()));
+
+  try {
+    sessionStorage.clear();
+  } catch (error) {
+    console.warn("No pudimos limpiar sessionStorage:", error);
+  }
+
+  try {
+    localStorage.clear();
+  } catch (error) {
+    console.warn("No pudimos limpiar localStorage:", error);
+  }
+
+  if ("caches" in window) {
+    try {
+      const cacheKeys = await caches.keys();
+      await Promise.all(cacheKeys.map((key) => caches.delete(key)));
+    } catch (error) {
+      console.warn("No pudimos limpiar Cache Storage:", error);
+    }
+  }
+
+  if ("serviceWorker" in navigator) {
+    try {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(registrations.map((registration) => registration.unregister()));
+    } catch (error) {
+      console.warn("No pudimos desregistrar service workers:", error);
+    }
+  }
+
+  window.location.replace(currentUrl.toString());
 }
 
 async function postJson(url, payload) {
@@ -1279,6 +1317,27 @@ if (menuToggle && nav) {
     });
   });
 }
+
+clearCacheButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    if (menuToggle && nav) {
+      menuToggle.setAttribute("aria-expanded", "false");
+      nav.classList.remove("is-open");
+    }
+
+    button.disabled = true;
+    button.textContent = "Actualizando...";
+
+    try {
+      await refreshSiteAssets();
+    } catch (error) {
+      console.error("No pudimos forzar la actualizacion del sitio:", error);
+      button.disabled = false;
+      button.textContent = "Reintentar";
+      window.location.reload();
+    }
+  });
+});
 
 initTrustedOrbitTouchZoom();
 
