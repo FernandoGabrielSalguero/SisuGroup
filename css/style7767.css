@@ -1956,7 +1956,7 @@ body[data-page="consultoria"] .consulting-audience-copy p:last-child {
 body[data-page="blog"] .hero-blog {
   position: relative;
   overflow: hidden;
-  min-height: var(--hero-viewport-height);
+  min-height: clamp(28rem, 68vh, 42rem);
   background:
     linear-gradient(115deg, rgba(0, 22, 60, 0.82) 0%, rgba(0, 31, 84, 0.68) 42%, rgba(0, 31, 84, 0.44) 100%),
     linear-gradient(180deg, rgba(247, 244, 238, 0.08), rgba(247, 244, 238, 0.22)),
@@ -1989,7 +1989,7 @@ body[data-page="blog"] .hero-blog::after {
 body[data-page="blog"] .hero-blog .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  place-items: start center;
+  place-items: center;
   min-height: inherit;
 }
 
@@ -2000,7 +2000,7 @@ body[data-page="blog"] .hero-blog .hero-copy {
   width: 100%;
   margin-inline: auto;
   justify-self: center;
-  padding-block: clamp(0.45rem, 1.2vw, 1rem) clamp(2.15rem, 4vw, 3.1rem);
+  padding-block: clamp(1rem, 2.4vh, 1.75rem);
   text-align: center;
 }
 
