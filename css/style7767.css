@@ -4393,6 +4393,91 @@ body[data-page="confiaron"] .trusted-orbit-logo-12 {
   animation-delay: 8.8s;
 }
 
+@media (min-width: 981px) {
+  body[data-page="confiaron"] .trusted-center {
+    transform: translateY(18%);
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo {
+    width: clamp(3.35rem, 4.8vw, 4.65rem);
+    padding: 0.5rem;
+    border-radius: 1rem;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-1 {
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-2 {
+    top: 11%;
+    right: 20%;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-3 {
+    top: 25%;
+    right: 8%;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-4 {
+    top: 43%;
+    right: 2%;
+    bottom: auto;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-5 {
+    top: 66%;
+    right: 11%;
+    bottom: auto;
+    left: auto;
+    transform: none;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-6 {
+    top: 77%;
+    right: 26%;
+    bottom: auto;
+    left: auto;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-7 {
+    top: 77%;
+    left: 26%;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-8 {
+    top: 66%;
+    left: 11%;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-9 {
+    top: 43%;
+    left: 2%;
+    transform: none;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-10 {
+    top: 25%;
+    left: 8%;
+    right: auto;
+    transform: none;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-11 {
+    top: 11%;
+    left: 20%;
+    bottom: auto;
+    transform: none;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo-12 {
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 body[data-page="confiaron"] .trusted-heading {
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
