@@ -43,7 +43,7 @@
   </header>
 
   <main id="main-content">
-        <section class="section section-soft consulting-audience">
+    <section class="section section-soft consulting-audience">
       <div class="container two-column consulting-audience-grid">
         <div class="reveal consulting-audience-media">
           <img src="assets/img/Foto para la sección de la consultora.png"
@@ -55,7 +55,7 @@
           <p>Este servicio está pensado para empresas extranjeras que quieren desembarcar en Argentina, marcas que
             buscan reingresar al mercado local, compañías que necesitan representación estratégica sin estructura propia
             o empresas ya presentes en el país que requieren apoyo comercial, logístico o de marketing.</p>
-            <a class="button button-primary" href="#demo-pausa-viva" data-demo-trigger>Agendar cita virtual</a>
+          <a class="button button-primary" href="#demo-pausa-viva" data-demo-trigger>Agendar cita virtual</a>
         </div>
       </div>
     </section>

@@ -1152,7 +1152,7 @@ body[data-page="consultoria"] .consulting-audience-grid {
 
 body[data-page="consultoria"] .consulting-audience-media {
   position: relative;
-  width: min(100%, 38rem);
+  width: min(100%, 32rem);
   margin-inline: auto;
   border-radius: clamp(1.5rem, 3vw, 2rem);
   overflow: hidden;
@@ -1161,9 +1161,12 @@ body[data-page="consultoria"] .consulting-audience-media {
 }
 
 body[data-page="consultoria"] .consulting-audience-media img {
+  display: block;
   width: 100%;
+  max-height: min(68vh, 32rem);
+  height: auto;
   min-height: 0;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0;
   box-shadow: none;
 }
@@ -3642,7 +3645,7 @@ textarea:focus-visible,
   }
 
   body[data-page="consultoria"] .consulting-audience-media img {
-    min-height: 16rem;
+    max-height: min(52vh, 24rem);
   }
 }
 

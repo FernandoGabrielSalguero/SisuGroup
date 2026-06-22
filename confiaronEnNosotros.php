@@ -45,7 +45,7 @@
     <section class="hero hero-inner hero-trusted">
       <div class="container trusted-hero-grid">
         <div class="hero-copy reveal">
-          <h1>Confiaron en Nosotros.</h1>
+          <h1>Confiaron en Nosotros</h1>
           <p>Estas marcas han confiado en nosotros a través de nuestros 30 años de experiencias compartidas.</p>
         </div>
         <div class="trusted-hero-visual reveal">
