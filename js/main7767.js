@@ -1274,7 +1274,7 @@ function ensureDemoModal() {
           <div class="demo-modal-copy">
             <p class="scanner-brand">Sistema Pausa Viva · Sisu Group</p>
             <h2 id="demo-modal-title">Conversemos sobre tu Demo Pausa Viva</h2>
-            <p id="demo-modal-description">Con mucho gusto y sin compromiso, podemos coordinar un breve encuentro para conocernos mejor y contarles cómo podemos acompañarlos. La cita tendrá una duración de 15 minutos.</p>
+            <p id="demo-modal-description">Con gusto podemos coordinar una breve reunión para conocernos mejor y compartir cómo podemos acompañarlos. Será un encuentro de 15 minutos.</p>
           </div>
           <form class="contact-form demo-form" data-mail-form data-form-context="demo" novalidate>
             <div class="field-grid">

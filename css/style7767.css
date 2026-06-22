@@ -2538,6 +2538,7 @@ textarea:focus-visible,
 }
 
 .demo-form textarea {
+  height: 4.5rem;
   min-height: 4.5rem;
   resize: vertical;
 }
@@ -3437,6 +3438,7 @@ textarea:focus-visible,
   }
 
   .demo-form textarea {
+    height: 3.9rem;
     min-height: 3.9rem;
   }
 
