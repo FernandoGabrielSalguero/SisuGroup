@@ -1302,8 +1302,8 @@ function ensureDemoModal() {
             <div class="form-actions">
               <button class="button button-primary" type="submit">Enviar solicitud</button>
             </div>
-            <p class="form-feedback" data-form-feedback role="status" aria-live="polite"></p>
             <p id="demo-modal-description">La cita tendrá una duración de 15 minutos.</p>
+            <p class="form-feedback" data-form-feedback role="status" aria-live="polite"></p>
             </form>
             </div>
       </div>
