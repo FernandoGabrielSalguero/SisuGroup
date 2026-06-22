@@ -2512,7 +2512,7 @@ textarea:focus-visible,
   position: relative;
   z-index: 1;
   margin-top: 0.5rem;
-  padding: 1.1rem;
+  padding: 1rem 1rem 0.7rem;
   background: rgba(255, 255, 255, 0.74);
   border-radius: 1.35rem;
 }
@@ -2538,13 +2538,14 @@ textarea:focus-visible,
 }
 
 .demo-form textarea {
-  min-height: 5.6rem;
+  min-height: 4.5rem;
   resize: vertical;
 }
 
 .demo-modal .form-actions {
   justify-content: center;
   width: 100%;
+  margin-top: 0.2rem;
 }
 
 .demo-modal .form-actions .button {
@@ -3412,7 +3413,7 @@ textarea:focus-visible,
 
   .demo-modal .contact-form {
     margin-top: 0.45rem;
-    padding: 0.85rem;
+    padding: 0.8rem 0.8rem 0.55rem;
     border-radius: 1.1rem;
   }
 
@@ -3436,7 +3437,7 @@ textarea:focus-visible,
   }
 
   .demo-form textarea {
-    min-height: 4.4rem;
+    min-height: 3.9rem;
   }
 
   .demo-modal .form-actions {
