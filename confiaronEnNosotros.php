@@ -21,7 +21,7 @@
       min-height: calc(100vh - var(--trusted-header-offset));
       display: flex;
       align-items: stretch;
-      padding-block: clamp(0.9rem, 1.8vh, 1.5rem);
+      padding-block: clamp(0.8rem, 1.6vh, 1.35rem);
       overflow: clip;
     }
 
@@ -31,33 +31,37 @@
       grid-template-rows: auto minmax(0, 1fr);
       align-items: start;
       justify-items: center;
-      gap: clamp(0.9rem, 1.8vh, 1.5rem);
+      gap: clamp(0.7rem, 1.3vh, 1.1rem);
     }
 
+    .hero-trusted .hero-text,
     .hero-trusted .hero-copy {
       display: grid;
-      gap: clamp(0.5rem, 1vh, 0.9rem);
-      max-width: min(58rem, 100%);
+      gap: clamp(0.35rem, 0.9vh, 0.75rem);
+      max-width: min(60rem, 100%);
       text-align: center;
       align-self: start;
       justify-items: center;
-      padding-top: clamp(0.15rem, 0.8vh, 0.5rem);
+      padding-top: clamp(0.1rem, 0.6vh, 0.4rem);
     }
 
+    .hero-trusted .hero-text h1,
     .hero-trusted .hero-copy h1 {
       margin: 0;
-      font-size: clamp(2.2rem, 4.4vw, 4.5rem);
-      line-height: 1;
+      font-size: clamp(2.4rem, 4.1vw, 4.15rem);
+      line-height: 0.98;
       white-space: nowrap;
     }
 
+    .hero-trusted .hero-text p,
     .hero-trusted .hero-copy p {
       margin: 0 auto;
-      max-width: 52ch;
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
-      line-height: 1.35;
+      max-width: 48rem;
+      font-size: clamp(1rem, 1.35vw, 1.16rem);
+      line-height: 1.25;
     }
 
+    .hero-trusted .hero-logos,
     .hero-trusted .trusted-hero-visual {
       display: flex;
       align-items: center;
@@ -69,20 +73,20 @@
 
     .hero-trusted .trusted-orbit {
       position: relative;
-      width: min(100%, 70rem);
-      height: min(100%, 30rem);
+      width: min(100%, 78rem);
+      height: min(100%, 27rem);
       max-height: 100%;
       margin-inline: auto;
-      padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 1.5rem) 0;
+      padding: clamp(0.2rem, 0.5vw, 0.65rem) clamp(0.75rem, 1.3vw, 1.2rem) 0;
     }
 
     .hero-trusted .trusted-center {
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -40%);
-      width: clamp(10.5rem, 15vw, 15rem);
-      z-index: 3;
+      transform: translate(-50%, -44%);
+      width: clamp(10rem, 13.5vw, 13.75rem);
+      z-index: 4;
     }
 
     .hero-trusted .trusted-center img {
@@ -95,20 +99,20 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -42%);
+      transform: translate(-50%, -44%);
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.14);
       pointer-events: none;
     }
 
     .hero-trusted .trusted-orbit-ring-one {
-      width: min(72%, 42rem);
-      height: min(50%, 15rem);
+      width: min(51%, 28rem);
+      height: min(52%, 13.5rem);
     }
 
     .hero-trusted .trusted-orbit-ring-two {
-      width: min(92%, 56rem);
-      height: min(72%, 22rem);
+      width: min(72%, 42rem);
+      height: min(70%, 17.25rem);
       border-color: rgba(255, 255, 255, 0.08);
     }
 
@@ -116,7 +120,7 @@
       position: absolute;
       display: grid;
       place-items: center;
-      width: clamp(5.5rem, 8.5vw, 8.5rem);
+      width: clamp(5.7rem, 6.8vw, 7.6rem);
       z-index: 2;
     }
 
@@ -130,63 +134,63 @@
 
     .hero-trusted .trusted-orbit-logo-1 {
       top: 8%;
-      left: 18%;
+      left: 4%;
     }
 
     .hero-trusted .trusted-orbit-logo-2 {
-      top: 2%;
-      left: 35%;
+      top: 18%;
+      left: 15%;
     }
 
     .hero-trusted .trusted-orbit-logo-3 {
-      top: 1%;
-      left: 52%;
+      top: 2%;
+      left: 28%;
     }
 
     .hero-trusted .trusted-orbit-logo-4 {
-      top: 3%;
-      left: 69%;
+      top: 2%;
+      left: 62%;
     }
 
     .hero-trusted .trusted-orbit-logo-5 {
-      top: 10%;
-      left: 84%;
-    }
-
-    .hero-trusted .trusted-orbit-logo-6 {
-      top: 39%;
-      left: 9%;
-    }
-
-    .hero-trusted .trusted-orbit-logo-7 {
-      top: 32%;
-      left: 24%;
-    }
-
-    .hero-trusted .trusted-orbit-logo-8 {
-      top: 33%;
+      top: 22%;
       left: 77%;
     }
 
+    .hero-trusted .trusted-orbit-logo-6 {
+      top: 8%;
+      left: 90%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-7 {
+      top: 66%;
+      left: 10%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-8 {
+      top: 54%;
+      left: 24%;
+    }
+
     .hero-trusted .trusted-orbit-logo-9 {
-      top: 40%;
-      left: 92%;
+      top: 62%;
+      left: 62%;
     }
 
     .hero-trusted .trusted-orbit-logo-10 {
-      top: 69%;
-      left: 26%;
+      top: 52%;
+      left: 76%;
     }
 
     .hero-trusted .trusted-orbit-logo-11 {
-      top: 70%;
-      left: 73%;
+      top: 58%;
+      left: 90%;
     }
 
     .hero-trusted .trusted-orbit-logo-12 {
-      top: 73%;
-      left: 50%;
-      width: clamp(6rem, 9vw, 9rem);
+      top: 70%;
+      left: 41%;
+      width: clamp(5.9rem, 7.4vw, 8.2rem);
       transform: translateX(-50%);
     }
 
@@ -201,30 +205,45 @@
       }
 
       .hero-trusted .trusted-orbit {
+        width: min(100%, 68rem);
         height: min(100%, 24rem);
       }
 
       .hero-trusted .trusted-center {
+        transform: translate(-50%, -42%);
         width: clamp(9rem, 24vw, 12rem);
       }
 
       .hero-trusted .trusted-orbit-logo {
-        width: clamp(4.5rem, 11vw, 6.75rem);
+        width: clamp(4.5rem, 9vw, 6.4rem);
+      }
+
+      .hero-trusted .trusted-orbit-ring-one {
+        width: min(58%, 24rem);
+        height: min(44%, 10rem);
+      }
+
+      .hero-trusted .trusted-orbit-ring-two {
+        width: min(82%, 34rem);
+        height: min(62%, 14rem);
       }
     }
 
     @media (max-width: 640px) {
+      .hero-trusted .hero-text h1,
       .hero-trusted .hero-copy h1 {
         white-space: normal;
         font-size: clamp(1.95rem, 8vw, 3rem);
       }
 
+      .hero-trusted .hero-text p,
       .hero-trusted .hero-copy p {
         max-width: 32ch;
         font-size: clamp(0.95rem, 3.4vw, 1.05rem);
       }
 
       .hero-trusted .trusted-orbit {
+        width: 100%;
         height: min(23rem, 50vh);
         padding-inline: 0.5rem;
       }
@@ -329,11 +348,11 @@
   <main id="main-content">
     <section class="hero hero-inner hero-trusted">
       <div class="container trusted-hero-grid">
-        <div class="hero-copy reveal">
+        <div class="hero-copy hero-text reveal">
           <h1>Confiaron en nosotros</h1>
           <p>Estas marcas han confiado en nosotros a través de nuestros 30 años de experiencias compartidas.</p>
         </div>
-        <div class="trusted-hero-visual reveal">
+        <div class="trusted-hero-visual hero-logos reveal">
           <div class="trusted-orbit" aria-label="Marcas que confiaron en Sisu Group">
             <div class="trusted-center">
               <img src="assets/marca/Marca Consultora de negocios Sisu Group.png" alt="Sisu Group" width="259"
