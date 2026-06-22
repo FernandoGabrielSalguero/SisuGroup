@@ -15,6 +15,285 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
   <link rel="stylesheet" href="css/style7767.css?v=<?php echo time(); ?>">
+  <style>
+    .hero-trusted {
+      --trusted-header-offset: clamp(5.5rem, 8vh, 7rem);
+      min-height: calc(100vh - var(--trusted-header-offset));
+      padding-block: clamp(1rem, 2vh, 1.75rem);
+      overflow: clip;
+    }
+
+    .hero-trusted .trusted-hero-grid {
+      min-height: 100%;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      align-items: center;
+      justify-items: center;
+      gap: clamp(0.75rem, 1.8vh, 1.5rem);
+    }
+
+    .hero-trusted .hero-copy {
+      display: grid;
+      gap: clamp(0.5rem, 1vh, 0.9rem);
+      max-width: min(58rem, 100%);
+      text-align: center;
+    }
+
+    .hero-trusted .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.4vw, 4.5rem);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .hero-trusted .hero-copy p {
+      margin: 0 auto;
+      max-width: 52ch;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      line-height: 1.35;
+    }
+
+    .hero-trusted .trusted-hero-visual {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      min-height: 0;
+    }
+
+    .hero-trusted .trusted-orbit {
+      position: relative;
+      width: min(100%, 70rem);
+      height: min(52vh, 34rem);
+      max-height: 100%;
+      margin-inline: auto;
+      padding: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .hero-trusted .trusted-center {
+      position: absolute;
+      left: 50%;
+      bottom: clamp(0.25rem, 2vh, 1.25rem);
+      transform: translateX(-50%);
+      width: clamp(10.5rem, 15vw, 15rem);
+      z-index: 3;
+    }
+
+    .hero-trusted .trusted-center img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-trusted .trusted-orbit-ring {
+      position: absolute;
+      left: 50%;
+      bottom: clamp(3.5rem, 8vh, 6rem);
+      transform: translateX(-50%);
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      pointer-events: none;
+    }
+
+    .hero-trusted .trusted-orbit-ring-one {
+      width: min(82%, 48rem);
+      height: min(58%, 19rem);
+    }
+
+    .hero-trusted .trusted-orbit-ring-two {
+      width: min(96%, 62rem);
+      height: min(84%, 26rem);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-trusted .trusted-orbit-logo {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: clamp(5.5rem, 8.5vw, 8.5rem);
+      z-index: 2;
+    }
+
+    .hero-trusted .trusted-orbit-logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.16));
+    }
+
+    .hero-trusted .trusted-orbit-logo-1 {
+      top: 12%;
+      left: 17%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-2 {
+      top: 7%;
+      left: 35%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-3 {
+      top: 8%;
+      left: 52%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-4 {
+      top: 10%;
+      left: 70%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-5 {
+      top: 17%;
+      left: 86%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-6 {
+      top: 42%;
+      left: 11%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-7 {
+      top: 38%;
+      left: 24%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-8 {
+      top: 40%;
+      left: 78%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-9 {
+      top: 42%;
+      left: 90%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-10 {
+      top: 64%;
+      left: 25%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-11 {
+      top: 66%;
+      left: 74%;
+    }
+
+    .hero-trusted .trusted-orbit-logo-12 {
+      top: 57%;
+      left: 50%;
+      width: clamp(6rem, 9vw, 9rem);
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 900px) {
+      .hero-trusted {
+        min-height: auto;
+        padding-block: 1.25rem 2rem;
+      }
+
+      .hero-trusted .trusted-hero-grid {
+        gap: 1rem;
+      }
+
+      .hero-trusted .trusted-orbit {
+        height: min(44vh, 28rem);
+      }
+
+      .hero-trusted .trusted-center {
+        width: clamp(9rem, 24vw, 12rem);
+      }
+
+      .hero-trusted .trusted-orbit-logo {
+        width: clamp(4.5rem, 11vw, 6.75rem);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-trusted .hero-copy h1 {
+        white-space: normal;
+        font-size: clamp(1.95rem, 8vw, 3rem);
+      }
+
+      .hero-trusted .hero-copy p {
+        max-width: 32ch;
+        font-size: clamp(0.95rem, 3.4vw, 1.05rem);
+      }
+
+      .hero-trusted .trusted-orbit {
+        height: min(26rem, 52vh);
+        padding-inline: 0.5rem;
+      }
+
+      .hero-trusted .trusted-orbit-ring-one {
+        width: 88%;
+        height: 48%;
+      }
+
+      .hero-trusted .trusted-orbit-ring-two {
+        width: 100%;
+        height: 70%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-1 {
+        top: 11%;
+        left: 14%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-2 {
+        top: 5%;
+        left: 34%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-3 {
+        top: 4%;
+        left: 54%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-4 {
+        top: 7%;
+        left: 74%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-5 {
+        top: 17%;
+        left: 89%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-6 {
+        top: 42%;
+        left: 7%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-7 {
+        top: 35%;
+        left: 23%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-8 {
+        top: 35%;
+        left: 78%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-9 {
+        top: 43%;
+        left: 95%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-10 {
+        top: 63%;
+        left: 20%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-11 {
+        top: 63%;
+        left: 79%;
+      }
+
+      .hero-trusted .trusted-orbit-logo-12 {
+        top: 54%;
+        left: 50%;
+      }
+    }
+  </style>
 </head>
 
 <body data-page="confiaron">
@@ -45,7 +324,7 @@
     <section class="hero hero-inner hero-trusted">
       <div class="container trusted-hero-grid">
         <div class="hero-copy reveal">
-          <h1>Confiaron en Nosotros</h1>
+          <h1>Confiaron en nosotros</h1>
           <p>Estas marcas han confiado en nosotros a través de nuestros 30 años de experiencias compartidas.</p>
         </div>
         <div class="trusted-hero-visual reveal">
