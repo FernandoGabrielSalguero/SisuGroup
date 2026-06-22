@@ -4279,7 +4279,7 @@ body[data-page="confiaron"] .trusted-orbit-logo {
   z-index: 3;
   display: grid;
   place-items: center;
-  width: var(--brand-size, clamp(5rem, 6vw, 7rem));
+  width: var(--brand-size, clamp(6.2rem, 7.5vw, 8.8rem));
   aspect-ratio: 1.75 / 1;
   padding: clamp(0.55rem, 0.9vw, 0.8rem);
   border-radius: 1rem;
