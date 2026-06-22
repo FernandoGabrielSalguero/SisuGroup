@@ -11,24 +11,18 @@
   <meta property="og:description"
     content="Contenidos sobre Pausa Viva, claridad mental, expansion de negocios y estrategia.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="blog.html">
+  <meta property="og:url" content="blog.php">
   <meta property="og:image" content="assets/marca/Marca Pausa Viva.png">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <script>
-    window.__SISU_ASSET_REFRESH__ = (() => {
-      const refreshToken = new URLSearchParams(window.location.search).get("refresh");
-      return refreshToken ? "?refresh=" + encodeURIComponent(refreshToken) : "";
-    })();
-    document.write('<link rel="stylesheet" href="css/style7767.css' + window.__SISU_ASSET_REFRESH__ + '">');
-  </script>
+  <link rel="stylesheet" href="css/style7767.css?v=<?php echo time(); ?>">
 </head>
 
 <body data-page="blog">
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
   <header class="site-header" data-header>
     <div class="container header-shell">
-      <a class="brand" href="index.html" aria-label="Ir a inicio Sisu Group">
+      <a class="brand" href="index.php" aria-label="Ir a inicio Sisu Group">
         <img class="brand-logo" src="assets/marca/Marca Consultora de negocios Sisu Group.png" alt="Logo Sisu Group"
           width="259" height="264">
       </a>
@@ -36,14 +30,14 @@
         <span></span><span></span><span></span><span class="sr-only">Abrir menu</span>
       </button>
       <nav class="site-nav" id="primary-nav" aria-label="Principal" data-nav>
-        <a href="index.html">Inicio</a>
-        <a href="pausa-viva.html">Pausa Viva</a>
-        <a href="consultoria.html">Consultoria de negocios</a>
-        <a href="blog.html" aria-current="page">Blog</a>
-        <a href="confiaronEnNosotros.html">Confiaron en nosotros</a>
-        <a href="contacto.html">Contacto</a>
+        <a href="index.php">Inicio</a>
+        <a href="pausa-viva.php">Pausa Viva</a>
+        <a href="consultoria.php">Consultoria de negocios</a>
+        <a href="blog.php" aria-current="page">Blog</a>
+        <a href="confiaronEnNosotros.php">Confiaron en nosotros</a>
+        <a href="contacto.php">Contacto</a>
       </nav>
-      <a class="button button-primary button-header" href="contacto.html#pausa-viva-contacto">Solicitar Demo Pausa
+      <a class="button button-primary button-header" href="contacto.php#pausa-viva-contacto">Solicitar Demo Pausa
         Viva</a>
     </div>
   </header>
@@ -100,19 +94,16 @@
       </div>
       <div>
         <h2>Navegacion</h2>
-        <nav class="footer-nav" aria-label="Footer"><a href="index.html">Inicio</a><a href="pausa-viva.html">Pausa
-            Viva</a><a href="consultoria.html">Consultoria de negocios</a><a href="blog.html">Blog</a><a
-            href="confiaronEnNosotros.html">Confiaron en nosotros</a><a href="contacto.html">Contacto</a></nav>
+        <nav class="footer-nav" aria-label="Footer"><a href="index.php">Inicio</a><a href="pausa-viva.php">Pausa
+            Viva</a><a href="consultoria.php">Consultoria de negocios</a><a href="blog.php">Blog</a><a
+            href="confiaronEnNosotros.php">Confiaron en nosotros</a><a href="contacto.php">Contacto</a></nav>
       </div>
       <div>
         <h2>Contacto</h2><a href="mailto:contacto1@sisu-group.net">contacto1@sisu-group.net</a><a
           href="https://wa.me/541121753936">WhatsApp: 11 2175 3936</a><a class="button button-primary"
-          href="contacto.html#pausa-viva-contacto">Solicitar Demo Pausa Viva</a><a
-          class="button button-footer-consulting" href="consultoria.html">Quieres traer tu negocio a la Argentina?</a>
+          href="contacto.php#pausa-viva-contacto">Solicitar Demo Pausa Viva</a><a
+          class="button button-footer-consulting" href="consultoria.php">Quieres traer tu negocio a la Argentina?</a>
       </div>
-    </div>
-    <div class="footer-legal">
-      <button class="footer-refresh-button" type="button" data-clear-site-cache>Todos los derechos reservados</button>
     </div>
   </footer>
 
@@ -206,9 +197,7 @@
     </div>
   </div>
 
-  <script>
-    document.write('<script src="js/main7767.js' + (window.__SISU_ASSET_REFRESH__ || '') + '"><\/script>');
-  </script>
+  <script src="js/main7767.js?v=<?php echo time(); ?>"></script>
 </body>
 
 </html>

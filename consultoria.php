@@ -4,30 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confiaron en nosotros | Sisu Group</title>
+  <title>Consultoría de negocios | Sisu Group</title>
   <meta name="description"
-    content="Marcas, empresas y organizaciones que confiaron en Sisu Group para acompañar procesos de expansión, estrategia, bienestar organizacional y transformación.">
-  <meta property="og:title" content="Confiaron en nosotros | Sisu Group">
-  <meta property="og:description" content="Clientes y marcas que confiaron en Sisu Group.">
+    content="Sisu Group actúa como oficina de transición en Argentina para marcas y empresas que buscan entrar, reingresar o expandirse en el mercado local.">
+  <meta property="og:title" content="Consultoría de negocios | Sisu Group">
+  <meta property="og:description"
+    content="Oficina estratégica y operativa para entrada, reentrada o expansión en Argentina.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="confiaronEnNosotros.html">
+  <meta property="og:url" content="consultoria.php">
   <meta property="og:image" content="assets/marca/Marca Consultora de negocios Sisu Group.png">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  <script>
-    window.__SISU_ASSET_REFRESH__ = (() => {
-      const refreshToken = new URLSearchParams(window.location.search).get("refresh");
-      return refreshToken ? "?refresh=" + encodeURIComponent(refreshToken) : "";
-    })();
-    document.write('<link rel="stylesheet" href="css/style7767.css' + window.__SISU_ASSET_REFRESH__ + '">');
-  </script>
+  <link rel="stylesheet" href="css/style7767.css?v=<?php echo time(); ?>">
 </head>
 
-<body data-page="confiaron">
+<body data-page="consultoria">
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
   <header class="site-header" data-header>
     <div class="container header-shell">
-      <a class="brand" href="index.html" aria-label="Ir a inicio Sisu Group">
+      <a class="brand" href="index.php" aria-label="Ir a inicio Sisu Group">
         <img class="brand-logo" src="assets/marca/Marca Consultora de negocios Sisu Group.png" alt="Logo Sisu Group"
           width="259" height="264">
       </a>
@@ -35,81 +30,80 @@
         <span></span><span></span><span></span><span class="sr-only">Abrir menú</span>
       </button>
       <nav class="site-nav" id="primary-nav" aria-label="Principal" data-nav>
-        <a href="index.html">Inicio</a>
-        <a href="pausa-viva.html">Pausa Viva</a>
-        <a href="consultoria.html">Consultoría de negocios</a>
-        <a href="blog.html">Blog</a>
-        <a href="confiaronEnNosotros.html" aria-current="page">Confiaron en nosotros</a>
-        <a href="contacto.html">Contacto</a>
+        <a href="index.php">Inicio</a>
+        <a href="pausa-viva.php">Pausa Viva</a>
+        <a href="consultoria.php" aria-current="page">Consultoría de negocios</a>
+        <a href="blog.php">Blog</a>
+        <a href="confiaronEnNosotros.php">Confiaron en nosotros</a>
+        <a href="contacto.php">Contacto</a>
       </nav>
-      <a class="button button-primary button-header" href="contacto.html#pausa-viva-contacto">Solicitar Demo Pausa
+      <a class="button button-primary button-header" href="contacto.php#pausa-viva-contacto">Solicitar Demo Pausa
         Viva</a>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="hero hero-inner hero-trusted">
-      <div class="container trusted-hero-grid">
-        <div class="hero-copy reveal">
-          <h1>Confiaron en Nosotros.</h1>
-          <p>Estas marcas han confiado en nosotros a través de nuestros 30 años de experiencias compartidas.</p>
+        <section class="section section-soft consulting-audience">
+      <div class="container two-column consulting-audience-grid">
+        <div class="reveal consulting-audience-media">
+          <img src="assets/img/Foto para la sección de la consultora.png"
+            alt="Equipo de consultoría acompañando la expansión de negocios en Argentina">
         </div>
-        <div class="trusted-hero-visual reveal">
-          <div class="trusted-orbit" aria-label="Marcas que confiaron en Sisu Group">
-            <div class="trusted-center">
-              <img src="assets/marca/Marca Consultora de negocios Sisu Group.png" alt="Sisu Group" width="259"
-                height="264" decoding="async">
-            </div>
-            <div class="trusted-orbit-ring trusted-orbit-ring-one" aria-hidden="true"></div>
-            <div class="trusted-orbit-ring trusted-orbit-ring-two" aria-hidden="true"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-1" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Arcor.webp" alt="Arcor" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-2" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Energizer.webp" alt="Energizer" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-3" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Freddo.webp" alt="Freddo" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-4" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Panasonic.webp" alt="Panasonic" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-5" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Pepsi.webp" alt="Pepsi" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-6" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Rayban.webp" alt="Rayban" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-7" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Diageo.webp" alt="Diageo" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-8" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/logo+Glaciar.webp" alt="Glaciar" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-9" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Masisa.webp" alt="Masisa" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-10" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Nutresa.webp" alt="Nutresa" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-11" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Olympus.webp" alt="Olympus" width="300" height="210"
-                decoding="async"></div>
-            <div class="trusted-orbit-logo trusted-orbit-logo-12" tabindex="0"><img
-                src="assets/img/confiaron en nosotros/Logo+Persicco.webp" alt="Persicco" width="300" height="210"
-                decoding="async"></div>
-          </div>
+        <div class="reveal consulting-audience-copy">
+          <p class="eyebrow">Consultoría de negocios</p>
+          <h2>Tu oficina de transición en Argentina</h2>
+          <p>Este servicio está pensado para empresas extranjeras que quieren desembarcar en Argentina, marcas que
+            buscan reingresar al mercado local, compañías que necesitan representación estratégica sin estructura propia
+            o empresas ya presentes en el país que requieren apoyo comercial, logístico o de marketing.</p>
+            <a class="button button-primary" href="#demo-pausa-viva" data-demo-trigger>Agendar cita virtual</a>
         </div>
       </div>
     </section>
 
-    <section class="section section-cta-band trusted-cta-section">
+    <section class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Qué ofrecemos</p>
+          <h2>Una solución integral para operar en Argentina con estrategia y eficiencia</h2>
+        </div>
+        <div class="results-grid">
+          <article class="mini-card reveal">
+            <h3>Tu oficina en Argentina</h3>
+            <p>Facilitamos la entrada de empresas extranjeras al mercado argentino sin la necesidad de abrir una
+              estructura propia, ofreciendo soluciones end to end. Actuamos como tu oficina local, representando tu
+              marca y asegurando una presencia estratégica sin costos fijos innecesarios.</p>
+          </article>
+          <article class="mini-card reveal">
+            <h3>Apoyo comercial y logístico</h3>
+            <p>Desde la investigación de mercado hasta la comercialización, importación y distribución, ofrecemos un
+              soporte integral para que tu empresa opere en Argentina de manera eficiente. Nos ocupamos de todo el
+              proceso a partir del momento en que el cliente dice "Sí, quiero estar en Argentina", asegurando una
+              transición sin complicaciones. Nos encargamos de la estrategia comercial, marketing y optimización
+              logística para garantizar el éxito de tu negocio.</p>
+          </article>
+          <article class="mini-card reveal">
+            <h3>Expansión planificada</h3>
+            <p>Evita los costos y riesgos de una expansión sin planificación. Diseñamos una estrategia de entrada
+              progresiva al mercado argentino, optimizando recursos y minimizando barreras legales, operativas y
+              comerciales.</p>
+          </article>
+          <article class="mini-card reveal">
+            <h3>Soluciones a medida</h3>
+            <p>Cada empresa es única, y por eso diseñamos soluciones a medida según tus objetivos y necesidades.
+              Analizamos tu negocio y creamos estrategias específicas para lograr un crecimiento sostenible en el
+              mercado argentino.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cta-band">
       <div class="container cta-band reveal">
         <div>
-          <h2>¿Querés que tu marca sea la próxima?</h2>
-          <p>Conversemos sobre cómo Sisu Group puede acompañar tu próximo desafío.</p>
+          <h2>¿Querés desembarcar en la Argentina?</h2>
+          <p>Nos ocupamos de todo el proceso a partir del momento en que digas que sí.</p>
         </div>
-        <a class="button button-primary" href="contacto.html#formulario-contacto">Agendar cita virtual</a>
+        <a class="button button-primary" href="#demo-pausa-viva" data-demo-trigger>Agendar cita virtual</a>
       </div>
     </section>
   </main>
@@ -128,29 +122,28 @@
             aria-label="Instagram de Sisu Group"><svg viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.8A2.7 2.7 0 0 0 4.8 7.5v9a2.7 2.7 0 0 0 2.7 2.7h9a2.7 2.7 0 0 0 2.7-2.7v-9a2.7 2.7 0 0 0-2.7-2.7h-9Zm9.45 1.35a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1ZM12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 1.8A2.7 2.7 0 1 0 14.7 12 2.7 2.7 0 0 0 12 9.3Z" />
-            </svg></a><a href="https://www.linkedin.com/company/sisu-groupargentina/?viewAsMember=true" target="_blank"
-            rel="noopener noreferrer" aria-label="LinkedIn de Sisu Group">
+            </svg></a>
+          <a href="https://www.linkedin.com/company/sisu-groupargentina/?viewAsMember=true" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn de Sisu Group">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M6.94 8.98H3.56V21h3.38V8.98ZM5.25 3a1.96 1.96 0 1 0 0 3.92A1.96 1.96 0 0 0 5.25 3Zm5.33 5.98H7.34V21h3.38v-6.3c0-1.66.31-3.27 2.37-3.27 2.03 0 2.06 1.9 2.06 3.38V21h3.38v-7.02c0-3.45-.74-6.1-4.77-6.1-1.94 0-3.24 1.06-3.77 2.07h-.05V8.98Z" />
             </svg>
-          </a></div>
+          </a>
+        </div>
       </div>
       <div>
         <h2>Navegación</h2>
-        <nav class="footer-nav" aria-label="Footer"><a href="index.html">Inicio</a><a href="pausa-viva.html">Pausa
-            Viva</a><a href="consultoria.html">Consultoría de negocios</a><a href="blog.html">Blog</a><a
-            href="confiaronEnNosotros.html">Confiaron en nosotros</a><a href="contacto.html">Contacto</a></nav>
+        <nav class="footer-nav" aria-label="Footer"><a href="index.php">Inicio</a><a href="pausa-viva.php">Pausa
+            Viva</a><a href="consultoria.php">Consultoría de negocios</a><a href="blog.php">Blog</a><a
+            href="confiaronEnNosotros.php">Confiaron en nosotros</a><a href="contacto.php">Contacto</a></nav>
       </div>
       <div>
         <h2>Contacto</h2><a href="mailto:contacto1@sisu-group.net">contacto1@sisu-group.net</a><a
           href="https://wa.me/541121753936">WhatsApp: 11 2175 3936</a><a class="button button-primary"
-          href="contacto.html#pausa-viva-contacto">Solicitar Demo Pausa Viva</a><a
-          class="button button-footer-consulting" href="consultoria.html">¿Querés traer tu negocio a la Argentina?</a>
+          href="contacto.php#pausa-viva-contacto">Solicitar Demo Pausa Viva</a><a
+          class="button button-footer-consulting" href="consultoria.php">¿Querés traer tu negocio a la Argentina?</a>
       </div>
-    </div>
-    <div class="footer-legal">
-      <button class="footer-refresh-button" type="button" data-clear-site-cache>Todos los derechos reservados</button>
     </div>
   </footer>
 
@@ -234,9 +227,7 @@
       </div>
     </div>
   </div>
-  <script>
-    document.write('<script src="js/main7767.js' + (window.__SISU_ASSET_REFRESH__ || '') + '"><\/script>');
-  </script>
+  <script src="js/main7767.js?v=<?php echo time(); ?>"></script>
 </body>
 
 </html>

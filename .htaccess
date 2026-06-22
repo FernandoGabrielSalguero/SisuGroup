@@ -1,0 +1,9 @@
+DirectoryIndex index.php
+
+<FilesMatch "\.(css|js)$">
+  FileETag None
+  <IfModule mod_headers.c>
+    Header unset ETag
+    Header set Cache-Control "max-age=0, must-revalidate"
+  </IfModule>
+</FilesMatch>
