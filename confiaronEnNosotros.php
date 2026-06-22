@@ -19,17 +19,19 @@
     .hero-trusted {
       --trusted-header-offset: clamp(5.5rem, 8vh, 7rem);
       min-height: calc(100vh - var(--trusted-header-offset));
-      padding-block: clamp(1rem, 2vh, 1.75rem);
+      display: flex;
+      align-items: stretch;
+      padding-block: clamp(0.9rem, 1.8vh, 1.5rem);
       overflow: clip;
     }
 
     .hero-trusted .trusted-hero-grid {
-      min-height: 100%;
+      flex: 1;
       display: grid;
-      grid-template-rows: auto auto 1fr;
-      align-items: center;
+      grid-template-rows: auto minmax(0, 1fr);
+      align-items: start;
       justify-items: center;
-      gap: clamp(0.75rem, 1.8vh, 1.5rem);
+      gap: clamp(0.9rem, 1.8vh, 1.5rem);
     }
 
     .hero-trusted .hero-copy {
@@ -37,6 +39,9 @@
       gap: clamp(0.5rem, 1vh, 0.9rem);
       max-width: min(58rem, 100%);
       text-align: center;
+      align-self: start;
+      justify-items: center;
+      padding-top: clamp(0.15rem, 0.8vh, 0.5rem);
     }
 
     .hero-trusted .hero-copy h1 {
@@ -55,26 +60,27 @@
 
     .hero-trusted .trusted-hero-visual {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       width: 100%;
       min-height: 0;
+      align-self: stretch;
     }
 
     .hero-trusted .trusted-orbit {
       position: relative;
       width: min(100%, 70rem);
-      height: min(52vh, 34rem);
+      height: min(100%, 30rem);
       max-height: 100%;
       margin-inline: auto;
-      padding: clamp(1rem, 2vw, 1.5rem);
+      padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 1.5rem) 0;
     }
 
     .hero-trusted .trusted-center {
       position: absolute;
       left: 50%;
-      bottom: clamp(0.25rem, 2vh, 1.25rem);
-      transform: translateX(-50%);
+      top: 50%;
+      transform: translate(-50%, -40%);
       width: clamp(10.5rem, 15vw, 15rem);
       z-index: 3;
     }
@@ -88,21 +94,21 @@
     .hero-trusted .trusted-orbit-ring {
       position: absolute;
       left: 50%;
-      bottom: clamp(3.5rem, 8vh, 6rem);
-      transform: translateX(-50%);
+      top: 50%;
+      transform: translate(-50%, -42%);
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.14);
       pointer-events: none;
     }
 
     .hero-trusted .trusted-orbit-ring-one {
-      width: min(82%, 48rem);
-      height: min(58%, 19rem);
+      width: min(72%, 42rem);
+      height: min(50%, 15rem);
     }
 
     .hero-trusted .trusted-orbit-ring-two {
-      width: min(96%, 62rem);
-      height: min(84%, 26rem);
+      width: min(92%, 56rem);
+      height: min(72%, 22rem);
       border-color: rgba(255, 255, 255, 0.08);
     }
 
@@ -123,62 +129,62 @@
     }
 
     .hero-trusted .trusted-orbit-logo-1 {
-      top: 12%;
-      left: 17%;
+      top: 8%;
+      left: 18%;
     }
 
     .hero-trusted .trusted-orbit-logo-2 {
-      top: 7%;
+      top: 2%;
       left: 35%;
     }
 
     .hero-trusted .trusted-orbit-logo-3 {
-      top: 8%;
+      top: 1%;
       left: 52%;
     }
 
     .hero-trusted .trusted-orbit-logo-4 {
-      top: 10%;
-      left: 70%;
+      top: 3%;
+      left: 69%;
     }
 
     .hero-trusted .trusted-orbit-logo-5 {
-      top: 17%;
-      left: 86%;
+      top: 10%;
+      left: 84%;
     }
 
     .hero-trusted .trusted-orbit-logo-6 {
-      top: 42%;
-      left: 11%;
+      top: 39%;
+      left: 9%;
     }
 
     .hero-trusted .trusted-orbit-logo-7 {
-      top: 38%;
+      top: 32%;
       left: 24%;
     }
 
     .hero-trusted .trusted-orbit-logo-8 {
-      top: 40%;
-      left: 78%;
+      top: 33%;
+      left: 77%;
     }
 
     .hero-trusted .trusted-orbit-logo-9 {
-      top: 42%;
-      left: 90%;
+      top: 40%;
+      left: 92%;
     }
 
     .hero-trusted .trusted-orbit-logo-10 {
-      top: 64%;
-      left: 25%;
+      top: 69%;
+      left: 26%;
     }
 
     .hero-trusted .trusted-orbit-logo-11 {
-      top: 66%;
-      left: 74%;
+      top: 70%;
+      left: 73%;
     }
 
     .hero-trusted .trusted-orbit-logo-12 {
-      top: 57%;
+      top: 73%;
       left: 50%;
       width: clamp(6rem, 9vw, 9rem);
       transform: translateX(-50%);
@@ -186,8 +192,8 @@
 
     @media (max-width: 900px) {
       .hero-trusted {
-        min-height: auto;
-        padding-block: 1.25rem 2rem;
+        min-height: calc(100vh - var(--trusted-header-offset));
+        padding-block: 1rem 1.5rem;
       }
 
       .hero-trusted .trusted-hero-grid {
@@ -195,7 +201,7 @@
       }
 
       .hero-trusted .trusted-orbit {
-        height: min(44vh, 28rem);
+        height: min(100%, 24rem);
       }
 
       .hero-trusted .trusted-center {
@@ -219,77 +225,77 @@
       }
 
       .hero-trusted .trusted-orbit {
-        height: min(26rem, 52vh);
+        height: min(23rem, 50vh);
         padding-inline: 0.5rem;
       }
 
       .hero-trusted .trusted-orbit-ring-one {
-        width: 88%;
-        height: 48%;
+        width: 84%;
+        height: 42%;
       }
 
       .hero-trusted .trusted-orbit-ring-two {
         width: 100%;
-        height: 70%;
+        height: 62%;
       }
 
       .hero-trusted .trusted-orbit-logo-1 {
-        top: 11%;
+        top: 8%;
         left: 14%;
       }
 
       .hero-trusted .trusted-orbit-logo-2 {
-        top: 5%;
+        top: 2%;
         left: 34%;
       }
 
       .hero-trusted .trusted-orbit-logo-3 {
-        top: 4%;
+        top: 1%;
         left: 54%;
       }
 
       .hero-trusted .trusted-orbit-logo-4 {
-        top: 7%;
+        top: 4%;
         left: 74%;
       }
 
       .hero-trusted .trusted-orbit-logo-5 {
-        top: 17%;
+        top: 12%;
         left: 89%;
       }
 
       .hero-trusted .trusted-orbit-logo-6 {
-        top: 42%;
+        top: 37%;
         left: 7%;
       }
 
       .hero-trusted .trusted-orbit-logo-7 {
-        top: 35%;
+        top: 30%;
         left: 23%;
       }
 
       .hero-trusted .trusted-orbit-logo-8 {
-        top: 35%;
+        top: 30%;
         left: 78%;
       }
 
       .hero-trusted .trusted-orbit-logo-9 {
-        top: 43%;
+        top: 38%;
         left: 95%;
       }
 
       .hero-trusted .trusted-orbit-logo-10 {
-        top: 63%;
+        top: 68%;
         left: 20%;
       }
 
       .hero-trusted .trusted-orbit-logo-11 {
-        top: 63%;
+        top: 68%;
         left: 79%;
       }
 
       .hero-trusted .trusted-orbit-logo-12 {
-        top: 54%;
+        top: 72%;
         left: 50%;
       }
     }
