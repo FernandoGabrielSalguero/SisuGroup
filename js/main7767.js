@@ -212,6 +212,18 @@ let blogModalPanel = null;
 let blogModalBody = null;
 const blogPostsCache = new Map();
 
+function clearRefreshParamFromUrl() {
+  const currentUrl = new URL(window.location.href);
+
+  if (!currentUrl.searchParams.has("refresh")) {
+    return;
+  }
+
+  currentUrl.searchParams.delete("refresh");
+  const cleanPath = `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`;
+  window.history.replaceState({}, document.title, cleanPath);
+}
+
 function loadExternalScript(src, options = {}) {
   if (!src) {
     return Promise.resolve();
@@ -1398,6 +1410,8 @@ function releaseModalTrap() {
   }
 }
 
+clearRefreshParamFromUrl();
+
 if (header) {
   const syncHeader = () => {
     header.classList.toggle("is-scrolled", window.scrollY > 12);
@@ -1429,6 +1443,8 @@ clearCacheButtons.forEach((button) => {
       nav.classList.remove("is-open");
     }
 
+    const originalLabel = button.dataset.defaultLabel || button.textContent.trim();
+    button.dataset.defaultLabel = originalLabel;
     button.disabled = true;
     button.textContent = "Actualizando...";
 
@@ -1437,7 +1453,7 @@ clearCacheButtons.forEach((button) => {
     } catch (error) {
       console.error("No pudimos forzar la actualizacion del sitio:", error);
       button.disabled = false;
-      button.textContent = "Reintentar";
+      button.textContent = originalLabel;
       window.location.reload();
     }
   });
