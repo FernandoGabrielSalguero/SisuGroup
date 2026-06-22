@@ -2449,7 +2449,8 @@ textarea:focus-visible,
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 1rem;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  overflow-y: auto;
   background: rgba(0, 17, 44, 0.5);
   z-index: 80;
 }
@@ -2470,7 +2471,9 @@ textarea:focus-visible,
 }
 
 .demo-modal {
-  width: min(42rem, 100%);
+  width: min(38rem, calc(100vw - 1.5rem));
+  max-height: min(88dvh, 40rem);
+  overflow-y: auto;
 }
 
 .demo-modal-copy {
@@ -2501,46 +2504,53 @@ textarea:focus-visible,
 
 .demo-modal #demo-modal-description {
   max-width: 35rem;
-  margin: 0 auto 1.1rem;
+  margin: 0 auto 0.9rem;
   text-align: center;
 }
 
 .demo-modal .contact-form {
   position: relative;
   z-index: 1;
-  margin-top: 0.65rem;
-  padding: 1.35rem;
+  margin-top: 0.5rem;
+  padding: 1.1rem;
   background: rgba(255, 255, 255, 0.74);
-  border-radius: 1.75rem;
+  border-radius: 1.35rem;
 }
 
 .demo-form .field-grid {
-  gap: 0.8rem 0.95rem;
+  gap: 0.7rem 0.85rem;
 }
 
 .demo-form label {
-  gap: 0.35rem;
-  margin-bottom: 0.8rem;
-  font-size: 0.92rem;
+  gap: 0.3rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.88rem;
 }
 
 .demo-form input,
 .demo-form textarea {
-  padding: 0.72rem 0.9rem;
-  border-radius: 0.9rem;
+  padding: 0.65rem 0.82rem;
+  border-radius: 0.82rem;
 }
 
 .demo-form input {
-  min-height: 3.1rem;
+  min-height: 2.85rem;
 }
 
 .demo-form textarea {
-  min-height: 6.8rem;
+  min-height: 5.6rem;
   resize: vertical;
 }
 
 .demo-modal .form-actions {
   justify-content: flex-start;
+}
+
+.demo-modal-note {
+  margin: 0.8rem auto 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(28, 39, 59, 0.82);
 }
 
 .scanner-brand {
@@ -3368,10 +3378,10 @@ textarea:focus-visible,
   }
 
   .demo-modal {
-    width: min(42rem, 100%);
-    padding: 1.15rem 1rem 1.2rem;
+    width: min(100%, 35rem);
+    padding: 1rem 0.95rem 1.05rem;
     border-radius: 1.4rem;
-    max-height: min(92dvh, 42rem);
+    max-height: min(90dvh, 38rem);
     overflow-y: auto;
   }
 
@@ -3395,7 +3405,7 @@ textarea:focus-visible,
 
   .demo-modal .contact-form {
     margin-top: 0.45rem;
-    padding: 0.9rem;
+    padding: 0.85rem;
     border-radius: 1.1rem;
   }
 
@@ -3419,7 +3429,7 @@ textarea:focus-visible,
   }
 
   .demo-form textarea {
-    min-height: 4.8rem;
+    min-height: 4.4rem;
   }
 
   .demo-modal .form-actions {
@@ -3429,6 +3439,12 @@ textarea:focus-visible,
   .demo-modal .form-actions .button {
     width: 100%;
     min-height: 2.8rem;
+  }
+
+  .demo-modal-note {
+    margin-top: 0.7rem;
+    font-size: 0.84rem;
+    line-height: 1.45;
   }
 
   .methodology-heading > p {
