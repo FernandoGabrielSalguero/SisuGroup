@@ -1153,8 +1153,14 @@ function initTrustedOrbitTouchZoom() {
 
   const mobileQuery = window.matchMedia("(max-width: 680px)");
   let activeLogo = null;
+  let activeLogoTimeout = null;
 
   const clearActiveLogo = () => {
+    if (activeLogoTimeout) {
+      window.clearTimeout(activeLogoTimeout);
+      activeLogoTimeout = null;
+    }
+
     if (activeLogo instanceof HTMLElement) {
       activeLogo.classList.remove("is-expanded");
       activeLogo.blur();
@@ -1181,6 +1187,9 @@ function initTrustedOrbitTouchZoom() {
     activeLogo = logo;
     activeLogo.classList.add("is-expanded");
     activeLogo.focus({ preventScroll: true });
+    activeLogoTimeout = window.setTimeout(() => {
+      clearActiveLogo();
+    }, 2000);
   };
 
   trustedOrbitLogos.forEach((logo) => {

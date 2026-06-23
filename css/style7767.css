@@ -4781,16 +4781,26 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
   body[data-page="confiaron"] .trusted-orbit-logo:active,
   body[data-page="confiaron"] .trusted-orbit-logo:focus-visible,
   body[data-page="confiaron"] .trusted-orbit-logo.is-expanded {
-    z-index: 8;
+    z-index: 20;
     box-shadow: none;
     background: transparent;
     outline: none;
   }
 
+  body[data-page="confiaron"] .trusted-orbit-logo.is-expanded {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: min(68vw, 16rem);
+    transform: translate(-50%, -50%);
+    animation: trusted-logo-center 2000ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
   body[data-page="confiaron"] .trusted-orbit-logo:active img,
   body[data-page="confiaron"] .trusted-orbit-logo:focus-visible img,
   body[data-page="confiaron"] .trusted-orbit-logo.is-expanded img {
-    transform: scale(var(--trusted-logo-mobile-zoom));
+    transform: scale(1);
+    animation: trusted-logo-image-center 2000ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   body[data-page="confiaron"] .trusted-logo-grid {
@@ -4857,7 +4867,51 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
   body[data-page="confiaron"] .trusted-orbit-logo:active img,
   body[data-page="confiaron"] .trusted-orbit-logo:focus-visible img,
   body[data-page="confiaron"] .trusted-orbit-logo.is-expanded img {
-    transform: scale(calc(var(--trusted-logo-mobile-zoom) * 0.86));
+    transform: scale(1);
+  }
+}
+
+@keyframes trusted-logo-center {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  18% {
+    transform: translate(-50%, -50%) scale(1.18);
+    opacity: 1;
+  }
+
+  82% {
+    transform: translate(-50%, -50%) scale(1.18);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes trusted-logo-image-center {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0.45rem 1rem rgba(0, 31, 84, 0.16));
+  }
+
+  18% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0.95rem 1.8rem rgba(0, 31, 84, 0.24));
+  }
+
+  82% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0.95rem 1.8rem rgba(0, 31, 84, 0.24));
+  }
+
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0.45rem 1rem rgba(0, 31, 84, 0.16));
   }
 }
 
@@ -4866,6 +4920,11 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
   body[data-page="confiaron"] .trusted-orbit-ring,
   body[data-page="confiaron"] .trusted-hero__brand,
   body[data-page="confiaron"] .trusted-orbit-logo {
+    animation: none;
+  }
+
+  body[data-page="confiaron"] .trusted-orbit-logo.is-expanded,
+  body[data-page="confiaron"] .trusted-orbit-logo.is-expanded img {
     animation: none;
   }
 
