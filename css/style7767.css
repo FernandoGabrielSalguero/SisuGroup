@@ -4655,7 +4655,7 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
 }
 
 @media (max-width: 680px) {
-  /* Cambia este valor si queres ajustar cuanto se agranda cada logo al tocarlo en mobile */
+  /* Cambia estos valores si queres ajustar el tamaño base de los logos en mobile. */
   body[data-page="confiaron"] {
     --trusted-logo-mobile-zoom: 5.75;
   }
@@ -4695,8 +4695,9 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
   body[data-page="confiaron"] .trusted-hero__brand,
   body[data-page="confiaron"] .trusted-orbit-logo {
     display: grid;
-    width: clamp(3.05rem, 13.8vw, 3.85rem);
-    padding: 0.48rem;
+    /* Ajusta este width para agrandar o achicar los logos en mobile. */
+    width: clamp(6.1rem, 27.6vw, 7.7rem);
+    padding: 0.56rem;
     border-radius: 0.8rem;
     transform-origin: center;
   }
@@ -4843,8 +4844,9 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
 
   body[data-page="confiaron"] .trusted-hero__brand,
   body[data-page="confiaron"] .trusted-orbit-logo {
-    width: clamp(2.7rem, 12.6vw, 3.2rem);
-    padding: 0.42rem;
+    /* Ajusta este width para agrandar o achicar los logos en mobile extra chico. */
+    width: clamp(5.4rem, 25.2vw, 6.4rem);
+    padding: 0.5rem;
     border-radius: 0.7rem;
   }
 
