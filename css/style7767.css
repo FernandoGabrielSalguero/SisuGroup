@@ -4001,6 +4001,7 @@ body[data-page="contacto"] .contact-form-mobile-title {
   color: var(--navy);
   font-size: clamp(1.9rem, 6vw, 2.5rem);
   line-height: 0.98;
+  text-align: center;
   text-wrap: balance;
 }
 

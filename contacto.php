@@ -146,7 +146,7 @@
           </div>
         </div>
         <form class="contact-form reveal" data-mail-form data-form-context="contacto" novalidate>
-          <h2 class="contact-form-mobile-title">Conversemos sobre tu crecimiento en Argentina</h2>
+          <h2 class="contact-form-mobile-title">Contanos qué necesita tu organización</h2>
           <div class="field-grid">
             <label>
               Nombre y Apellido
