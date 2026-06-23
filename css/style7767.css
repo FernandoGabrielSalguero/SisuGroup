@@ -3983,11 +3983,7 @@ body[data-page="contacto"] .form-layout > .reveal:first-child {
   max-width: 33rem;
 }
 
-@media (min-width: 1025px) {
-  body[data-page="contacto"] .form-layout {
-    grid-template-columns: 1fr;
-  }
-
+@media (max-width: 1024px) {
   body[data-page="contacto"] .contact-form-intro {
     display: none;
   }
