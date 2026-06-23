@@ -3983,6 +3983,16 @@ body[data-page="contacto"] .form-layout > .reveal:first-child {
   max-width: 33rem;
 }
 
+@media (min-width: 1025px) {
+  body[data-page="contacto"] .form-layout {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="contacto"] .contact-form-intro {
+    display: none;
+  }
+}
+
 body[data-page="contacto"] .contact-form {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 246, 241, 0.9));
   border: 1px solid rgba(212, 175, 55, 0.18);

@@ -103,7 +103,7 @@
 
     <section class="section section-soft" id="formulario-contacto">
       <div class="container form-layout">
-        <div class="reveal">
+        <div class="reveal contact-form-intro">
           <p class="eyebrow">Formulario</p>
           <h2>Contanos qué necesita tu organización</h2>
           <div class="contact-direct-links" aria-label="Canales directos">
