@@ -21,6 +21,9 @@ const CONTACT_PUBLIC_KEY = "pk_56addd3b121a7c30977555dfb61e9a40";
 const VISIT_TRACKER_SCRIPT_URL = "https://impulsagroup.com/assets/impulsa_material/js/visit-tracker.js";
 const CHATBOT_SCRIPT_URL = `https://impulsagroup.com/api/chatbot_widget/widget.js?public_key=${CONTACT_PUBLIC_KEY}`;
 const DEMO_CTA_LABEL = "Solicitar Demo Pausa Viva";
+const DEFAULT_DEMO_MODAL_TITLE = "Conversemos sobre tu Demo Pausa Viva";
+const DEFAULT_DEMO_MODAL_DESCRIPTION =
+  "Con gusto podemos coordinar una breve reuniÃ³n para conocernos mejor y compartir cÃ³mo podemos acompaÃ±arlos. SerÃ¡ un encuentro de 15 minutos.";
 const BLOG_FALLBACK_POSTS = [
   {
     slug: "como-recuperar-foco-en-contextos-laborales-exigentes",
@@ -1273,8 +1276,8 @@ function ensureDemoModal() {
           <button class="modal-close" type="button" aria-label="Cerrar" data-demo-modal-close>&times;</button>
           <div class="demo-modal-copy">
             <p class="scanner-brand">Sistema Pausa Viva · Sisu Group</p>
-            <h2 id="demo-modal-title">Conversemos sobre tu Demo Pausa Viva</h2>
-            <p id="demo-modal-description">Con gusto podemos coordinar una breve reunión para conocernos mejor y compartir cómo podemos acompañarlos. Será un encuentro de 15 minutos.</p>
+            <h2 id="demo-modal-title">${DEFAULT_DEMO_MODAL_TITLE}</h2>
+            <p id="demo-modal-description">${DEFAULT_DEMO_MODAL_DESCRIPTION}</p>
           </div>
           <form class="contact-form demo-form" data-mail-form data-form-context="demo" novalidate>
             <div class="field-grid">
@@ -1591,7 +1594,7 @@ function bindDemoTriggers() {
   triggerLinks.forEach((trigger) => {
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
-      openDemoModal();
+      openDemoModal(trigger);
     });
   });
 }
@@ -1688,7 +1691,7 @@ function closeModal() {
   }
 }
 
-function openDemoModal() {
+function openDemoModal(trigger) {
   const dialog = ensureDemoModal();
   if (!dialog || !demoModalPanel) {
     return;
@@ -1700,9 +1703,23 @@ function openDemoModal() {
 
   const form = dialog.querySelector('form[data-form-context="demo"]');
   const feedback = dialog.querySelector("[data-form-feedback]");
+  const title = dialog.querySelector("#demo-modal-title");
+  const description = dialog.querySelector("#demo-modal-description");
+  const customTitle =
+    trigger instanceof HTMLElement ? trigger.getAttribute("data-demo-modal-title")?.trim() : "";
+  const customDescription =
+    trigger instanceof HTMLElement ? trigger.getAttribute("data-demo-modal-description")?.trim() : "";
 
   if (form instanceof HTMLFormElement) {
     form.reset();
+  }
+
+  if (title instanceof HTMLElement) {
+    title.textContent = customTitle || DEFAULT_DEMO_MODAL_TITLE;
+  }
+
+  if (description instanceof HTMLElement) {
+    description.textContent = customDescription || DEFAULT_DEMO_MODAL_DESCRIPTION;
   }
 
   setFeedback(feedback, "", "");

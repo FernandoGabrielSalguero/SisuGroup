@@ -55,7 +55,8 @@
           <p>Este servicio está pensado para empresas extranjeras que quieren desembarcar en Argentina, marcas que
             buscan reingresar al mercado local, compañías que necesitan representación estratégica sin estructura propia
             o empresas ya presentes en el país que requieren apoyo comercial, logístico o de marketing.</p>
-          <a class="button button-primary" href="#demo-pausa-viva" data-demo-trigger>Agendar cita virtual</a>
+          <a class="button button-primary" href="#demo-pausa-viva" data-demo-trigger
+            data-demo-modal-title="Conversemos sobre tu crecimiento en argentina">Agendar cita virtual</a>
         </div>
       </div>
     </section>
@@ -103,7 +104,8 @@
           <h2>¿Querés desembarcar en la Argentina?</h2>
           <p>Nos ocupamos de todo el proceso a partir del momento en que digas que sí.</p>
         </div>
-        <a class="button button-primary" href="#demo-pausa-viva" data-demo-trigger>Agendar cita virtual</a>
+        <a class="button button-primary" href="#demo-pausa-viva" data-demo-trigger
+          data-demo-modal-title="Conversemos sobre tu crecimiento en argentina">Agendar cita virtual</a>
       </div>
     </section>
   </main>
