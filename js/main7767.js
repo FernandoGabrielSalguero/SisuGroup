@@ -1196,6 +1196,24 @@ function initTrustedOrbitTouchZoom() {
     });
   });
 
+  document.addEventListener("pointerdown", (event) => {
+    if (!activeLogo || !(event.target instanceof Element)) {
+      return;
+    }
+
+    if (event.target.closest(".trusted-orbit-logo") === activeLogo) {
+      return;
+    }
+
+    clearActiveLogo();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      clearActiveLogo();
+    }
+  });
+
   window.addEventListener(
     "scroll",
     () => {

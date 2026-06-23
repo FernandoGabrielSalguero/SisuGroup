@@ -4689,28 +4689,32 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
   body[data-page="confiaron"] .trusted-hero__stage,
   body[data-page="confiaron"] .trusted-orbit {
     width: min(24.75rem, 100%);
-    min-height: clamp(17rem, 40vh, 20.5rem);
+    min-height: clamp(18.5rem, 43vh, 21.5rem);
   }
 
   body[data-page="confiaron"] .trusted-hero__brand,
   body[data-page="confiaron"] .trusted-orbit-logo {
     display: grid;
     /* Ajusta este width para agrandar o achicar los logos en mobile. */
-    width: clamp(6.1rem, 27.6vw, 7.7rem);
-    padding: 0.56rem;
-    border-radius: 0.8rem;
+    width: clamp(5.2rem, 23.5vw, 6.3rem);
+    padding: 0.18rem;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
     transform-origin: center;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--1,
   body[data-page="confiaron"] .trusted-orbit-logo-1 {
-    --brand-left: 14%;
+    --brand-left: 15%;
     --brand-top: 14%;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--2,
   body[data-page="confiaron"] .trusted-orbit-logo-2 {
-    --brand-left: 34%;
+    --brand-left: 35%;
     --brand-top: 8%;
   }
 
@@ -4722,64 +4726,64 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
 
   body[data-page="confiaron"] .trusted-hero__brand--4,
   body[data-page="confiaron"] .trusted-orbit-logo-4 {
-    --brand-left: 74%;
+    --brand-left: 73%;
     --brand-top: 10%;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--5,
   body[data-page="confiaron"] .trusted-orbit-logo-5 {
-    --brand-left: 89%;
+    --brand-left: 86%;
     --brand-top: 19%;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--6,
   body[data-page="confiaron"] .trusted-orbit-logo-6 {
-    --brand-left: 8%;
+    --brand-left: 12%;
     --brand-top: 43%;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--7,
   body[data-page="confiaron"] .trusted-orbit-logo-7 {
-    --brand-left: 23%;
+    --brand-left: 24%;
     --brand-top: 34%;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--8,
   body[data-page="confiaron"] .trusted-orbit-logo-8 {
-    --brand-left: 78%;
+    --brand-left: 76%;
     --brand-top: 34%;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--9,
   body[data-page="confiaron"] .trusted-orbit-logo-9 {
-    --brand-left: 95%;
+    --brand-left: 88%;
     --brand-top: 43%;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--10,
   body[data-page="confiaron"] .trusted-orbit-logo-10 {
-    --brand-left: 20%;
+    --brand-left: 23%;
     --brand-top: 74%;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--11,
   body[data-page="confiaron"] .trusted-orbit-logo-11 {
-    --brand-left: 79%;
+    --brand-left: 77%;
     --brand-top: 74%;
   }
 
   body[data-page="confiaron"] .trusted-hero__brand--12,
   body[data-page="confiaron"] .trusted-orbit-logo-12 {
     --brand-left: 50%;
-    --brand-top: 78%;
+    --brand-top: 80%;
   }
 
   body[data-page="confiaron"] .trusted-orbit-logo:active,
   body[data-page="confiaron"] .trusted-orbit-logo:focus-visible,
   body[data-page="confiaron"] .trusted-orbit-logo.is-expanded {
     z-index: 8;
-    box-shadow: 0 24px 46px rgba(0, 31, 84, 0.22);
-    background: rgba(255, 255, 255, 0.96);
+    box-shadow: none;
+    background: transparent;
     outline: none;
   }
 
@@ -4845,9 +4849,9 @@ body[data-page="confiaron"] .trusted-orbit-logo:active img {
   body[data-page="confiaron"] .trusted-hero__brand,
   body[data-page="confiaron"] .trusted-orbit-logo {
     /* Ajusta este width para agrandar o achicar los logos en mobile extra chico. */
-    width: clamp(5.4rem, 25.2vw, 6.4rem);
-    padding: 0.5rem;
-    border-radius: 0.7rem;
+    width: clamp(4.6rem, 22vw, 5.45rem);
+    padding: 0.14rem;
+    border-radius: 0;
   }
 
   body[data-page="confiaron"] .trusted-orbit-logo:active img,
