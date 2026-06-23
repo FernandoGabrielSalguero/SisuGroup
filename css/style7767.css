@@ -3995,6 +3995,15 @@ body[data-page="contacto"] .contact-form {
   box-shadow: 0 26px 54px rgba(0, 31, 84, 0.11);
 }
 
+body[data-page="contacto"] .contact-form-mobile-title {
+  display: none;
+  margin: 0 0 1.25rem;
+  color: var(--navy);
+  font-size: clamp(1.9rem, 6vw, 2.5rem);
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
 body[data-page="contacto"] .contact-form label {
   color: var(--navy);
 }
@@ -4078,6 +4087,10 @@ body[data-page="contacto"] .form-actions {
 
   body[data-page="contacto"] .contact-hero-actions .button {
     flex: 1 1 100%;
+  }
+
+  body[data-page="contacto"] .contact-form-mobile-title {
+    display: block;
   }
 
   body[data-page="contacto"] .hero-contact .hero-card {
