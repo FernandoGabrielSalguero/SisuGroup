@@ -1153,17 +1153,39 @@ function initTrustedOrbitTouchZoom() {
 
   const mobileQuery = window.matchMedia("(max-width: 680px)");
   let activeLogo = null;
+  let activePreview = null;
   let activeLogoTimeout = null;
+  let activePreviewCleanupTimeout = null;
 
-  const clearActiveLogo = () => {
+  const clearActiveLogo = (immediate = false) => {
     if (activeLogoTimeout) {
       window.clearTimeout(activeLogoTimeout);
       activeLogoTimeout = null;
     }
 
+    if (activePreviewCleanupTimeout) {
+      window.clearTimeout(activePreviewCleanupTimeout);
+      activePreviewCleanupTimeout = null;
+    }
+
     if (activeLogo instanceof HTMLElement) {
       activeLogo.classList.remove("is-expanded");
+      activeLogo.classList.remove("is-source-hidden");
       activeLogo.blur();
+    }
+
+    if (activePreview instanceof HTMLElement) {
+      const previewToRemove = activePreview;
+      activePreview = null;
+
+      if (immediate) {
+        previewToRemove.remove();
+      } else {
+        previewToRemove.classList.remove("is-active");
+        activePreviewCleanupTimeout = window.setTimeout(() => {
+          previewToRemove.remove();
+        }, 700);
+      }
     }
 
     activeLogo = null;
@@ -1175,18 +1197,39 @@ function initTrustedOrbitTouchZoom() {
     }
 
     if (!mobileQuery.matches) {
-      clearActiveLogo();
+      clearActiveLogo(true);
       return;
     }
 
-    if (activeLogo === logo) {
-      return;
-    }
+    clearActiveLogo(true);
 
-    clearActiveLogo();
     activeLogo = logo;
     activeLogo.classList.add("is-expanded");
+    activeLogo.classList.add("is-source-hidden");
     activeLogo.focus({ preventScroll: true });
+
+    const rect = logo.getBoundingClientRect();
+    const preview = logo.cloneNode(true);
+    const targetWidth = Math.min(window.innerWidth * 0.58, rect.width * 1.75, 220);
+    const targetHeight = targetWidth * (rect.height / Math.max(rect.width, 1));
+
+    preview.classList.remove("is-expanded", "is-source-hidden");
+    preview.classList.add("trusted-orbit-preview");
+    preview.setAttribute("aria-hidden", "true");
+    preview.removeAttribute("tabindex");
+    preview.style.left = `${rect.left}px`;
+    preview.style.top = `${rect.top}px`;
+    preview.style.width = `${rect.width}px`;
+    preview.style.height = `${rect.height}px`;
+    preview.style.setProperty("--preview-target-width", `${targetWidth}px`);
+    preview.style.setProperty("--preview-target-height", `${targetHeight}px`);
+    body.appendChild(preview);
+    activePreview = preview;
+
+    window.requestAnimationFrame(() => {
+      preview.classList.add("is-active");
+    });
+
     activeLogoTimeout = window.setTimeout(() => {
       clearActiveLogo();
     }, 2000);
