@@ -1155,9 +1155,10 @@ body[data-page="consultoria"] .consulting-audience-grid {
 
 body[data-page="consultoria"] .consulting-audience-media {
   position: relative;
-  display: grid;
+  display: inline-grid;
   place-items: center;
-  width: min(100%, 36rem);
+  width: fit-content;
+  max-width: min(100%, 36rem);
   margin-inline: auto;
   padding: clamp(1rem, 2vw, 1.5rem);
   border-radius: clamp(1.5rem, 3vw, 2rem);
@@ -1177,7 +1178,7 @@ body[data-page="consultoria"] .consulting-audience-media::before {
 
 body[data-page="consultoria"] .consulting-audience-media img {
   display: block;
-  width: 100%;
+  width: auto;
   max-width: 100%;
   max-height: min(72vh, 38rem);
   height: auto;
