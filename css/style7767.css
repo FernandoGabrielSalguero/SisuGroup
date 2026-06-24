@@ -1179,8 +1179,8 @@ body[data-page="consultoria"] .consulting-audience-media img {
   height: auto;
   min-height: 0;
   object-fit: contain;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: clamp(1.25rem, 2.5vw, 1.75rem);
+  box-shadow: 0 24px 48px rgba(0, 31, 84, 0.18);
 }
 
 body[data-page="consultoria"] .consulting-audience-copy {
