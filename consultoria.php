@@ -46,7 +46,7 @@
     <section class="section section-soft consulting-audience">
       <div class="container two-column consulting-audience-grid">
         <div class="reveal consulting-audience-media">
-          <img src="assets/img/Foto para la sección de la consultora.png"
+          <img src="assets/img/fotos editadas/Foto Web Consultoria.png"
             alt="Equipo de consultoría acompañando la expansión de negocios en Argentina">
         </div>
         <div class="reveal consulting-audience-copy">
