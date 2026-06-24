@@ -1160,20 +1160,15 @@ body[data-page="consultoria"] .consulting-audience-media {
   width: fit-content;
   max-width: min(100%, 36rem);
   margin-inline: auto;
-  padding: clamp(1rem, 2vw, 1.5rem);
-  border-radius: clamp(1.5rem, 3vw, 2rem);
+  padding: 0;
+  border-radius: 0;
   overflow: visible;
-  box-shadow: 0 28px 58px rgba(0, 31, 84, 0.12);
-  background: linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(250, 246, 238, 0.96));
+  box-shadow: none;
+  background: transparent;
 }
 
 body[data-page="consultoria"] .consulting-audience-media::before {
-  content: "";
-  position: absolute;
-  inset: 0.75rem;
-  border-radius: calc(clamp(1.5rem, 3vw, 2rem) - 0.4rem);
-  border: 1px solid rgba(0, 31, 84, 0.05);
-  pointer-events: none;
+  content: none;
 }
 
 body[data-page="consultoria"] .consulting-audience-media img {
