@@ -60,12 +60,12 @@
             <p class="contact-quick-copy">Respuesta directa para consultas comerciales, demos y conversaciones estratégicas.</p>
             <div class="contact-direct-links" aria-label="Canales directos">
               <div class="contact-direct-details">
-                <a class="text-link contact-detail-link" href="mailto:contacto1@sisu-group.net" aria-label="Enviar email a Sisu Group">
+                <a class="text-link contact-detail-link" href="mailto:contacto@sisu-group.net" aria-label="Enviar email a Sisu Group">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M4 6.75h16A1.25 1.25 0 0 1 21.25 8v8A1.25 1.25 0 0 1 20 17.25H4A1.25 1.25 0 0 1 2.75 16V8A1.25 1.25 0 0 1 4 6.75Z"></path>
                     <path d="m4.5 8.25 7.5 5.25 7.5-5.25"></path>
                   </svg>
-                  <span>contacto1@sisu-group.net</span>
+                  <span>contacto@sisu-group.net</span>
                 </a>
                 <a class="text-link contact-detail-link" href="https://wa.me/541121753936" aria-label="Escribir por WhatsApp a Sisu Group">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -108,12 +108,12 @@
           <h2>Contanos qué necesita tu organización</h2>
           <div class="contact-direct-links" aria-label="Canales directos">
             <div class="contact-direct-details">
-              <a class="text-link contact-detail-link" href="mailto:contacto1@sisu-group.net" aria-label="Enviar email a Sisu Group">
+              <a class="text-link contact-detail-link" href="mailto:contacto@sisu-group.net" aria-label="Enviar email a Sisu Group">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M4 6.75h16A1.25 1.25 0 0 1 21.25 8v8A1.25 1.25 0 0 1 20 17.25H4A1.25 1.25 0 0 1 2.75 16V8A1.25 1.25 0 0 1 4 6.75Z"></path>
                   <path d="m4.5 8.25 7.5 5.25 7.5-5.25"></path>
                 </svg>
-                <span>contacto1@sisu-group.net</span>
+                <span>contacto@sisu-group.net</span>
               </a>
               <a class="text-link contact-detail-link" href="https://wa.me/541121753936" aria-label="Escribir por WhatsApp a Sisu Group">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -211,7 +211,7 @@
       </div>
       <div>
         <h2>Contacto</h2>
-        <a href="mailto:contacto1@sisu-group.net">contacto1@sisu-group.net</a>
+        <a href="mailto:contacto@sisu-group.net">contacto@sisu-group.net</a>
         <a href="https://wa.me/541121753936">WhatsApp: 11 2175 3936</a>
         <a class="button button-primary" href="#pausa-viva-contacto">Solicitar Demo Pausa Viva</a>
         <a class="button button-footer-consulting" href="consultoria.php">¿Querés traer tu negocio a la Argentina?</a>

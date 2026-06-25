@@ -141,7 +141,7 @@
             href="confiaronEnNosotros.php">Confiaron en nosotros</a><a href="contacto.php">Contacto</a></nav>
       </div>
       <div>
-        <h2>Contacto</h2><a href="mailto:contacto1@sisu-group.net">contacto1@sisu-group.net</a><a
+        <h2>Contacto</h2><a href="mailto:contacto@sisu-group.net">contacto@sisu-group.net</a><a
           href="https://wa.me/541121753936">WhatsApp: 11 2175 3936</a><a class="button button-primary"
           href="contacto.php#pausa-viva-contacto">Solicitar Demo Pausa Viva</a><a
           class="button button-footer-consulting" href="consultoria.php">¿Querés traer tu negocio a la Argentina?</a>
