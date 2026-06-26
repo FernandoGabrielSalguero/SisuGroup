@@ -466,8 +466,12 @@ function isPublicBlogImageUrl(value) {
     return false;
   }
 
-  if (/^data:image\//i.test(normalized) || /^https?:\/\//i.test(normalized) || normalized.startsWith("//")) {
-    return looksLikeImagePath(normalized);
+  if (/^data:image\//i.test(normalized)) {
+    return true;
+  }
+
+  if (/^https?:\/\//i.test(normalized) || normalized.startsWith("//")) {
+    return true;
   }
 
   if (normalized.startsWith("/")) {
