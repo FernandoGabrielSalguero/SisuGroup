@@ -77,53 +77,6 @@ const BLOG_FALLBACK_POSTS = [
   },
 ];
 
-const BLOG_IMAGE_OVERRIDES = [
-  {
-    matchers: [
-      "por-que-necesitamos-pausar",
-      "reconectar-sin-pantallas",
-      "valor de reconectar sin pantallas",
-      "porque necesitamos pausar",
-    ],
-    image: "idea/blog/img/Porque necesitamos pausar 5-12.png",
-  },
-  {
-    matchers: [
-      "la-mente-es-el-principal-activo-de-trabajo",
-      "principal activo de trabajo",
-      "por-que-cuidarla-ya-no-es-opcional",
-      "mente es el principal",
-    ],
-    image: "idea/blog/img/La mente es el principal 1-6.png",
-  },
-  {
-    matchers: [
-      "arquitectura-de-foco",
-      "disenar-entornos-que-ayuden-a-pensar-mejor",
-      "arquitectura de foco",
-    ],
-    image: "idea/blog/img/Arquitectura de foto 10-6.png",
-  },
-  {
-    matchers: [
-      "sucursal-propia-vs-socio-estrategico",
-      "socio estrategico",
-      "desembarcar-en-argentina",
-      "sucursal propia",
-    ],
-    image: "idea/blog/img/Suc propia vs socio estrategico 4-2-25.png",
-  },
-  {
-    matchers: [
-      "errores-comunes",
-      "errores comunes",
-      "mercado argentino",
-      "oficina-de-transicion",
-    ],
-    image: "idea/blog/img/Errores comunies 28-3-25.png",
-  },
-];
-
 const scannerQuestions = [
   {
     text: "Notas que a tu equipo le cuesta mantener foco profundo en tareas complejas sin dispersarse con chat o notificaciones internas?",
@@ -406,30 +359,6 @@ function slugify(value) {
     .replace(/^-+|-+$/g, "");
 }
 
-function findMappedBlogImage(post) {
-  const candidates = [
-    post?.slug,
-    post?.title,
-    post?.excerpt,
-    post?.content,
-  ]
-    .map((value) => slugify(String(value || "").slice(0, 180)))
-    .filter(Boolean);
-
-  for (const entry of BLOG_IMAGE_OVERRIDES) {
-    const matched = entry.matchers.some((matcher) => {
-      const normalizedMatcher = slugify(matcher);
-      return candidates.some((candidate) => candidate.includes(normalizedMatcher));
-    });
-
-    if (matched) {
-      return entry.image;
-    }
-  }
-
-  return "";
-}
-
 function formatBlogDate(value) {
   if (!value) {
     return "";
@@ -531,70 +460,35 @@ function normalizeBlogImageUrl(value) {
   return normalized;
 }
 
+function isPublicBlogImageUrl(value) {
+  const normalized = String(value || "").trim();
+  if (!normalized) {
+    return false;
+  }
+
+  if (/^data:image\//i.test(normalized) || /^https?:\/\//i.test(normalized) || normalized.startsWith("//")) {
+    return looksLikeImagePath(normalized);
+  }
+
+  if (normalized.startsWith("/")) {
+    return looksLikeImagePath(normalized);
+  }
+
+  return false;
+}
+
 function resolveBlogImage(rawPost) {
-  const directImage =
-    pickFirstString(rawPost, [
-      "image",
-      "image_url",
-      "cover",
-      "cover_image",
-      "thumbnail",
-      "imagen",
-      "featured_image",
-      "cover_image_path_url",
-      "cover_image_url",
-      "cover_image_path",
-      "attachment_path_url",
-      "attachment_url",
-      "attachment_path",
-      "path_url",
-      "path",
-      "file_url",
-      "media_url",
-    ]) || "";
+  const directImageCandidates = [
+    pickFirstString(rawPost, ["cover_image_path_url"]),
+    pickFirstString(rawPost, ["image_url"]),
+    pickFirstString(rawPost, ["cover_image_url"]),
+    pickFirstString(rawPost, ["cover_image"]),
+    pickFirstString(rawPost, ["image"]),
+  ];
 
-  if (looksLikeImagePath(directImage)) {
-    return normalizeBlogImageUrl(directImage);
-  }
-
-  const htmlImage = extractFirstImageFromHtml(
-    pickFirstString(rawPost, [
-      "content",
-      "contenido",
-      "body",
-      "post_content",
-      "article",
-      "articulo",
-      "html",
-      "contenido_html",
-    ])
-  );
-  if (looksLikeImagePath(htmlImage)) {
-    return normalizeBlogImageUrl(htmlImage);
-  }
-
-  const nestedValues = Object.values(rawPost || {});
-  for (const value of nestedValues) {
-    if (Array.isArray(value)) {
-      for (const item of value) {
-        if (!item || typeof item !== "object") {
-          continue;
-        }
-
-        const nestedImage = resolveBlogImage(item);
-        if (looksLikeImagePath(nestedImage)) {
-          return nestedImage;
-        }
-      }
-    }
-
-    if (!value || typeof value !== "object") {
-      continue;
-    }
-
-    const nestedImage = resolveBlogImage(value);
-    if (looksLikeImagePath(nestedImage)) {
-      return nestedImage;
+  for (const candidate of directImageCandidates) {
+    if (isPublicBlogImageUrl(candidate)) {
+      return normalizeBlogImageUrl(candidate);
     }
   }
 
@@ -831,30 +725,11 @@ function getBlogTagClass(category) {
 }
 
 function getBlogFallbackImage(post) {
-  if (post.image) {
-    return post.image;
-  }
-
-  const mappedImage = findMappedBlogImage(post);
-  if (mappedImage) {
-    return mappedImage;
-  }
-
-  return /consult/i.test(post.category)
-    ? "idea/blog/img/Suc propia vs socio estrategico 4-2-25.png"
-    : "idea/blog/img/Porque necesitamos pausar 5-12.png";
+  return post?.image || "";
 }
 
 function getBlogImageFallbackChain(post) {
-  const candidates = [findMappedBlogImage(post)];
-
-  if (/consult/i.test(post?.category || "")) {
-    candidates.push("idea/blog/img/Suc propia vs socio estrategico 4-2-25.png");
-  } else {
-    candidates.push("idea/blog/img/Porque necesitamos pausar 5-12.png");
-  }
-
-  return candidates.filter((value, index, array) => value && array.indexOf(value) === index);
+  return [];
 }
 
 function renderBlogImageMarkup(post, image, className) {
@@ -875,7 +750,8 @@ function replaceBrokenBlogImage(imageNode) {
   }
 
   const category = imageNode.getAttribute("data-category") || "Blog";
-  mediaNode.innerHTML = `<div class="blog-card-image blog-card-image-fallback" aria-hidden="true"><span>${escapeHtml(category)}</span></div>`;
+  const imageClass = imageNode.classList.contains("blog-modal-image") ? "blog-modal-image" : "blog-card-image";
+  mediaNode.innerHTML = `<div class="${escapeHtml(`${imageClass} blog-card-image-fallback`)}" aria-hidden="true"><span>${escapeHtml(category)}</span></div>`;
 }
 
 function bindBlogImageFallbacks(root = document) {
@@ -883,7 +759,7 @@ function bindBlogImageFallbacks(root = document) {
     return;
   }
 
-  root.querySelectorAll("img[data-fallback-src]").forEach((imageNode) => {
+  root.querySelectorAll(".blog-card-media img, .blog-modal-media img").forEach((imageNode) => {
     if (!(imageNode instanceof HTMLImageElement) || imageNode.dataset.fallbackBound === "true") {
       return;
     }
