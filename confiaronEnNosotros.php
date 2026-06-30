@@ -56,40 +56,40 @@
               height="264" decoding="async">
           </div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--1" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Arcor.webp" alt="Arcor" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-arcor.webp" alt="Arcor" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--2" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Energizer.webp" alt="Energizer" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-energizer.webp" alt="Energizer" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--3" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Freddo.webp" alt="Freddo" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-freddo.webp" alt="Freddo" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--4" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Panasonic.webp" alt="Panasonic" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-panasonic.webp" alt="Panasonic" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--5" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Pepsi.webp" alt="Pepsi" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-pepsi.webp" alt="Pepsi" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--6" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Rayban.webp" alt="Rayban" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-rayban.webp" alt="Rayban" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--7" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Diageo.webp" alt="Diageo" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-diageo.webp" alt="Diageo" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--8" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/logo+Glaciar.webp" alt="Glaciar" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-glaciar.webp" alt="Glaciar" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--9" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Masisa.webp" alt="Masisa" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-masisa.webp" alt="Masisa" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--10" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Nutresa.webp" alt="Nutresa" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-nutresa.webp" alt="Nutresa" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--11" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Olympus.webp" alt="Olympus" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-olympus.webp" alt="Olympus" width="300" height="210"
               decoding="async"></div>
           <div class="trusted-hero__brand trusted-orbit-logo trusted-hero__brand--12" tabindex="0"><img
-              src="assets/img/confiaron en nosotros/Logo+Persicco.webp" alt="Persicco" width="300" height="210"
+              src="assets/img/confiaron-en-nosotros/logo-persicco.webp" alt="Persicco" width="300" height="210"
               decoding="async"></div>
         </div>
       </div>
