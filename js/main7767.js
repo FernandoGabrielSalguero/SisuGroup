@@ -22,7 +22,9 @@ const VISIT_TRACKER_SCRIPT_URL = "https://impulsagroup.com/assets/impulsa_materi
 const CHATBOT_SCRIPT_URL = `https://impulsagroup.com/api/chatbot_widget/widget.js?public_key=${CONTACT_PUBLIC_KEY}`;
 const DEMO_CTA_LABEL = "Solicitar Demo Pausa Viva";
 const DEFAULT_DEMO_MODAL_TITLE = "Conversemos sobre tu Demo Pausa Viva";
-const DEFAULT_DEMO_MODAL_DESCRIPTION =
+const NORMALIZED_DEMO_MODAL_DESCRIPTION =
+  "Con gusto podemos coordinar una breve reuni\u00F3n para conocernos mejor y compartir c\u00F3mo podemos acompa\u00F1arlos. Ser\u00E1 un encuentro de 15 minutos.";
+const LEGACY_BROKEN_DEMO_MODAL_DESCRIPTION =
   "Con gusto podemos coordinar una breve reuniÃ³n para conocernos mejor y compartir cÃ³mo podemos acompaÃ±arlos. SerÃ¡ un encuentro de 15 minutos.";
 const BLOG_FALLBACK_POSTS = [
   {
@@ -1227,7 +1229,7 @@ function ensureDemoModal() {
           <div class="demo-modal-copy">
             <p class="scanner-brand">Sistema Pausa Viva · Sisu Group</p>
             <h2 id="demo-modal-title">${DEFAULT_DEMO_MODAL_TITLE}</h2>
-            <p id="demo-modal-description">${DEFAULT_DEMO_MODAL_DESCRIPTION}</p>
+            <p id="demo-modal-description">${NORMALIZED_DEMO_MODAL_DESCRIPTION}</p>
           </div>
           <form class="contact-form demo-form" data-mail-form data-form-context="demo" novalidate>
             <div class="field-grid">
@@ -1669,7 +1671,7 @@ function openDemoModal(trigger) {
   }
 
   if (description instanceof HTMLElement) {
-    description.textContent = customDescription || DEFAULT_DEMO_MODAL_DESCRIPTION;
+    description.textContent = customDescription || NORMALIZED_DEMO_MODAL_DESCRIPTION;
   }
 
   setFeedback(feedback, "", "");
