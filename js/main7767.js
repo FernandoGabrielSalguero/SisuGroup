@@ -14,18 +14,15 @@ const MODAL_STORAGE_KEY = "sisu-scanner-dismissed-at";
 const MODAL_DELAY_MS = 20000;
 const MODAL_HIDE_MS = 1000 * 60 * 60;
 const IMPULSA_API_BASE_URL = "https://impulsagroup.com/api";
-const IMPULSA_ALLOWED_ORIGIN = "https://www.sisu-group.net";
 const CONTACT_API_ENDPOINT = "https://impulsagroup.com/api/contact_form_landing_page/index.php";
-const BLOG_API_ENDPOINT = "https://impulsagroup.com/api/blog_api/index.php";
-const PRODUCT_API_ENDPOINT = "https://impulsagroup.com/api/producto_api/index.php";
 const CONTACT_PUBLIC_KEY = "pk_56addd3b121a7c30977555dfb61e9a40";
 const IMPULSA_PUBLIC_EMBED_SCRIPT_URL = "https://impulsagroup.com/api/v1/public/impulsa.js";
 const DEMO_CTA_LABEL = "Solicitar Demo Pausa Viva";
 const DEFAULT_DEMO_MODAL_TITLE = "Conversemos sobre tu Demo Pausa Viva";
 const NORMALIZED_DEMO_MODAL_DESCRIPTION =
-  "Con gusto podemos coordinar una breve reuni\u00F3n para conocernos mejor y compartir c\u00F3mo podemos acompa\u00F1arlos. Ser\u00E1 un encuentro de 15 minutos.";
+  "Con gusto podemos coordinar una breve reunión para conocernos mejor y compartir cómo podemos acomparlos. Será un encuentro de 15 minutos.";
 const LEGACY_BROKEN_DEMO_MODAL_DESCRIPTION =
-  "Con gusto podemos coordinar una breve reuniÃ³n para conocernos mejor y compartir cÃ³mo podemos acompaÃ±arlos. SerÃ¡ un encuentro de 15 minutos.";
+  "Con gusto podemos coordinar una breve reunión para conocernos mejor y compartir cómo podemos acompañarlos. Será un encuentro de 15 minutos.";
 const BLOG_FALLBACK_POSTS = [
   {
     slug: "como-recuperar-foco-en-contextos-laborales-exigentes",
@@ -197,7 +194,6 @@ function loadExternalScript(src, options = {}) {
 function initImpulsaIntegrations() {
   window.IMPULSA_API_CONFIG = {
     publicKey: CONTACT_PUBLIC_KEY,
-    allowedOrigin: IMPULSA_ALLOWED_ORIGIN,
     apiBaseUrl: IMPULSA_API_BASE_URL,
   };
 
@@ -215,6 +211,21 @@ function initImpulsaIntegrations() {
     parent: document.body || document.head,
   }).catch((error) => {
     console.error("Error al cargar la integracion publica de Impulsa:", error);
+  });
+}
+
+function whenImpulsaReady() {
+  if (window.Impulsa) {
+    return Promise.resolve(window.Impulsa);
+  }
+
+  return new Promise((resolve) => {
+    const handleReady = (event) => {
+      window.removeEventListener("impulsa:ready", handleReady);
+      resolve(event.detail || window.Impulsa);
+    };
+
+    window.addEventListener("impulsa:ready", handleReady, { once: true });
   });
 }
 
@@ -632,23 +643,25 @@ function normalizeProduct(rawProduct, fallbackIndex = 0) {
 }
 
 async function listBlogPosts() {
-  const response = await postJson(BLOG_API_ENDPOINT, {
-    action: "list",
-    public_key: CONTACT_PUBLIC_KEY,
-  });
+  const impulsa = await whenImpulsaReady();
+  if (!impulsa?.blog?.list) {
+    throw new Error("Impulsa.blog.list no esta disponible");
+  }
 
-  const rawPosts = extractApiCollection(response);
+  const response = await impulsa.blog.list();
+  const rawPosts = Array.isArray(response) ? response : extractApiCollection(response);
   logBlogCollectionDebug(rawPosts);
   const posts = rawPosts.map(normalizeBlogPost).filter((post) => post.slug && post.title);
   return posts.length > 0 ? posts : BLOG_FALLBACK_POSTS;
 }
 
 async function getBlogPostDetail(slug) {
-  const response = await postJson(BLOG_API_ENDPOINT, {
-    action: "detail",
-    public_key: CONTACT_PUBLIC_KEY,
-    slug,
-  });
+  const impulsa = await whenImpulsaReady();
+  if (!impulsa?.blog?.get) {
+    throw new Error("Impulsa.blog.get no esta disponible");
+  }
+
+  const response = await impulsa.blog.get(slug);
 
   const detailSource =
     Array.isArray(response) ? response[0] : response?.data || response?.post || response?.item || response;
@@ -662,20 +675,22 @@ async function getBlogPostDetail(slug) {
 }
 
 async function listProducts() {
-  const response = await postJson(PRODUCT_API_ENDPOINT, {
-    action: "list",
-    public_key: CONTACT_PUBLIC_KEY,
-  });
+  const impulsa = await whenImpulsaReady();
+  if (!impulsa?.products?.list) {
+    throw new Error("Impulsa.products.list no esta disponible");
+  }
 
+  const response = await impulsa.products.list();
   return extractApiCollection(response).map(normalizeProduct).filter((product) => product.slug && product.title);
 }
 
 async function getProductDetail(slug) {
-  const response = await postJson(PRODUCT_API_ENDPOINT, {
-    action: "detail",
-    public_key: CONTACT_PUBLIC_KEY,
-    slug,
-  });
+  const impulsa = await whenImpulsaReady();
+  if (!impulsa?.products?.get) {
+    throw new Error("Impulsa.products.get no esta disponible");
+  }
+
+  const response = await impulsa.products.get(slug);
 
   const detailSource =
     Array.isArray(response) ? response[0] : response?.data || response?.product || response?.item || response;
