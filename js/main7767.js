@@ -14,7 +14,6 @@ const MODAL_STORAGE_KEY = "sisu-scanner-dismissed-at";
 const MODAL_DELAY_MS = 20000;
 const MODAL_HIDE_MS = 1000 * 60 * 60;
 const IMPULSA_API_BASE_URL = "https://impulsagroup.com/api";
-const CONTACT_API_ENDPOINT = "https://impulsagroup.com/api/contact_form_landing_page/index.php";
 const CONTACT_PUBLIC_KEY = "pk_56addd3b121a7c30977555dfb61e9a40";
 const IMPULSA_PUBLIC_EMBED_SCRIPT_URL = "https://impulsagroup.com/api/v1/public/impulsa.js";
 const DEMO_CTA_LABEL = "Solicitar Demo Pausa Viva";
@@ -227,28 +226,6 @@ function whenImpulsaReady() {
 
     window.addEventListener("impulsa:ready", handleReady, { once: true });
   });
-}
-
-async function postJson(url, payload) {
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-
-  const responseText = await response.text();
-
-  if (!response.ok) {
-    throw new Error(responseText || `HTTP ${response.status}`);
-  }
-
-  try {
-    return JSON.parse(responseText);
-  } catch {
-    return responseText;
-  }
 }
 
 function toDebugValue(value) {
@@ -823,7 +800,7 @@ function setBlogStatus(message, type = "") {
 }
 
 function renderBlogList(posts) {
-  const listNode = document.querySelector("[data-blog-list-view]");
+  const listNode = document.getElementById("impulsa-blog-list") || document.querySelector("[data-blog-list-view]");
 
   if (!(listNode instanceof HTMLElement)) {
     return;
@@ -1038,7 +1015,6 @@ async function initBlogPage() {
 }
 
 window.SisuApi = {
-  submitContact: submitApiForm,
   listBlogPosts,
   getBlogPostDetail,
   listProducts,
@@ -1248,33 +1224,33 @@ function ensureDemoModal() {
             <h2 id="demo-modal-title">${DEFAULT_DEMO_MODAL_TITLE}</h2>
             <p id="demo-modal-description">${NORMALIZED_DEMO_MODAL_DESCRIPTION}</p>
           </div>
-          <form class="contact-form demo-form" data-mail-form data-form-context="demo" novalidate>
+          <form class="contact-form demo-form" data-impulsa-contact novalidate>
             <div class="field-grid">
               <label>
                 Nombre y Apellido
-                <input type="text" name="nombre" autocomplete="name" required>
+                <input type="text" name="contact_nombre" autocomplete="name" required>
               </label>
               <label>
                 Correo electronico
-                <input type="email" name="email" autocomplete="email" required>
+                <input type="email" name="contact_email" autocomplete="email" required>
               </label>
               <label>
                 WhatsApp
-                <input type="tel" name="telefono" autocomplete="tel" required>
+                <input type="tel" name="contact_whatsapp" autocomplete="tel" required>
               </label>
               <label>
                 Rubro de la empresa
-                <input type="text" name="empresa" autocomplete="organization" required>
+                <input type="text" name="contact_description" autocomplete="organization" required>
               </label>
             </div>
             <label>
               Mensaje
-              <textarea name="mensaje" rows="5" required></textarea>
+              <textarea name="contact_consultation" rows="5" required></textarea>
             </label>
             <div class="form-actions">
               <button class="button button-primary" type="submit">Enviar solicitud</button>
             </div>
-            <p class="form-feedback" data-form-feedback role="status" aria-live="polite"></p>
+            <p class="form-feedback" data-impulsa-contact-message role="status" aria-live="polite"></p>
             </form>
             </div>
       </div>
@@ -1303,7 +1279,7 @@ function ensureDemoModal() {
     });
   }
 
-  forms = document.querySelectorAll("[data-mail-form]");
+  forms = document.querySelectorAll("[data-impulsa-contact]");
   return demoModal;
 }
 
@@ -1670,8 +1646,8 @@ function openDemoModal(trigger) {
   dialog.hidden = false;
   body.style.overflow = "hidden";
 
-  const form = dialog.querySelector('form[data-form-context="demo"]');
-  const feedback = dialog.querySelector("[data-form-feedback]");
+  const form = dialog.querySelector("form[data-impulsa-contact]");
+  const feedback = dialog.querySelector("[data-impulsa-contact-message]");
   const title = dialog.querySelector("#demo-modal-title");
   const description = dialog.querySelector("#demo-modal-description");
   const customTitle =
@@ -1768,7 +1744,7 @@ function getScannerParts() {
     resultRecommendation: scannerApp.querySelector("[data-scanner-result-recommendation]"),
     resultLink: scannerApp.querySelector("[data-scanner-result-link]"),
     zoneInput: scannerApp.querySelector("[data-scanner-zone-input]"),
-    resultForm: scannerApp.querySelector('.scanner-form[data-mail-form]'),
+    resultForm: scannerApp.querySelector(".scanner-form[data-impulsa-contact]"),
   };
 }
 
@@ -1858,8 +1834,8 @@ function renderScannerResult() {
 
   if (parts.resultForm instanceof HTMLFormElement) {
     parts.resultForm.reset();
-    const zoneInput = parts.resultForm.querySelector('[name="zona"]');
-    const messageField = parts.resultForm.querySelector('[name="mensaje"]');
+    const zoneInput = parts.resultForm.querySelector('[name="contact_description"]');
+    const messageField = parts.resultForm.querySelector('[name="contact_consultation"]');
 
     if (zoneInput instanceof HTMLInputElement) {
       zoneInput.value = zone.name;
@@ -1882,7 +1858,7 @@ function resetScanner() {
     return;
   }
 
-  const feedback = scannerApp.querySelector("[data-form-feedback]");
+  const feedback = scannerApp.querySelector("[data-impulsa-contact-message]");
   if (feedback) {
     feedback.textContent = "";
     feedback.classList.remove("is-error", "is-success");
@@ -1947,139 +1923,4 @@ function setFormSubmitting(form, isSubmitting) {
   submitButton.textContent = isSubmitting ? "Enviando..." : submitButton.dataset.defaultLabel;
 }
 
-function getCurrentPageLabel() {
-  return window.location.pathname || "/index.php";
-}
-
-function buildDescription(lines) {
-  return lines.filter(Boolean).join("\n");
-}
-
-function buildApiPayload(formData) {
-  const formContext = String(formData.get("form_context") || "").trim();
-  const pageLabel = getCurrentPageLabel();
-  const nombre = String(formData.get("nombre") || "").trim();
-  const whatsapp = String(formData.get("telefono") || "").trim();
-  const email = String(formData.get("email") || "").trim();
-  const empresa = String(formData.get("empresa") || formData.get("zona") || "").trim();
-  const zona = String(formData.get("zona") || "").trim();
-  const mensaje = String(formData.get("mensaje") || "").trim();
-
-  if (formContext === "demo") {
-    return {
-      public_key: CONTACT_PUBLIC_KEY,
-      page: pageLabel,
-      contact_nombre: nombre,
-      contact_whatsapp: whatsapp,
-      contact_email: email,
-      contact_description: empresa,
-      contact_consultation: mensaje || "Solicitud de Demo Pausa Viva",
-      state: "recibido",
-    };
-  }
-
-  if (formContext === "scanner") {
-    return {
-      public_key: CONTACT_PUBLIC_KEY,
-      page: `${pageLabel} - escaner`,
-      contact_nombre: nombre,
-      contact_whatsapp: whatsapp,
-      contact_email: email,
-      contact_description: zona ? `Zona detectada: ${zona}` : "",
-      contact_consultation: mensaje || "Solicitud desde el escaner de carga mental organizacional",
-      state: "recibido",
-    };
-  }
-
-  return {
-    public_key: CONTACT_PUBLIC_KEY,
-    page: pageLabel,
-    contact_nombre: nombre,
-    contact_whatsapp: whatsapp,
-    contact_email: email,
-    contact_description: empresa || zona,
-    contact_consultation: mensaje || "Formulario de contacto sitio web",
-    state: "recibido",
-  };
-}
-
-async function submitApiForm(payload) {
-  return postJson(CONTACT_API_ENDPOINT, payload);
-}
-
-function bindApiForms() {
-  forms = document.querySelectorAll("[data-mail-form]");
-
-  forms.forEach((form) => {
-    if (form.dataset.apiBound === "true") {
-      return;
-    }
-
-    form.dataset.apiBound = "true";
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      const feedbackNode = form.querySelector("[data-form-feedback]");
-      setFeedback(feedbackNode, "", "");
-
-      const formData = new FormData(form);
-      const requiredFields = Array.from(form.querySelectorAll("[name][required]"));
-      const missingField = requiredFields.find((field) => !String(formData.get(field.getAttribute("name")) || "").trim());
-
-      if (missingField) {
-        setFeedback(feedbackNode, "Completa todos los campos obligatorios antes de enviar.", "is-error");
-        if (missingField instanceof HTMLElement && missingField.type !== "hidden") {
-          missingField.focus();
-        }
-        return;
-      }
-
-      const emailValue = String(formData.get("email") || "").trim();
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(emailValue)) {
-        setFeedback(feedbackNode, "Ingresa un email valido para continuar.", "is-error");
-        const emailField = form.querySelector('[name="email"]');
-        if (emailField instanceof HTMLElement) {
-          emailField.focus();
-        }
-        return;
-      }
-
-      const context = form.dataset.formContext || "contacto";
-      formData.set("form_context", context);
-      const payload = buildApiPayload(formData);
-      setFormSubmitting(form, true);
-
-      try {
-        await submitApiForm(payload);
-        setFeedback(feedbackNode, "Formulario enviado correctamente.", "is-success");
-        form.reset();
-
-        if (context === "scanner") {
-          window.setTimeout(() => {
-            closeModal();
-            window.location.assign("pausa-viva.php");
-          }, 250);
-        }
-
-        if (context === "demo") {
-          window.setTimeout(() => {
-            closeDemoModal();
-          }, 450);
-        }
-      } catch (error) {
-        console.error("Error al enviar el formulario:", error);
-        setFeedback(
-          feedbackNode,
-          "No pudimos enviar el formulario en este momento. Intenta nuevamente en unos minutos.",
-          "is-error"
-        );
-      } finally {
-        setFormSubmitting(form, false);
-      }
-    });
-  });
-}
-
-bindApiForms();
 initBlogPage();

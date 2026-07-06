@@ -468,29 +468,29 @@
           <p class="scanner-brand">Sistema Pausa Viva · Sisu Group</p>
           <p class="eyebrow">Dejanos tus datos</p>
           <h3>Te ayudamos a resolverlo</h3>
-          <form class="contact-form scanner-form" data-mail-form data-form-context="scanner" novalidate>
-            <input type="hidden" name="zona" data-scanner-zone-input required>
+          <form class="contact-form scanner-form" data-impulsa-contact novalidate>
+            <input type="hidden" name="contact_description" data-scanner-zone-input required>
             <label>
               Nombre
-              <input type="text" name="nombre" required>
+              <input type="text" name="contact_nombre" required>
             </label>
             <label>
               Email
-              <input type="email" name="email" required>
+              <input type="email" name="contact_email" required>
             </label>
             <label>
               Teléfono
-              <input type="tel" name="telefono" required>
+              <input type="tel" name="contact_whatsapp" required>
             </label>
             <label>
               <span class="sr-only">Mensaje</span>
-              <textarea name="mensaje" rows="3" readonly required
+              <textarea name="contact_consultation" rows="3" readonly required
                 hidden>Esta solicitud vino del escáner mental</textarea>
             </label>
             <div class="form-actions">
               <button class="button button-secondary" type="submit">Quiero que me contacten</button>
             </div>
-            <p class="form-feedback" data-form-feedback role="status" aria-live="polite"></p>
+            <p class="form-feedback" data-impulsa-contact-message role="status" aria-live="polite"></p>
           </form>
         </section>
       </div>
