@@ -14,12 +14,12 @@ const MODAL_STORAGE_KEY = "sisu-scanner-dismissed-at";
 const MODAL_DELAY_MS = 20000;
 const MODAL_HIDE_MS = 1000 * 60 * 60;
 const IMPULSA_API_BASE_URL = "https://impulsagroup.com/api";
+const IMPULSA_ALLOWED_ORIGIN = "https://www.sisu-group.net";
 const CONTACT_API_ENDPOINT = "https://impulsagroup.com/api/contact_form_landing_page/index.php";
 const BLOG_API_ENDPOINT = "https://impulsagroup.com/api/blog_api/index.php";
 const PRODUCT_API_ENDPOINT = "https://impulsagroup.com/api/producto_api/index.php";
 const CONTACT_PUBLIC_KEY = "pk_56addd3b121a7c30977555dfb61e9a40";
-const VISIT_TRACKER_SCRIPT_URL = "https://impulsagroup.com/assets/impulsa_material/js/visit-tracker.js";
-const CHATBOT_SCRIPT_URL = `https://impulsagroup.com/api/chatbot_widget/widget.js?public_key=${CONTACT_PUBLIC_KEY}`;
+const IMPULSA_PUBLIC_EMBED_SCRIPT_URL = "https://impulsagroup.com/api/v1/public/impulsa.js";
 const DEMO_CTA_LABEL = "Solicitar Demo Pausa Viva";
 const DEFAULT_DEMO_MODAL_TITLE = "Conversemos sobre tu Demo Pausa Viva";
 const NORMALIZED_DEMO_MODAL_DESCRIPTION =
@@ -197,6 +197,7 @@ function loadExternalScript(src, options = {}) {
 function initImpulsaIntegrations() {
   window.IMPULSA_API_CONFIG = {
     publicKey: CONTACT_PUBLIC_KEY,
+    allowedOrigin: IMPULSA_ALLOWED_ORIGIN,
     apiBaseUrl: IMPULSA_API_BASE_URL,
   };
 
@@ -208,11 +209,12 @@ function initImpulsaIntegrations() {
     );
   }
 
-  Promise.all([
-    loadExternalScript(VISIT_TRACKER_SCRIPT_URL, { async: false, defer: false, parent: document.body || document.head }),
-    loadExternalScript(CHATBOT_SCRIPT_URL),
-  ]).catch((error) => {
-    console.error("Error al cargar integraciones externas de Impulsa:", error);
+  loadExternalScript(IMPULSA_PUBLIC_EMBED_SCRIPT_URL, {
+    async: false,
+    defer: true,
+    parent: document.body || document.head,
+  }).catch((error) => {
+    console.error("Error al cargar la integracion publica de Impulsa:", error);
   });
 }
 
