@@ -2032,6 +2032,10 @@ body[data-page="blog"] .blog-grid-large {
   align-items: stretch;
 }
 
+body[data-page="blog"] .blog-grid-large[hidden] {
+  display: none;
+}
+
 body[data-page="blog"] .blog-card {
   position: relative;
   display: flex;
@@ -2093,16 +2097,20 @@ body[data-page="blog"] .blog-card h2 {
 }
 
 body[data-page="blog"] .blog-card p {
-  margin: 0;
+  margin: 0 0 1.25rem;
   color: rgba(28, 39, 59, 0.78);
   font-size: 0.98rem;
   line-height: 1.65;
 }
 
 body[data-page="blog"] .blog-card-action {
+  align-self: flex-start;
   margin-top: auto;
-  padding-top: 1.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--navy);
+  cursor: pointer;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -2112,6 +2120,67 @@ body[data-page="blog"] .blog-card-action {
 body[data-page="blog"] .blog-card-action::after {
   content: " ->";
   color: #d4af37;
+}
+
+.blog-status {
+  margin: 0 0 1rem;
+}
+
+.blog-status:empty {
+  margin: 0;
+}
+
+html:has(.blog-dialog[open]) {
+  overflow: hidden;
+}
+
+.blog-dialog {
+  width: min(48rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--ivory);
+  color: var(--graphite);
+  box-shadow: var(--shadow);
+}
+
+.blog-dialog::backdrop {
+  background: rgba(0, 17, 44, 0.55);
+}
+
+.blog-dialog-article {
+  max-height: calc(100dvh - 2rem - 2px);
+  padding: 3.5rem clamp(1.25rem, 5vw, 3rem) 2rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: anywhere;
+}
+
+.blog-dialog-article h2 {
+  margin-top: 0;
+}
+
+.blog-dialog-image {
+  width: 100%;
+  max-height: 22rem;
+  margin: 0 0 1.25rem;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
+.blog-dialog-image[hidden] {
+  display: none;
+}
+
+.blog-dialog-content a {
+  color: var(--navy);
+  text-decoration: underline;
+}
+
+.blog-dialog-content .blog-plain-text {
+  white-space: pre-line;
 }
 
 .site-footer {
@@ -2257,6 +2326,7 @@ textarea:focus-visible,
 .site-nav a:focus-visible,
 .footer-nav a:focus-visible,
 .menu-toggle:focus-visible,
+.blog-card-action:focus-visible,
 .modal-close:focus-visible {
   outline: 3px solid rgba(212, 175, 55, 0.6);
   outline-offset: 3px;

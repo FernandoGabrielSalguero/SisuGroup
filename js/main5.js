@@ -635,6 +635,11 @@ function openModal() {
   }
 
   window.clearTimeout(modalTimer);
+  if (document.querySelector("[data-blog-dialog][open]")) {
+    modalTimer = window.setTimeout(openModal, MODAL_DELAY_MS);
+    return;
+  }
+
   lastFocusedElement = document.activeElement;
   modal.hidden = false;
   body.style.overflow = "hidden";

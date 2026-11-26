@@ -61,37 +61,38 @@
           <p>Ideas prácticas para equipos, líderes y marcas que necesitan tomar mejores decisiones en contextos
             exigentes.</p>
         </div>
-        <div class="blog-grid blog-grid-large">
+        <p class="blog-status" role="status" data-blog-status></p>
+        <div class="blog-grid blog-grid-large" data-blog-list hidden>
           <article class="blog-card reveal">
             <span class="tag">Pausa Viva</span>
             <h2>Cómo recuperar foco en contextos laborales exigentes</h2>
             <p>Un marco simple para detectar interrupciones, reducir fricción cognitiva y recuperar claridad operativa.
             </p>
-            <span class="blog-card-action">Lectura breve</span>
+            <button class="blog-card-action" type="button" aria-haspopup="dialog" data-blog-open>Lectura breve</button>
           </article>
           <article class="blog-card reveal">
             <span class="tag">Pausa Viva</span>
             <h2>La pausa como herramienta de gestión</h2>
             <p>Por qué una pausa diseñada puede convertirse en una decisión estratégica y no en un beneficio blando.</p>
-            <span class="blog-card-action">Lectura breve</span>
+            <button class="blog-card-action" type="button" aria-haspopup="dialog" data-blog-open>Lectura breve</button>
           </article>
           <article class="blog-card reveal">
             <span class="tag">Pausa Viva</span>
             <h2>Qué es la capacidad mental disponible</h2>
             <p>Una mirada práctica para entender cómo se deteriora y cómo empezar a recuperarla en equipos exigidos.</p>
-            <span class="blog-card-action">Lectura breve</span>
+            <button class="blog-card-action" type="button" aria-haspopup="dialog" data-blog-open>Lectura breve</button>
           </article>
           <article class="blog-card reveal">
             <span class="tag tag-secondary">Consultoría</span>
             <h2>Estrategia para desembarcar en Argentina</h2>
             <p>Factores operativos, comerciales y de representación para construir presencia local con eficiencia.</p>
-            <span class="blog-card-action">Lectura breve</span>
+            <button class="blog-card-action" type="button" aria-haspopup="dialog" data-blog-open>Lectura breve</button>
           </article>
           <article class="blog-card reveal">
             <span class="tag tag-secondary">Consultoría</span>
             <h2>Oficina de transición: una forma eficiente de entrar al mercado local</h2>
             <p>Cómo expandirse con una estructura gradual y más liviana antes de abrir operaciones propias.</p>
-            <span class="blog-card-action">Lectura breve</span>
+            <button class="blog-card-action" type="button" aria-haspopup="dialog" data-blog-open>Lectura breve</button>
           </article>
         </div>
       </div>
@@ -141,7 +142,20 @@
 
   <div class="modal-backdrop" data-scanner-modal hidden></div>
 
+  <dialog class="blog-dialog" aria-labelledby="blog-dialog-title" data-blog-dialog>
+    <form method="dialog">
+      <button class="modal-close" type="submit" aria-label="Cerrar artículo" autofocus>&times;</button>
+    </form>
+    <article class="blog-dialog-article">
+      <h2 id="blog-dialog-title"></h2>
+      <img class="blog-dialog-image" alt="" data-blog-dialog-image hidden>
+      <p class="blog-status" role="status" data-blog-dialog-status></p>
+      <div class="blog-dialog-content" data-blog-dialog-content></div>
+    </article>
+  </dialog>
+
   <script src="js/main5.js"></script>
+  <script src="js/blog.js"></script>
 </body>
 
 </html>
