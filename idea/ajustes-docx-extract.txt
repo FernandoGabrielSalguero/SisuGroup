@@ -1,0 +1,452 @@
+﻿Web Sisu Group · Ajustes de Sistema Pausa Viva®
+Antes y después, sección por sección · Para el equipo de diseño web · Versión 18 de noviembre de 2026
+Qué cambia y cómo leer este documento
+La web pasa de hablar del síntoma (saturación mental, desgaste, burnout) a hablar del dolor que reconoce la empresa: equipos que pierden capacidad de respuesta y rendimiento. La saturación mental queda como una causa posible, que se analiza con el Escáner de Saturación Mental.
+Cada bloque muestra la ubicación, la prioridad, el texto actual (ANTES) y el texto nuevo (DESPUÉS), más indicaciones de diseño o de implementación. El documento toma como base «Ajustes web» del 2/11 e incorpora las decisiones del 18/11, marcadas como ACTUALIZADO 18/11:
+El pop-up pasa a llamarse Semáforo de Capacidad de Respuesta, con preguntas y resultados nuevos.
+El recorrido comercial queda en cuatro escalones: Semáforo → Escáner de Saturación Mental → Demo de 30 minutos → Plan a medida.
+Se suma un enlace directo al Semáforo para usar desde LinkedIn.
+Nota: el texto ANTES sale del brief de junio con el que se armó la web. Si algún texto publicado difiere un poco, se reemplaza igual por el DESPUÉS.
+Reglas generales
+Fuera de alcance: la sección «Consultoría de negocios / Oficina de transición» se mantiene intacta: textos, diseño, imágenes, botones, enlaces y artículos.
+Identidad: se mantienen logos, paleta (azul #001F54, dorado #D4AF37, marfil #F8F6F1, lavanda #DDE2F6), tipografías (Playfair Display y Montserrat) y fotos aprobadas.
+Contactos: contacto@sisu-group.net · WhatsApp +54 9 11 2175 3936. Enlace técnico correcto del WhatsApp: https://wa.me/5491121753936.
+Lenguaje: siempre en positivo sobre lo que es Pausa Viva. Sin «bienestar», «wellness» ni estética de spa. Decimos «Recursos Humanos».
+Cifras: se mantienen el 92 % de trabajadores en Argentina en estado de burnout y el 88 % de empresas sin estrategia para prevenirlo (Estudio Burnout 2025, Bumeran), y se suman las mediciones propias de Pausa Viva®.
+Botón principal de Pausa Viva: «Conversemos sobre tu equipo» (reemplaza «Solicitar Demo Pausa Viva»), con destino https://www.sisu-group.net/contacto.php.
+A. Página de inicio
+A1 · Hero principal
+Ubicación: Inicio, primer bloque   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Sisu Group presenta Sistema Pausa Viva
+Subtítulo: Cuidado estratégico de la mente en el trabajo
+Texto: Ayudamos a organizaciones, equipos y líderes a reducir desgaste y recuperar capacidad mental disponible: claridad, foco, energía y mejores condiciones para responder.
+Botones: Solicitar Demo Pausa Viva · Conocer la metodología
+Rótulo: SISTEMA PAUSA VIVA® · Una propuesta de Sisu Group
+Titular: Cuando un equipo deja de responder como antes, el negocio lo siente.
+Texto: Ayudamos a las organizaciones a recuperar la capacidad de respuesta que sus equipos pierden bajo presión: claridad, foco, energía disponible, coordinación e iniciativa. Con intervenciones breves dentro de la jornada laboral y cambios medibles.
+Botón principal: Conversemos sobre tu equipo → /contacto.php
+Botón secundario: Conocé cómo funciona → /pausa-viva.php#como-funciona
+
+Diseño: mantener composición y colores. Logo de Pausa Viva protagonista, con Sisu Group como respaldo. Imagen de equipos reales trabajando, sin recursos de spa o relajación.
+A2 · Bloque de impacto: contexto y señales observables   ACTUALIZADO 18/11
+Ubicación: Inicio, bloque «Impacto organizacional»   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Cuando la mente se satura, el trabajo también se resiente
+Bajada: La falta de foco, la baja energía y la reactividad no siempre se resuelven con más presión. Muchas veces son señales de desgaste acumulado y de una capacidad mental que necesita recuperarse.
+Cifras: 92% burnout (Bumeran) · 4 de cada 10 errores operativos (BCG) · 1 de cada 3 con «niebla mental» (WeCovr) · hasta -25% de rendimiento (Leesman & Gensler)
+Cierre: Sistema Pausa Viva trabaja sobre esta brecha: ayuda a reducir desgaste y recuperar claridad, foco, energía y capacidad de respuesta.
+Botón: Solicitar Demo Pausa Viva
+Título: Las señales aparecen antes de que el problema se vuelva crítico.
+Bajada: Un equipo puede seguir ocupado y, aun así, perder capacidad para cumplir con lo que el negocio necesita. Estas señales merecen una lectura del contexto.
+Tarjeta 1: Decisiones más lentas — Resolver temas habituales requiere más tiempo o más consultas.
+Tarjeta 2: Errores y retrabajo — Se necesita más esfuerzo para obtener el mismo resultado.
+Tarjeta 3: Menos iniciativa — Bajan las propuestas nuevas y la reacción ante imprevistos.
+Tarjeta 4: Coordinación con fricción — Cuesta más alinear áreas, prioridades y responsabilidades.
+Subtítulo del dato: Una de las principales causas:
+Dato 1 (número grande): 92 % de los trabajadores en Argentina se siente en estado de burnout.
+Dato 2 (número grande): 88 % de las empresas no tiene una estrategia para prevenirlo.
+Fuente: Estudio Burnout 2025, Bumeran.
+Botón: Hacé el Semáforo de Capacidad de Respuesta → abre el pop-up (ver C)
+
+Diseño: el orden cuenta la historia: primero las cuatro tarjetas de señales (lo que siente la empresa) y debajo, como causa, el 92 % y el 88 % con números grandes y su fuente. Las tarjetas llevan encabezado corto e ícono empresarial lineal. Las otras tres cifras actuales (BCG, WeCovr y Leesman & Gensler) se retiran.
+A3 · Cómo Pausa Viva ayuda: los 4 pilares
+Ubicación: Inicio, sección 3   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Cómo Pausa Viva ayuda a tu organización
+Bajada: No trabajamos la pausa como un descanso aislado. La transformamos en una herramienta concreta de recuperación y gestión.
+Cards: Cuerpo y energía · Neuroergonomía / Atención y claridad · Arquitectura de foco / Estrés y respuesta · Gestión emocional del estrés / Confianza y acción · Recupero de optimismo y confianza operativa
+Resultado: Más claridad. Más foco. Más energía. Mejor capacidad de respuesta.
+Botón: Conocer la metodología
+Título: Cuatro pilares. Un objetivo: recuperar capacidad útil para trabajar.
+Bajada: Combinamos herramientas según el estado del equipo, su contexto y la capacidad que necesita recuperar.
+Card 1: Atención y energía · Neuroergonomía — Condiciones mente-cuerpo para sostener la tarea con energía disponible.
+Card 2: Foco · Arquitectura de Foco — Entornos, estímulos e interrupciones: mejores condiciones para pensar, priorizar y concentrarse.
+Card 3: Respuesta bajo presión · Gestión del Estrés Operativo — Margen para responder y decidir con criterio bajo presión.
+Card 4: Iniciativa · Recupero de Confianza y Optimismo Productivo — Iniciativa, dirección y recursos para volver a la acción.
+Resultado: Más claridad. Más foco. Más energía. Mejor capacidad de respuesta.
+Botón: Conocé el método → /pausa-viva.php#como-funciona
+
+A confirmar: el nombre del cuarto pilar. Se usa el de la Presentación Institucional de noviembre («Recupero de Confianza y Optimismo Productivo»).
+A4 · Bloque de la Demo en portada   ACTUALIZADO 18/11
+Ubicación: Inicio, sección «La mejor forma de entender Pausa Viva es vivirlo»   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: La mejor forma de entender Pausa Viva es vivirlo
+Texto: La Demo Pausa Viva permite conocer la metodología desde la experiencia, observar cómo funciona una pausa diseñada y abrir una conversación concreta sobre las necesidades reales de cada organización. No es una presentación teórica. Es una vivencia breve, guiada y medible que permite empezar a confiar en el sistema.
+Botones: Solicitar Demo Pausa Viva · Agendar cita
+Título: Primero entendamos qué está pasando en tu equipo.
+Texto: Empezamos con una conversación breve para conocer el contexto, las señales que preocupan y el objetivo del área. Con esa información adaptamos el Escáner de Saturación Mental, que nos permite un diagnóstico preliminar. A partir de ahí te proponemos una Demo de 30 minutos, para que tu equipo viva el método y vea el cambio medido. El Escáner y la Demo son de cortesía.
+Botón: Conversemos sobre tu equipo
+
+Implementación: verificar el destino actual de «Agendar cita». Si existe una agenda vigente, el botón lleva ahí; si no, a /contacto.php.
+A5 · Qué es Pausa Viva
+Ubicación: Inicio, sección 5   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Una pausa con diseño, intención y método
+Texto: Sistema Pausa Viva transforma la pausa en una herramienta concreta de recuperación y gestión. A través de experiencias breves, presenciales, vivenciales y medibles, ayuda a equipos y líderes a recuperar capacidad mental disponible…
+Frase: Pausar no es perder tiempo. Es recuperar capacidad.
+Título: Una pausa con diseño, intención y método
+Texto: Sistema Pausa Viva® convierte la pausa en una herramienta de gestión: intervenciones breves, presenciales y medibles que ayudan a los equipos a recuperar claridad, foco, energía disponible y capacidad de respuesta.
+Frase destacada: Pausar es recuperar capacidad.
+Botón: Conocé Pausa Viva
+
+A6 · Sisu Group (bloque institucional)
+Ubicación: Inicio, sección 6   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Frase a cambiar: «Desde esa mirada impulsamos Sistema Pausa Viva, nuestra propuesta principal de cuidado estratégico de la mente en el trabajo.»
+Frase nueva: «Desde esa mirada impulsamos Sistema Pausa Viva®, nuestra propuesta principal para recuperar la capacidad de respuesta de los equipos.»
+Resto del bloque: sin cambios, incluida la leyenda «Marcas vinculadas a la trayectoria profesional del equipo fundador».
+
+A7 · Blog en portada
+Ubicación: Inicio, sección 7   ·   Prioridad: P2
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Texto: Artículos breves sobre foco, energía, estrés, neuroergonomía, pausas estratégicas y capacidad mental disponible en contextos laborales exigentes.
+Texto: Artículos breves sobre foco, decisiones, coordinación y capacidad de respuesta en equipos exigidos.
+Título: sin cambios («Ideas para trabajar con más claridad»).
+
+A8 · Cierre de la portada
+Ubicación: Inicio, sección 8   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Cuidar la mente en el trabajo es una decisión estratégica
+Texto: Pausa Viva ayuda a las organizaciones a reducir desgaste y recuperar capacidad mental disponible para trabajar con más claridad, foco, energía y capacidad de respuesta.
+Botón: Solicitar Demo Pausa Viva
+Título: Recuperar la capacidad de tu equipo es una decisión estratégica.
+Texto: Pausa Viva® ayuda a las organizaciones a recuperar claridad, foco, energía disponible y capacidad de respuesta, con intervenciones breves y medibles dentro de la jornada.
+Eslogan: El arte de pausar para avanzar.
+Botón: Conversemos sobre tu equipo
+
+B. Página Pausa Viva® · /pausa-viva.php
+B1 · Hero de Pausa Viva
+Ubicación: Pausa Viva, primer bloque   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Sistema Pausa Viva
+Subtítulo: Cuidado estratégico de la mente en el trabajo
+Texto: Un sistema accesible, vivencial y medible que ayuda a organizaciones, equipos y líderes a reducir desgaste y recuperar capacidad mental disponible: claridad, foco, energía, regulación emocional y mejores condiciones para responder.
+Botones: Solicitar Demo Pausa Viva · Agendar cita
+Rótulo: SISTEMA PAUSA VIVA®
+Titular: Recuperar capacidad para responder al negocio.
+Bajada: Cuando un equipo pierde foco, claridad, energía disponible o capacidad de coordinación, el negocio empieza a sentirlo. Pausa Viva® ayuda a recuperar esas capacidades con intervenciones breves, aplicadas en la jornada laboral y con cambios medibles.
+Botón principal: Conversemos sobre tu equipo
+Botón secundario: Conocé el método → ancla #como-funciona
+
+B2 · Por qué importa
+Ubicación: Pausa Viva, sección 2   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: La mente sostiene todo lo que una organización necesita para funcionar bien
+Texto: Pensamos, decidimos, coordinamos, lideramos… Y aun así, muchas organizaciones siguen funcionando como si la claridad, el foco, la energía y la capacidad de respuesta fueran recursos infinitos. Cuando la mente se desgasta, el trabajo también se resiente.
+Frase: La productividad también depende de la capacidad mental disponible.
+Título: La capacidad del equipo sostiene todo lo que el negocio necesita.
+Texto: Pensar, decidir, coordinar, liderar, resolver, atender clientes y priorizar: todo depende de la capacidad disponible de las personas. Cuando esa capacidad baja, el negocio lo siente en tiempos, calidad y resultados.
+Frase destacada 1: Pausar es recuperar capacidad.
+Frase destacada 2: Primero comprendemos el problema. Después elegimos cómo intervenir y medimos el cambio.
+
+B3 · El problema: de siete síntomas a cinco señales de negocio
+Ubicación: Pausa Viva, bloque «El problema»   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Una mente saturada no necesita más presión. Necesita mejores condiciones para responder.
+Señales: Dificultad para concentrarse · Cansancio al inicio del día · Revisar mensajes todo el tiempo · Menor tolerancia a errores · Dificultad para decisiones simples · Conversaciones tensas · Pérdida de creatividad o iniciativa
+Imagen: mujer cansada frente a la laptop
+Título: Tu equipo sigue trabajando. ¿Pero responde como antes?
+Bajada: Cuando bajan el foco, la iniciativa y la coordinación, aparecen consecuencias en tiempos, calidad y resultados. Una de las principales causas es la saturación mental: el 92 % de los trabajadores en Argentina se siente en estado de burnout (Bumeran, 2025). También influyen procesos, roles, liderazgo y contexto.
+Señal 1: Resultados u objetivos que dejan de sostenerse.
+Señal 2: Decisiones que demoran más de lo habitual.
+Señal 3: Más errores, retrabajo o problemas de calidad.
+Señal 4: Menor iniciativa y capacidad de reacción.
+Señal 5: Mayor fricción para coordinar y ejecutar.
+Cierre: La pregunta clave es qué está limitando la capacidad del equipo y cómo recuperarla.
+Botón: Hacé el Semáforo de Capacidad de Respuesta (2 minutos)
+
+Diseño: pasar de 7 a 5 ítems. Reemplazar la foto de agotamiento individual por una foto real y autorizada de un equipo trabajando.
+B4 · Los 4 pilares
+Ubicación: Pausa Viva, sección «Los 4 pilares»   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Un sistema integral para recuperar capacidad mental disponible
+Bajada: No todos los equipos se desgastan de la misma manera…
+Cards: Neuroergonomía · Arquitectura de foco · Gestión emocional del estrés · Recupero de optimismo y confianza operativa
+Texto: el mismo título, bajada y cards de A3, para que ambas páginas digan lo mismo.
+
+Diseño: si algún ícono aparece como palabra técnica («target», «neurology», «trending_up»), corregirlo.
+B5 · Cómo funciona: el recorrido en 5 pasos   ACTUALIZADO 18/11
+Ubicación: Pausa Viva, timeline actual · agregar el ancla #como-funciona   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Diseñamos cada experiencia según el tipo de desgaste de la organización
+1. Reunión inicial
+2. Diagnóstico breve
+3. Demo Pausa Viva
+4. Diseño de intervención
+5. Medición y próximos pasos
+Título: Primero comprendemos. Después intervenimos y medimos.
+1. Semáforo de Capacidad de Respuesta — Autodiagnóstico de 2 minutos: una primera lectura de cómo está respondiendo el equipo.
+2. Conversación breve — 5 minutos, por teléfono o Meet, para entender la situación y lo que preocupa.
+3. Escáner de Saturación Mental — 15 a 20 preguntas adaptadas al equipo. Resultado: un diagnóstico preliminar. De cortesía.
+4. Demo de 30 minutos — El equipo vive una intervención breve, con medición antes y después. De cortesía.
+5. Plan a medida — Intervención de Conciencia (60 min), Ciclo Inicial (3 meses) o Plan Continuo (6 meses), con medición y seguimiento.
+
+Diseño: reutilizar el diagrama de 5 pasos. El paso 1 tiene que verse como la puerta de entrada y puede abrir el pop-up del Semáforo.
+B6 · Resultados que buscamos facilitar
+Ubicación: Pausa Viva, seis tarjetas   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Lo que una organización puede recuperar cuando cuida la mente en el trabajo
+Cards: Claridad · Foco · Energía · Regulación emocional · Capacidad de respuesta · Rendimiento sostenible
+Título: Capacidades que buscamos recuperar.
+Bajada: Cada organización necesita una combinación distinta. Medimos la respuesta inmediata y usamos esa información para orientar los siguientes pasos.
+Cards: Claridad · Foco · Energía disponible · Coordinación · Iniciativa · Capacidad de respuesta
+
+B7 · Datos de contexto   ACTUALIZADO 18/11
+Ubicación: Pausa Viva, sección 7 «El desgaste mental ya es un desafío organizacional»   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: El desgaste mental ya es un desafío organizacional
+Cifras: las mismas cuatro de burnout, errores, niebla mental y rendimiento de A2
+Título: Lo que sabemos y lo que medimos.
+Contexto · 92 %: de los trabajadores en Argentina se siente en estado de burnout.
+Contexto · 88 %: de las empresas no tiene una estrategia para prevenirlo.
+Fuente: Estudio Burnout 2025, Bumeran.
+Medición propia · +35 %: de capacidad disponible, en promedio, en más de 30 participantes de nuestras experiencias piloto.
+Medición propia · 9 de cada 10: participantes la consideraron de mucha utilidad.
+Leyenda: Primeras mediciones propias de Pausa Viva®.
+Se retiran: las cifras de BCG, WeCovr y Leesman & Gensler.
+
+B8 · Sección Demo
+Ubicación: Pausa Viva, bloque «Conocé Pausa Viva desde la experiencia»   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Conocé Pausa Viva desde la experiencia
+Texto: …observar cómo una pausa diseñada puede ayudar a recuperar claridad, foco y energía…
+Qué incluye: …herramientas simples para recuperar foco, energía y regulación…
+Botones: Solicitar Demo Pausa Viva · Agendar cita
+Título: Conocé el Sistema en una Demo de 30 minutos.
+Texto: Una experiencia guiada de cortesía para que los responsables conozcan nuestra forma de trabajar. Incluye una lectura breve al inicio, una intervención adaptada al equipo y una medición al cierre. Permite observar los cambios inmediatos que percibe el equipo; los resultados sostenidos se construyen con un plan.
+Qué incluye: introducción al método · intervención breve · medición antes y después · conversación de cierre.
+Cuándo: después del Escáner de Saturación Mental.
+Botón: Conversemos sobre tu equipo
+
+B9 · Escalera de soluciones (bloque nuevo)
+Ubicación: Pausa Viva, después de la Demo   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Este bloque hoy no existe.
+Intervención de Conciencia · 60 min — Una experiencia para reconocer el valor de cuidar la capacidad del equipo e incorporar recursos individuales.
+Ciclo Inicial · 3 meses — Diagnóstico, intervenciones guiadas y trabajo con líderes para instalar hábitos y medir la evolución.
+Plan Continuo · 6 meses — Continuidad, seguimiento, trabajo con líderes y Arquitectura de Foco para consolidar las prácticas.
+Pie: Recomendamos el alcance después de comprender el contexto, los objetivos y el presupuesto de cada organización.
+
+Diseño: tres tarjetas con componentes existentes, sin precios y con un solo botón al final.
+B10 · Cierre de la página
+Ubicación: Pausa Viva, cierre   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Pausar no es perder tiempo. Es recuperar capacidad.
+Texto: …para reducir desgaste… Cuidar la mente no es bajar la exigencia. Es crear mejores condiciones para responder a ella.
+Botón: Solicitar Demo Pausa Viva
+Título: El arte de pausar para avanzar.
+Texto: En Pausa Viva® trabajamos para que los equipos recuperen claridad, foco, energía disponible y capacidad de respuesta en la jornada real de trabajo. Empezamos por comprender qué está pasando y proponemos intervenciones según la necesidad, con medición y seguimiento.
+Botón: Conversemos sobre tu equipo
+
+C. Pop-up: Semáforo de Capacidad de Respuesta
+Importante: este bloque reemplaza las secciones C1 y C2 de «Ajustes web» del 2/11, que proponían llamarlo «Escáner». El Escáner de Saturación Mental es otra instancia, más profunda, que se hace después de una conversación. El pop-up pasa a ser el Semáforo: la puerta de entrada, rápida y en autoservicio.
+C1 · Invitación (aparece a los 20 segundos)   ACTUALIZADO 18/11
+Ubicación: Ventana emergente, en todas las páginas de Pausa Viva   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: ¿Querés conocer la carga mental de tu equipo?
+Texto: Respondé un escáner breve para detectar señales de saturación, pérdida de foco y desgaste operativo en tu organización.
+Botones: Iniciar escáner · Ahora no
+Título: ¿Con qué capacidad está respondiendo hoy tu equipo?
+Texto: Hacé el Semáforo de Capacidad de Respuesta: 6 preguntas, 2 minutos y un resultado inmediato.
+Botones: Hacer el Semáforo · Ahora no
+
+C2 · Portada del test   ACTUALIZADO 18/11
+Ubicación: Ventana emergente, primera pantalla   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Rótulo: Sistema Pausa Viva · Sisu Group
+Título: Escáner de Carga Mental Organizacional
+Texto: Un autodiagnóstico breve para detectar señales de saturación mental, pérdida de foco y desgaste operativo en equipos y líderes.
+Etiquetas: 6 preguntas · 2 minutos · Resultado inmediato
+Botón: Comenzar diagnóstico
+Rótulo: Sistema Pausa Viva® · Sisu Group
+Título: Semáforo de Capacidad de Respuesta
+Texto: Autodiagnóstico de 2 minutos para líderes y equipos de Recursos Humanos. Pensá en un equipo o área que hoy te preocupe y en cómo funcionó en los últimos 3 meses.
+Etiquetas: 6 preguntas · 2 minutos · Resultado inmediato
+Botón: Comenzar
+
+C3 · Las 6 preguntas   ACTUALIZADO 18/11
+Ubicación: Ventana emergente, preguntas 1 a 6   ·   Prioridad: P0
+#
+ANTES · pregunta actual
+DESPUÉS · pregunta nueva
+1
+¿Notás que a tu equipo le cuesta mantener foco profundo en tareas complejas sin dispersarse con chat o notificaciones internas?
+¿Con qué frecuencia a tu equipo le cuesta sostener la concentración en tareas complejas, entre mensajes, reuniones e interrupciones?
+2
+¿Percibís que los líderes o mandos medios toman decisiones reactivas, en «modo incendio», en lugar de operar con planificación estratégica?
+¿Con qué frecuencia las decisiones se demoran o se toman en «modo incendio», reaccionando a lo urgente?
+3
+¿Identificás un aumento en errores operativos simples, olvidos o demoras en entregas?
+¿Con qué frecuencia aparecen errores simples, olvidos o retrabajo en tareas que el equipo domina?
+4
+¿Los niveles de ausentismo, licencias cortas por estrés o rotación de personal han mostrado un incremento en el último semestre?
+¿Con qué frecuencia el equipo espera indicaciones en lugar de proponer y anticiparse?
+5
+¿Al final de la jornada laboral, el clima que se percibe en la oficina o canales virtuales es de saturación y pesadez en lugar de motivación?
+¿Con qué frecuencia la coordinación entre personas o áreas genera fricción, malentendidos o idas y vueltas?
+6
+¿Se implementan en tu empresa pausas o protocolos con respaldo científico para que los colaboradores recuperen su foco y energía mental durante el día?
+¿Con qué frecuencia los resultados del área (plazos, calidad, ventas, servicio) se resienten, aunque el esfuerzo del equipo aumenta?
+
+Opciones de respuesta: sin cambios: Nunca · A veces · Frecuentemente.
+C4 · Puntaje y rangos   ACTUALIZADO 18/11
+Ubicación: Lógica del cálculo   ·   Prioridad: P0
+Nunca = 0 · A veces = 1 · Frecuentemente = 2, en las 6 preguntas por igual. Total de 0 a 12.
+Rangos (sin cambios): 0 a 4 verde · 5 a 8 amarillo · 9 a 12 rojo.
+Cambio técnico importante: la pregunta 6 anterior estaba redactada al revés (una respuesta afirmativa era buena) y es posible que hoy se calcule invertida. En la versión nueva todas las preguntas suman en el mismo sentido: si existe una inversión para la pregunta 6, hay que quitarla.
+C5 · Pantallas de resultado   ACTUALIZADO 18/11
+Ubicación: Ventana emergente, resultado   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+0 a 4 · Zona de equilibrio — Capacidad mental disponible. La organización muestra buenos indicadores de claridad, foco y funcionamiento cotidiano. El desafío es sostener esta capacidad frente a picos de exigencia. Recomendación: mantener hábitos preventivos de recuperación mental. Botón: Conocer Pausa Viva.
+🟢 0 a 4 · Capacidad de respuesta disponible — Tu equipo muestra buena capacidad para enfocarse, decidir y ejecutar. El desafío es sostenerla en los picos de exigencia.
+Próximo paso: Si querés anticiparte a los picos de exigencia, el siguiente paso es el Escáner de Saturación Mental.
+Mensaje: ¡Felicitaciones! Seguí cuidando esa capacidad. Si en algún momento querés reforzarla, acá estamos.
+Botón: Conocé el camino → #como-funciona
+
+ANTES · texto actual
+DESPUÉS · texto nuevo
+5 a 8 · Zona amarilla — Señales de saturación activa. El equipo muestra señales de desgaste que pueden afectar foco, energía, clima y capacidad de respuesta. Hay margen para intervenir de forma preventiva. Recomendación: revisar qué condiciones están drenando claridad. Botón: Coordinar Demo.
+🟡 5 a 8 · Capacidad de respuesta en tensión — Aparecen señales de que la capacidad del equipo empieza a quedar corta frente a la exigencia. Es el mejor momento para intervenir, antes de que impacte en los resultados.
+Próximo paso: Escáner de Saturación Mental: una breve conversación y un análisis más profundo para identificar qué capacidad conviene recuperar primero.
+Mensaje: Si querés, conversamos brevemente y te contamos cómo funciona.
+Botón: Quiero conversar → formulario (C6)
+
+ANTES · texto actual
+DESPUÉS · texto nuevo
+9 a 12 · Zona crítica — Carga mental elevada. La organización muestra señales consistentes de saturación mental. Esto puede impactar en errores, ausentismo, rotación y desgaste de líderes. Recomendación: implementar una intervención breve, medible y adaptada. Botón: Coordinar Demo Express.
+🔴 9 a 12 · Capacidad de respuesta comprometida — Las señales son consistentes: la exigencia supera la capacidad disponible del equipo y puede estar afectando errores, plazos, rotación y el desgaste de los líderes. Conviene profundizar pronto para definir cómo intervenir.
+Próximo paso: Escáner de Saturación Mental, para obtener un diagnóstico preliminar y definir por dónde empezar.
+Mensaje: Si querés, conversamos brevemente y vemos juntos por dónde empezar.
+Botón: Quiero conversar → formulario (C6)
+
+Leyenda debajo de los tres resultados: «Es una primera lectura orientativa, basada en tus respuestas. El Escáner de Saturación Mental permite profundizar.»
+Unificar nombres: en toda la web se usa «Demo de 30 minutos». Se elimina «Demo Express».
+C6 · Formulario de contacto del pop-up   ACTUALIZADO 18/11
+Ubicación: Ventana emergente, pantalla «Dejanos tus datos»   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Título: Te ayudamos a resolverlo
+Origen del contacto: «escáner mental»
+Título: ¿Conversamos sobre lo que observaste?
+Texto: Dejanos tus datos y te contactamos para una conversación breve.
+Botón: Quiero conversar con Pausa Viva®
+Origen del contacto: «Semáforo Pausa Viva®». Si la visita llega desde LinkedIn: «Semáforo · LinkedIn» (ver D2).
+Dato extra en el registro: el color y el puntaje obtenido.
+
+Implementación: conservar los campos actuales y probar el envío real antes de publicar.
+D. Enlace directo al Semáforo desde LinkedIn
+Objetivo: que desde el perfil de LinkedIn de Paola (sección Destacados y publicaciones) se pueda llevar a la persona directo al Semáforo, sin esperar los 20 segundos del pop-up. Mientras tanto, en LinkedIn se usa una versión en PDF; cuando esto esté listo, se reemplaza por el enlace.
+D1 · Dirección propia del Semáforo   ACTUALIZADO 18/11
+Ubicación: Técnico   ·   Prioridad: P0
+Crear una dirección que abra el Semáforo de inmediato, por ejemplo https://www.sisu-group.net/semaforo.
+Si el sitio no permite crear una página nueva, sirve un parámetro: https://www.sisu-group.net/?semaforo=1, que al cargar la portada abre el pop-up sin demora.
+Al cerrar el Semáforo, la persona queda en la portada de Pausa Viva.
+D2 · Medición del origen   ACTUALIZADO 18/11
+Ubicación: Técnico   ·   Prioridad: P0
+El enlace tiene que aceptar parámetros UTM, por ejemplo: https://www.sisu-group.net/semaforo?utm_source=linkedin&utm_medium=perfil&utm_campaign=semaforo
+Cuando la persona deja sus datos, el registro guarda el origen («Semáforo · LinkedIn») y el resultado.
+D3 · Vista previa al compartir en LinkedIn   ACTUALIZADO 18/11
+Ubicación: SEO / Open Graph   ·   Prioridad: P0
+Título: Semáforo de Capacidad de Respuesta | Sistema Pausa Viva®
+Descripción: Autodiagnóstico de 2 minutos para líderes y equipos de Recursos Humanos: 6 preguntas, un puntaje y un semáforo.
+Imagen: 1200 × 627 px, con el estilo del banner de LinkedIn de Paola (fondo marfil, ondas dorado y lavanda, logo de Pausa Viva).
+Verificación: pegar la dirección en LinkedIn Post Inspector (https://www.linkedin.com/post-inspector/) y comprobar que se vean el título, la descripción y la imagen.
+D4 · LinkedIn dentro de la web   ACTUALIZADO 18/11
+Ubicación: Pie de página y Contacto   ·   Prioridad: P1
+Ícono de LinkedIn en el pie y en Contacto, con enlace a la página de empresa de Sisu Group.
+Si se aprueba, en Contacto: «Conectá con nosotras en LinkedIn», con los perfiles de Paola (linkedin.com/in/paola-cardinale) y Andrea.
+D5 · Entrega   ACTUALIZADO 18/11
+Ubicación: Cierre de esta parte   ·   Prioridad: P0
+Enviar a Pao la dirección final del Semáforo, ya probada, para reemplazar el PDF en Destacados de LinkedIn.
+E. Blog
+E1 · Nueva publicación de noviembre
+Ubicación: Blog, categoría Pausa Viva®   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Hoy predominan títulos sobre foco, pantallas y cuidado de la mente.
+Título: ¿Es saturación mental o hay otro problema detrás de los resultados?
+Bajada: Cuando un equipo empieza a perder foco, iniciativa o capacidad de respuesta, entender las causas es tan importante como buscar una solución.
+Categoría: Pausa Viva®
+Botón al final: Conversemos sobre tu equipo
+Dirección sugerida: /blog/saturacion-mental-rendimiento-equipos
+
+Implementación: usar el texto completo del artículo aprobado el 04/11. Los artículos de Oficina de Transición se mantienen como están.
+E2 · Tarjetas del índice del blog
+Ubicación: /blog.php   ·   Prioridad: P2
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Cabecera mixta de ambas líneas (correcta, se mantiene).
+Etiqueta en tarjetas nuevas: Pausa Viva®
+Extracto sugerido: Cómo reconocer señales de pérdida de capacidad y distinguir causas posibles antes de intervenir.
+
+F. Navegación y contacto
+F1 · Botón del encabezado y bloque Pausa Viva en Contacto
+Ubicación: Menú global y /contacto.php   ·   Prioridad: P0
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Botón del encabezado: Solicitar Demo Pausa Viva
+Contacto, bloque Pausa Viva: Para organizaciones que buscan reducir desgaste y recuperar claridad, foco, energía y capacidad de respuesta.
+Opciones: Solicitar Demo Pausa Viva · Agendar cita · Consultar por una intervención para mi equipo
+Botón del encabezado: Conversemos sobre tu equipo → /contacto.php
+Contacto, bloque Pausa Viva: Para organizaciones que buscan recuperar la capacidad de respuesta de sus equipos.
+Opciones: Conversemos sobre tu equipo · Hacer el Semáforo · Consultar por una intervención para mi equipo
+
+Alcance: solo el bloque de Pausa Viva. El bloque de Consultoría de negocios y el formulario general se mantienen igual.
+WhatsApp: hoy el enlace es /541121753936, sin el 9. Corregir solo el enlace técnico a https://wa.me/5491121753936.
+F2 · «Confiaron en nosotros»
+Ubicación: /confiaronEnNosotros.php   ·   Prioridad: P2
+Se mantiene intacta. Esos logos se presentan como trayectoria del equipo fundador, no como clientes de Pausa Viva®.
+G. Metadatos y control de calidad
+G1 · Metadatos de las páginas de Pausa Viva
+Ubicación: <title>, meta description y Open Graph   ·   Prioridad: P1
+ANTES · texto actual
+DESPUÉS · texto nuevo
+Metadatos sin verificar.
+Inicio · title: Sistema Pausa Viva® | Recuperar la capacidad de respuesta de los equipos | Sisu Group
+Inicio · description: Intervenciones breves y medibles para recuperar foco, claridad, energía disponible y capacidad de respuesta en equipos de trabajo.
+Pausa Viva · title: Sistema Pausa Viva® | Cómo funciona y cómo empezar
+Pausa Viva · description: Conocé el método Leer, Elegir, Aplicar y Medir, el Semáforo, el Escáner, la Demo y los programas para recuperar capacidad durante la jornada laboral.
+
+G2 · Controles antes de publicar   ACTUALIZADO 18/11
+Ubicación: Escritorio y celular   ·   Prioridad: P0
+Los botones llevan al destino correcto.
+El formulario de contacto se envía y confirma la recepción.
+El Semáforo calcula bien: probar con 0, 4, 5, 8, 9 y 12 puntos y verificar el color de cada resultado.
+La dirección /semaforo abre el test de inmediato y registra el origen LinkedIn.
+La vista previa en LinkedIn Post Inspector muestra el título, la descripción y la imagen correctos.
+El WhatsApp abre el número confirmado.
+Sin errores de tildes, textos cortados ni íconos convertidos en palabras.
+Todo se lee y navega bien en el celular.
+La sección Oficina de Transición queda exactamente igual.
+Cada cifra publicada lleva su fuente: Bumeran 2025 (92 % y 88 %) y mediciones propias de Pausa Viva® (+35 % y 9 de cada 10).
+H. Orden de implementación
+P0 · Ahora: A1, A2, A4, B1, B3, B5, B7, B8, todo el bloque C, D1, D2, D3, D5, F1 y G2.
+P1 · Segunda pasada: A3, A5, A6, A8, B2, B4, B6, B9, B10, D4, E1 y G1.
+P2 · Después: A7, E2 y F2.
+Aprobación final: enviar capturas de la portada, el problema, el método, la Demo y el Semáforo (las tres pantallas de resultado), en escritorio y celular, antes de publicar.
+Pendientes de confirmar con Pao y Andrea
+Nombre exacto del cuarto pilar.
+Si hay una agenda online vigente o los botones van al formulario de contacto.
+
