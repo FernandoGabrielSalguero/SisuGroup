@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pausa Viva | Sisu Group</title>
+  <meta name="description"
+    content="Sistema Pausa Viva: un sistema accesible, vivencial y medible para reducir desgaste y recuperar capacidad mental disponible.">
+  <meta property="og:title" content="Pausa Viva | Sisu Group">
+  <meta property="og:description"
+    content="Cuidado estratégico de la mente en el trabajo con metodología, datos de contexto y propuesta de demo.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="pausa-viva.php">
+  <meta property="og:image" content="assets/marca/Marca Pausa Viva.png">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+  <link rel="stylesheet" href="css/style7767.css?v=<?php echo time(); ?>">
+</head>
+
+<body data-page="pausa-viva">
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <header class="site-header" data-header>
+    <div class="container header-shell">
+      <a class="brand" href="index.php" aria-label="Ir a inicio Sisu Group">
+        <img class="brand-logo" src="assets/marca/Logo Pausa Viva.png" alt="Logo Pausa Viva"
+          width="259" height="264">
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle>
+        <span></span><span></span><span></span><span class="sr-only">Abrir menú</span>
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Principal" data-nav>
+        <a href="index.php">Inicio</a>
+        <a href="pausa-viva.php" aria-current="page">Pausa Viva</a>
+        <a href="consultoria.php">Consultoría de negocios</a>
+        <a href="blog.php">Blog</a>
+        <a href="confiaronEnNosotros.php">Confiaron en nosotros</a>
+        <a href="contacto.php">Contacto</a>
+      </nav>
+      <a class="button button-primary button-header" href="contacto.php#pausa-viva-contacto">Solicitar Demo Pausa
+        Viva</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero hero-inner pausa-viva-hero">
+      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+      <div class="container hero-grid pausa-viva-grid">
+        <div class="hero-visual hero-visual-logo pausa-viva-system reveal" aria-hidden="true">
+          <div class="system-card">
+            <img class="hero-main-logo hero-main-logo-large" src="assets/marca/Marca Pausa Viva.png" alt="" width="1980"
+              height="1080" fetchpriority="high" decoding="async">
+            <div class="pulse-ring ring-one"></div>
+            <div class="pulse-ring ring-two"></div>
+            <div class="pulse-ring ring-three"></div>
+          </div>
+        </div>
+        <div class="hero-copy hero-copy-right reveal">
+          <p class="eyebrow">Sistema Pausa Viva</p>
+          <h1>Cuidado estratégico de la mente en el trabajo</h1>
+          <p class="hero-kicker">Menos saturación. Más claridad para responder.</p>
+          <p class="hero-lead">Un sistema accesible, vivencial y medible que ayuda a organizaciones, equipos y líderes a
+            reducir desgaste y recuperar capacidad mental disponible: claridad, foco, energía, regulación emocional y
+            mejores condiciones para responder.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="contacto.php#pausa-viva-contacto">Solicitar Demo Pausa Viva</a>
+            <a class="button button-secondary button-diagnostic" href="#mental-scan" data-scanner-trigger
+              aria-haspopup="dialog">Comenzar diagnóstico</a>
+          </div>
+        </div>
+        <div class="hero-support quote-section reveal">
+          <div class="quote-grid hero-quote-grid">
+            <div class="quote-pair">
+              <blockquote class="quote-inline book-quote"><span class="book-quote-mark" aria-hidden="true">“</span><span
+                  class="book-quote-text">La mente sostiene todo lo que una organización necesita para funcionar
+                  bien.</span><span class="book-quote-mark" aria-hidden="true">”</span></blockquote>
+            </div>
+            <div class="quote-pair">
+              <blockquote class="quote-inline book-quote"><span class="book-quote-mark" aria-hidden="true">“</span><span
+                  class="book-quote-text">La productividad también depende de la capacidad mental
+                  disponible.</span><span class="book-quote-mark" aria-hidden="true">”</span></blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-soft">
+      <div class="container problem-layout">
+        <div class="problem-content">
+          <div class="section-heading reveal">
+            <p class="eyebrow">El problema</p>
+            <h2>Una mente saturada no necesita más presión. Necesita mejores condiciones para responder.</h2>
+            <p>Síntomas de saturación mental</p>
+          </div>
+          <ol class="problem-list" aria-label="Señales frecuentes de saturación mental">
+            <li class="problem-item reveal">
+              <span class="problem-item-number">1</span>
+              <p>Dificultad para concentrarse en tareas profundas.</p>
+            </li>
+            <li class="problem-item reveal">
+              <span class="problem-item-number">2</span>
+              <p>Cansancio incluso al inicio del día.</p>
+            </li>
+            <li class="problem-item reveal">
+              <span class="problem-item-number">3</span>
+              <p>Necesidad de revisar mensajes todo el tiempo.</p>
+            </li>
+            <li class="problem-item reveal">
+              <span class="problem-item-number">4</span>
+              <p>Menor tolerancia frente a errores o imprevistos.</p>
+            </li>
+            <li class="problem-item reveal">
+              <span class="problem-item-number">5</span>
+              <p>Dificultad para tomar decisiones simples.</p>
+            </li>
+            <li class="problem-item reveal">
+              <span class="problem-item-number">6</span>
+              <p>Conversaciones más tensas o reactivas.</p>
+            </li>
+            <li class="problem-item reveal">
+              <span class="problem-item-number">7</span>
+              <p>Pérdida de creatividad o iniciativa.</p>
+            </li>
+          </ol>
+        </div>
+        <div class="problem-visual reveal">
+          <img class="problem-image" src="assets/img/Foto Chica Cansada.webp"
+            alt="Mujer cansada trabajando frente a una laptop" width="960" height="960" loading="lazy" decoding="async">
+        </div>
+        <div class="problem-solution reveal" data-typewriter-container>
+          <p class="section-summary" data-typewriter-text
+            data-typewriter-full-text="Sistema Pausa Viva ayuda a leer esas señales y a crear mejores condiciones&#10;para recuperar: claridad, foco, energía y capacidad de respuesta.">Sistema Pausa Viva ayuda a leer esas señales y a crear mejores condiciones
+            para recuperar: claridad, foco, energía y capacidad de respuesta.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading reveal methodology-heading">
+          <p class="eyebrow">Los 4 pilares</p>
+          <h2>Un sistema integral para recuperar capacidad mental disponible</h2>
+          <p>No todos los equipos se desgastan de la misma manera. Por eso, Pausa Viva trabaja desde cuatro pilares que
+            permiten diseñar intervenciones personalizadas con método y aplicación real.</p>
+        </div>
+        <div class="pillar-grid">
+          <article class="pillar-card reveal">
+            <span class="pillar-icon material-symbols-outlined" aria-hidden="true">battery_charging_full</span>
+            <h3>Cuerpo y energía</h3>
+            <p class="pillar-subtitle">Neuroergonomía</p>
+            <p>Observa cómo el cuerpo, la postura y la condición de nuestra mente influyen en la energía, el foco y el
+              desempeño cotidiano.</p>
+          </article>
+          <article class="pillar-card reveal">
+            <span class="pillar-icon material-symbols-outlined" aria-hidden="true">target</span>
+            <h3>Atención y claridad</h3>
+            <p class="pillar-subtitle">Arquitectura de foco</p>
+            <p>Diseña condiciones que protegen la atención, reducen el ruido mental y ayudan a crear mejores momentos
+              para pensar, priorizar y decidir.</p>
+          </article>
+          <article class="pillar-card reveal">
+            <span class="pillar-icon material-symbols-outlined" aria-hidden="true">neurology</span>
+            <h3>Estrés y respuesta</h3>
+            <p class="pillar-subtitle">Gestión emocional del estrés</p>
+            <p>Incorpora herramientas breves para bajar activación, recuperar eje y mejorar la calidad de respuesta
+              antes de decidir, comunicar o liderar.</p>
+          </article>
+          <article class="pillar-card reveal">
+            <span class="pillar-icon material-symbols-outlined" aria-hidden="true">trending_up</span>
+            <h3>Confianza y acción</h3>
+            <p class="pillar-subtitle">Recupero de optimismo y confianza operativa</p>
+            <p>Ayuda a reconectar con recursos propios, diálogo interno funcional y capacidad de acción frente a
+              desafíos cotidianos.</p>
+          </article>
+        </div>
+        <div class="section-cta reveal">
+          <p class="result-line">Más claridad. Más foco. Más energía. Mejor capacidad de respuesta.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-accent section-benefits">
+      <div class="container">
+        <div class="section-heading reveal results-heading">
+          <p class="eyebrow">Resultados que buscamos facilitar</p>
+          <h2>Lo que una organización puede recuperar cuando cuida la mente en el trabajo</h2>
+        </div>
+        <div class="results-grid benefits-grid">
+          <article class="mini-card result-card benefit-card reveal">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path
+                  d="M32 54c12-7.5 18-15.2 18-24.08C50 22.57 44.37 18 38.12 18c-3.45 0-6.05 1.47-8.12 4.1C27.93 19.47 25.33 18 21.88 18 15.63 18 10 22.57 10 29.92 10 38.8 16 46.5 28 54">
+                </path>
+                <path d="M23 33c1.78 2.67 4.13 4 7 4 4 0 6.67-2.67 8-8 1.33 4 3.33 6 6 6"></path>
+              </svg>
+            </div>
+            <h3>Regulación emocional</h3>
+          </article>
+          <article class="mini-card result-card benefit-card reveal">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <circle cx="32" cy="32" r="11"></circle>
+                <path
+                  d="M32 8v8M32 48v8M56 32h-8M16 32H8M48.97 15.03l-5.66 5.66M20.69 43.31l-5.66 5.66M48.97 48.97l-5.66-5.66M20.69 20.69l-5.66-5.66">
+                </path>
+              </svg>
+            </div>
+            <h3>Claridad</h3>
+          </article>
+          <article class="mini-card result-card benefit-card reveal">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path d="M14 43c4-10.67 9.67-16 17-16 5.33 0 10 3 14 9l5-7"></path>
+                <path d="M45 20h10v10"></path>
+                <path d="M14 50h36"></path>
+              </svg>
+            </div>
+            <h3>Rendimiento sostenible</h3>
+          </article>
+          <article class="mini-card result-card benefit-card reveal">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <circle cx="32" cy="32" r="18"></circle>
+                <circle cx="32" cy="32" r="8"></circle>
+                <path d="M32 14v8M50 32h-8M32 50v-8M14 32h8"></path>
+              </svg>
+            </div>
+            <h3>Foco</h3>
+          </article>
+          <article class="mini-card result-card benefit-card reveal">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path d="M10 32h28"></path>
+                <path d="m30 20 12 12-12 12"></path>
+                <path d="M18 18h-6v28h6"></path>
+              </svg>
+            </div>
+            <h3>Capacidad de respuesta</h3>
+          </article>
+          <article class="mini-card result-card benefit-card reveal">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path d="M35 7 17 35h12l-4 22 22-30H35z"></path>
+              </svg>
+            </div>
+            <h3>Energía</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading reveal process-heading">
+          <p class="eyebrow">Cómo funciona</p>
+          <h2>Diseñamos cada experiencia según el tipo de desgaste de la organización</h2>
+        </div>
+        <div class="process-accordion reveal" data-process-accordion>
+          <article class="process-item">
+            <h3>
+              <button class="process-trigger" type="button" aria-expanded="false" aria-controls="process-panel-1"
+                id="process-trigger-1" data-process-trigger>
+                <span class="process-trigger-number">1</span>
+                <span class="process-trigger-label">Reunión inicial</span>
+              </button>
+            </h3>
+            <div class="process-panel" id="process-panel-1" role="region" aria-labelledby="process-trigger-1"
+              data-process-panel hidden>
+              <p style="color: #001F54;">Conversamos con líderes o responsables del equipo para entender contexto,
+                dinámica de trabajo y
+                principales señales de desgaste.</p>
+            </div>
+          </article>
+          <article class="process-item">
+            <h3>
+              <button class="process-trigger" type="button" aria-expanded="false" aria-controls="process-panel-2"
+                id="process-trigger-2" data-process-trigger>
+                <span class="process-trigger-number">2</span>
+                <span class="process-trigger-label">Diagnóstico breve</span>
+              </button>
+            </h3>
+            <div class="process-panel" id="process-panel-2" role="region" aria-labelledby="process-trigger-2"
+              data-process-panel hidden>
+              <p style="color: #001F54;">Aplicamos herramientas simples para observar niveles de estrés, foco, energía y
+                capacidad mental
+                disponible.</p>
+            </div>
+          </article>
+          <article class="process-item">
+            <h3>
+              <button class="process-trigger" type="button" aria-expanded="false" aria-controls="process-panel-3"
+                id="process-trigger-3" data-process-trigger>
+                <span class="process-trigger-number">3</span>
+                <span class="process-trigger-label">Demo Pausa Viva</span>
+              </button>
+            </h3>
+            <div class="process-panel" id="process-panel-3" role="region" aria-labelledby="process-trigger-3"
+              data-process-panel hidden>
+              <p style="color: #001F54;">Realizamos una experiencia breve y guiada para que la organización conozca la
+                metodología desde la
+                práctica.</p>
+            </div>
+          </article>
+          <article class="process-item">
+            <h3>
+              <button class="process-trigger" type="button" aria-expanded="false" aria-controls="process-panel-4"
+                id="process-trigger-4" data-process-trigger>
+                <span class="process-trigger-number">4</span>
+                <span class="process-trigger-label">Diseño de intervención</span>
+              </button>
+            </h3>
+            <div class="process-panel" id="process-panel-4" role="region" aria-labelledby="process-trigger-4"
+              data-process-panel hidden>
+              <p style="color: #001F54;">A partir de lo observado, definimos una propuesta adaptada al tipo de equipo,
+                rubro, dinámica de
+                trabajo y desgaste predominante.</p>
+            </div>
+          </article>
+          <article class="process-item">
+            <h3>
+              <button class="process-trigger" type="button" aria-expanded="false" aria-controls="process-panel-5"
+                id="process-trigger-5" data-process-trigger>
+                <span class="process-trigger-number">5</span>
+                <span class="process-trigger-label">Medición y próximos pasos</span>
+              </button>
+            </h3>
+            <div class="process-panel" id="process-panel-5" role="region" aria-labelledby="process-trigger-5"
+              data-process-panel hidden>
+              <p style="color: #001F54;">Evaluamos impacto percibido y compartimos recomendaciones para sostener mejores
+                condiciones de trabajo.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-accent">
+      <div class="container split-callout">
+        <div class="reveal">
+          <p class="eyebrow">Demo Pausa Viva</p>
+          <h2>Conocé Pausa Viva desde la experiencia</h2>
+          <p>La Demo Pausa Viva es una primera aproximación práctica al sistema. Permite conocer la metodología,
+            experimentar una intervención breve y observar cómo una pausa diseñada puede ayudar a recuperar alivio, foco, energia y regulación</p>
+          <p>Funciona como una experiencia de conocimiento y confianza: no es una presentación teórica, sino una
+            vivencia guiada que permite acercarnos a las necesidades reales de cada organización.</p>
+        </div>
+        <div class="callout-card reveal">
+          <h3>Qué incluye</h3>
+          <ul class="feature-list">
+            <li>Introducción breve al enfoque Pausa Viva.</li>
+            <li>Experiencia vivencial adaptada al perfil del equipo.</li>
+            <li>Herramientas simples para recuperar alivio, foco, energía y regulación.</li>
+            <li>Medición breve pre y post.</li>
+            <li>Espacio de cierre para aprendizajes y próximos pasos.</li>
+          </ul>
+          <br>
+          <div class="button-stack demo-cta-stack">
+            <a class="button button-primary" href="#demo-pausa-viva" data-demo-trigger>Agendar cita virtual</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cta-band">
+      <div class="container cta-band reveal">
+        <div>
+          <p class="eyebrow">Cierre Pausa Viva</p>
+          <h2>El arte de pausar para avanzar</h2>
+          <p>Sistema Pausa Viva transforma la pausa en una herramienta de gestión para reducir desgaste, recuperar alivio,
+            claridad y trabajar con más foco, energía y capacidad de respuesta.</p>
+          <p>Cuidar la mente no es bajar la exigencia. Es crear mejores condiciones para responder a ella.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><img class="footer-logo" src="assets/marca/Marca Consultora de negocios Sisu Group.png" alt="Logo Sisu Group"
+          width="259" height="264" loading="lazy" decoding="async">
+        <p>"Transformamos oportunidades en resultados"</p>
+        <div class="footer-social" aria-label="Redes sociales"><a href="https://www.facebook.com/share/1GhPGk43Yi/"
+            target="_blank" rel="noopener noreferrer" aria-label="Facebook de Sisu Group"><svg viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path
+                d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H16.7V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 4V11H8v3h2.6v8h2.9Z" />
+            </svg></a><a href="https://www.instagram.com/sisugroup.arg" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram de Sisu Group"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 1.8A2.7 2.7 0 0 0 4.8 7.5v9a2.7 2.7 0 0 0 2.7 2.7h9a2.7 2.7 0 0 0 2.7-2.7v-9a2.7 2.7 0 0 0-2.7-2.7h-9Zm9.45 1.35a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1ZM12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 1.8A2.7 2.7 0 1 0 14.7 12 2.7 2.7 0 0 0 12 9.3Z" />
+            </svg></a>
+          <a href="https://www.linkedin.com/company/sisu-groupargentina/?viewAsMember=true" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn de Sisu Group">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M6.94 8.98H3.56V21h3.38V8.98ZM5.25 3a1.96 1.96 0 1 0 0 3.92A1.96 1.96 0 0 0 5.25 3Zm5.33 5.98H7.34V21h3.38v-6.3c0-1.66.31-3.27 2.37-3.27 2.03 0 2.06 1.9 2.06 3.38V21h3.38v-7.02c0-3.45-.74-6.1-4.77-6.1-1.94 0-3.24 1.06-3.77 2.07h-.05V8.98Z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h2>Navegación</h2>
+        <nav class="footer-nav" aria-label="Footer"><a href="index.php">Inicio</a><a href="pausa-viva.php">Pausa
+            Viva</a><a href="consultoria.php">Consultoría de negocios</a><a href="blog.php">Blog</a><a
+            href="confiaronEnNosotros.php">Confiaron en nosotros</a><a href="contacto.php">Contacto</a></nav>
+      </div>
+      <div>
+        <h2>Contacto</h2><a href="mailto:contacto@sisu-group.net">contacto@sisu-group.net</a><a
+          href="https://wa.me/541121753936">WhatsApp: 11 2175 3936</a><a class="button button-primary"
+          href="contacto.php#pausa-viva-contacto">Solicitar Demo Pausa Viva</a><a
+          class="button button-footer-consulting" href="consultoria.php">¿Querés traer tu negocio a la Argentina?</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" data-scanner-modal id="mental-scan" hidden>
+    <div class="scanner-modal" role="dialog" aria-modal="true" aria-labelledby="scanner-title"
+      aria-describedby="scanner-description" tabindex="-1" data-modal-panel>
+      <button class="modal-close" type="button" aria-label="Cerrar" data-modal-close>&times;</button>
+      <div class="scanner-arc scanner-arc-top" aria-hidden="true"></div>
+      <div class="scanner-arc scanner-arc-bottom-lavender" aria-hidden="true"></div>
+      <div class="scanner-arc scanner-arc-bottom-gold" aria-hidden="true"></div>
+      <div class="scanner-flow" data-scanner-app>
+        <section class="scanner-screen" data-scanner-screen="intro">
+          <p class="scanner-brand">Sistema Pausa Viva · Sisu Group</p>
+          <p class="eyebrow">Escáner de carga mental organizacional</p>
+          <h2 id="scanner-title">Escáner de Carga Mental Organizacional</h2>
+          <p id="scanner-description">Un autodiagnóstico breve para detectar señales de saturación mental, pérdida de
+            foco y desgaste operativo en equipos y líderes.</p>
+          <div class="scanner-badges" aria-label="Características del escáner">
+            <span>6 preguntas</span>
+            <span>2 minutos</span>
+            <span>Resultado inmediato</span>
+          </div>
+          <button class="button button-primary scanner-start" type="button" data-scanner-start>Comenzar
+            diagnóstico</button>
+          <p class="scanner-note">El arte de pausar para avanzar.</p>
+        </section>
+        <section class="scanner-screen" data-scanner-screen="quiz" hidden>
+          <p class="scanner-brand">Sistema Pausa Viva · Sisu Group</p>
+          <p class="scanner-step" data-scanner-step></p>
+          <span class="scanner-progress"><span data-scanner-progress-bar></span></span>
+          <div class="scanner-question-card">
+            <div class="scanner-preview-index" data-scanner-index></div>
+            <p data-scanner-question></p>
+          </div>
+          <div class="scanner-options" data-scanner-options></div>
+        </section>
+        <section class="scanner-screen" data-scanner-screen="result" hidden>
+          <p class="scanner-brand">Sistema Pausa Viva · Sisu Group</p>
+          <h2>Tu resultado</h2>
+          <div class="scanner-result-badge" data-scanner-range></div>
+          <div class="scanner-result-card">
+            <p class="scanner-result-zone" data-scanner-zone></p>
+            <h3 data-scanner-result-title></h3>
+            <p data-scanner-result-copy></p>
+            <p class="scanner-recommendation"><strong>Recomendación:</strong> <span
+                data-scanner-result-recommendation></span></p>
+          </div>
+          <div class="scanner-result-actions">
+            <a class="button button-primary scanner-result-link" href="#" data-scanner-result-link></a>
+          </div>
+        </section>
+        <section class="scanner-screen" data-scanner-screen="lead" hidden>
+          <p class="scanner-brand">Sistema Pausa Viva · Sisu Group</p>
+          <p class="eyebrow">Dejanos tus datos</p>
+          <h3>Te ayudamos a resolverlo</h3>
+          <form class="contact-form scanner-form" data-impulsa-contact novalidate>
+            <input type="hidden" name="contact_description" data-scanner-zone-input required>
+            <label>
+              Nombre
+              <input type="text" name="contact_nombre" required>
+            </label>
+            <label>
+              Email
+              <input type="email" name="contact_email" required>
+            </label>
+            <label>
+              Teléfono
+              <input type="tel" name="contact_whatsapp" required>
+            </label>
+            <label>
+              <span class="sr-only">Mensaje</span>
+              <textarea name="contact_consultation" rows="3" readonly required
+                hidden>Esta solicitud vino del escáner mental</textarea>
+            </label>
+            <div class="form-actions">
+              <button class="button button-secondary" type="submit">Quiero que me contacten</button>
+            </div>
+            <p class="form-feedback" data-impulsa-contact-message role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="js/main7767.js?v=<?php echo time(); ?>"></script>
+</body>
+
+</html>
