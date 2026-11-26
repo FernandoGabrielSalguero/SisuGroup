@@ -2,7 +2,7 @@ Nombre del proyecto
 Consultora de negocios Sisu Group
 
 Correo
-contacto@sisu-group.net
+contacto1@sisu-group.net
 pcardinale23969@gmail.com
 
 WhatsApp
