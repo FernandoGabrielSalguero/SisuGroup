@@ -2104,6 +2104,7 @@ body[data-page="blog"] .blog-card p {
 }
 
 body[data-page="blog"] .blog-card-action {
+  appearance: none;
   align-self: flex-start;
   margin-top: auto;
   padding: 0;
@@ -2113,13 +2114,10 @@ body[data-page="blog"] .blog-card-action {
   cursor: pointer;
   font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
-body[data-page="blog"] .blog-card-action::after {
-  content: " ->";
-  color: #d4af37;
+body[data-page="blog"] .blog-card-action:hover {
+  text-decoration: underline;
 }
 
 .blog-status {
