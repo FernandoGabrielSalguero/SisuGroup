@@ -224,6 +224,25 @@ function renderScannerModal() {
             <a class="button button-primary scanner-result-link" target="_blank" rel="noopener" data-scanner-result-link></a>
           </div>
           <div class="scanner-contacts">${contactLinks}</div>
+          // <section class="scanner-path" aria-labelledby="scanner-path-title">
+          //   <h3 id="scanner-path-title">Un camino paso a paso</h3>
+          //   <ol>
+          //     <li><strong>Semáforo de Capacidad de Respuesta</strong><p>Lo que acabás de hacer: una primera lectura en 2 minutos.</p></li>
+          //     <li><strong>Escáner de Saturación Mental</strong><p>Una conversación breve para entender tu situación y un análisis de 15 a 20 preguntas adaptado a tu equipo. Resultado: un diagnóstico preliminar. De cortesía.</p></li>
+          //     <li><strong>Demo de 30 minutos</strong><p>Tu equipo vive una intervención breve y ve el cambio medido.</p></li>
+          //     <li><strong>Plan a medida</strong><p>Intervención de Conciencia (60 min), Ciclo Inicial (3 meses) o Plan Continuo (6 meses).</p></li>
+          //   </ol>
+          // </section>
+          // <footer class="scanner-footer">
+          //   <h3>Recuperamos la capacidad de respuesta de los equipos</h3>
+          //   <p>Intervenciones breves y medibles, integradas a la jornada laboral.</p>
+          //   <p class="scanner-signature">El arte de pausar para avanzar</p>
+          //   <div class="scanner-contacts">
+          //     <a href="https://www.sisu-group.net/">www.sisu-group.net</a>
+          //     <span aria-hidden="true">·</span>
+          //     ${contactLinks}
+          //   </div>
+          // </footer>
         </section>
       </div>
     </div>
